@@ -7,12 +7,13 @@ const fetchFromNotion = async () => {
 };
 
 export default async function Home() {
-  const data = await fetchFromNotion();
-  console.log(data); // Вывод данных в консоль
+  const rows: rowsStructured = await fetchFromNotion();
 
   return (
     <main>
-      <div></div>
+      <div>
+        <code>{rows.ai_name}</code>
+      </div>
     </main>
   );
 }
