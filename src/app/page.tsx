@@ -12,9 +12,7 @@ export default async function Home() {
 
   return (
     <main>
-      <div>
-        <a href="./api/hello.tsx">asdiasd</a>
-      </div>
+      <div></div>
     </main>
   );
 }
