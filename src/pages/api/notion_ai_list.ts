@@ -11,11 +11,13 @@ type Row = {
   ai_description: { id: string; rich_text: { text: { content: string } }[] };
   ai_url: { id: string; url: string };
   ai_img_url: { id: string; url: string };
+  ai_rate: { id: string; name: string; type: string; number: { format: string } };
   ai_types: { id: string; multi_select: { id: string; name: string; color: string }[] };
   ai_uses: { id: string; multi_select: { id: string; name: string; color: string }[] };
   ai_sector: { id: string; multi_select: { id: string; name: string; color: string }[] };
   ai_api: { id: string; multi_select: { id: string; name: string; color: string }[] };
   ai_cost: { id: string; multi_select: { id: string; name: string; color: string }[] };
+  ai_from_ukr: { id: string; multi_select: { id: string; name: string; color: string }[] };
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -30,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // @ts-ignore
   const rows = query.results.map((res) => res.properties) as Row[];
 
-  const rowsStructured = rows.map((row) => ({
+  const aiListStructured = rows.map((row) => ({
     ai_name: row.ai_name.title?.[0]?.text?.content ?? "Default Name",
     ai_description:
       row.ai_description.rich_text
@@ -40,6 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // ... другие поля
     ai_url: row.ai_url.url,
     ai_img_url: row.ai_img_url.url,
+    ai_rate: row.ai_rate.number || 0,
     ai_types: row.ai_types.multi_select
       .map((option) => option.name) // Массив только имен
       .sort((a, b) => a.localeCompare(b)), // Сортировка по алфавиту
@@ -54,12 +57,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .sort((a, b) => a.localeCompare(b)), // Сортировка по алфавиту
     ai_cost: row.ai_cost.multi_select
       .map((option) => option.name) // Отображение только параметра "name" з массива "option"
-      .sort((a, b) => a.localeCompare(b)) // Сортировка по алфавиту
+      .sort((a, b) => a.localeCompare(b)), // Сортировка по алфавиту
+    ai_from_ukr: row.ai_cost.multi_select
+      .map((option) => option.name) // Отображение только параметра "name" з массива "option"
+      .sort((a, b) => a.localeCompare(b)) // Сортировка по алфавиту,
   }));
 
-  rowsStructured.forEach((row) => {
-    console.log(row.ai_description); // Выводим содержимое ai_description в консоль
-  });
-
-  res.status(200).json({ rowsStructured });
+  res.status(200).json({ aiListStructured });
 }
