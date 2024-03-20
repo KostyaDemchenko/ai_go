@@ -1,4 +1,7 @@
+import React from "react";
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import "./globals.scss";
 
 export const metadata: Metadata = {
@@ -17,6 +20,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
       </head>
       <body>{children}</body>
+      <SpeedInsights />
     </html>
   );
 }
