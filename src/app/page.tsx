@@ -4,7 +4,9 @@ import "./globals.scss";
 export default function Home() {
   return (
     <main>
-      <div></div>
+      <div>
+        <a href="/PageList">link</a>
+      </div>
     </main>
   );
 }
