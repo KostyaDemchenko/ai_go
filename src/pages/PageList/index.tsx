@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export default async function HomePage() {
+export function HomePage() {
   return (
     <main>
       <div></div>
