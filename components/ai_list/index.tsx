@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { SERVER_ROOT } from "@/utils/variables";
 
 const fetchFromNotion = async (): Promise<aiListStructured[]> => {
   try {
-    const res = await fetch("/api/notion_ai_list");
+    const res = await fetch(`${SERVER_ROOT}/api/notion_ai_list`);
     const data = await res.json();
     return data.aiListStructured as aiListStructured[];
   } catch (error) {
