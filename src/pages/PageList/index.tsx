@@ -1,14 +1,12 @@
 "use client";
 
 import React from "react";
-import AiList from "@/components/ai_list";
+// import AiList from "@/components/ai_list";
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <main>
-      <div>
-        <AiList />
-      </div>
+      <div>{/* <AiList /> */}</div>
     </main>
   );
 }
