@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const fetchFromNotion = async (): Promise<aiListStructured[]> => {
   try {
-    const deployedApiUrl = "https://ai-go-green.vercel.app/api/notion_ai_list"; // Replace with your actual deployed URL (which you've provided)
+    const deployedApiUrl = "/api/notion_ai_list"; // Replace with your actual deployed URL (which you've provided)
     const res = await fetch(deployedApiUrl);
     const data = await res.json();
     return data.aiListStructured as aiListStructured[];
