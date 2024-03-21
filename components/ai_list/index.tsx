@@ -2,11 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 
-const serverUrl = process.env.API_AI_LIST_URL_PROD || "http://localhost:3000/api/notion_ai_list";
-
 const fetchFromNotion = async (): Promise<aiListStructured[]> => {
   try {
-    const res = await fetch(serverUrl);
+    const res = await fetch("/api/notion_ai_list");
     const data = await res.json();
     return data.aiListStructured as aiListStructured[];
   } catch (error) {
