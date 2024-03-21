@@ -4,9 +4,7 @@ import React, { useState, useEffect } from "react";
 
 const fetchFromNotion = async (): Promise<aiListStructured[]> => {
   try {
-    const res = await fetch(
-      "https://ai-7h528q9w5-kostiantyndecmhenkos-projects.vercel.app/api/notion_ai_list"
-    );
+    const res = await fetch("/api/notion_ai_list");
     const data = await res.json();
     return data.aiListStructured as aiListStructured[];
   } catch (error) {
