@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export function HomePage() {
+export default function PageList() {
   return (
     <main>
       <div></div>
