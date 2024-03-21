@@ -21,8 +21,19 @@ type Row = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // Set CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
   if (!notionSecret || !notionDatabaseId) {
     throw new Error("Missing notion secret or DB-ID.");
+  }
+
+  if (req.method === "OPTIONS") {
+    // Preflight request
+    res.status(200).end();
+    return;
   }
 
   const query = await notion.databases.query({
@@ -39,7 +50,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .map((richText) => richText.text.content)
         .filter((content) => content.trim() !== "") // Убираем пустые строки
         .join(" ") || "Default Description", // Если все строки пустые, используем "Default Description"
-    // ... другие поля
     ai_url: row.ai_url.url,
     ai_img_url: row.ai_img_url.url,
     ai_rate: row.ai_rate.number || 0,
