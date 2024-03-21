@@ -20,6 +20,12 @@ type Row = {
   ai_from_ukr: { id: string; multi_select: { id: string; name: string; color: string }[] };
 };
 
+function sortMultiSelectOptions(options: {
+  multi_select: MultiSelectOption[];
+}): MultiSelectOption[] {
+  return options.multi_select.sort((a, b) => a.name.localeCompare(b.name));
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Set CORS headers
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -53,24 +59,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     ai_url: row.ai_url.url,
     ai_img_url: row.ai_img_url.url,
     ai_rate: row.ai_rate.number || 0,
-    ai_types: row.ai_types.multi_select
-      .map((option) => option.name) // Массив только имен
-      .sort((a, b) => a.localeCompare(b)), // Сортировка по алфавиту
-    ai_uses: row.ai_uses.multi_select
-      .map((option) => option.name) // Отображение только параметра "name" з массива "option"
-      .sort((a, b) => a.localeCompare(b)), // Сортировка по алфавиту
-    ai_sector: row.ai_sector.multi_select
-      .map((option) => option.name) // Отображение только параметра "name" з массива "option"
-      .sort((a, b) => a.localeCompare(b)), // Сортировка по алфавиту
-    ai_api: row.ai_api.multi_select
-      .map((option) => option.name) // Отображение только параметра "name" з массива "option"
-      .sort((a, b) => a.localeCompare(b)), // Сортировка по алфавиту
-    ai_cost: row.ai_cost.multi_select
-      .map((option) => option.name) // Отображение только параметра "name" з массива "option"
-      .sort((a, b) => a.localeCompare(b)), // Сортировка по алфавиту
-    ai_from_ukr: row.ai_cost.multi_select
-      .map((option) => option.name) // Отображение только параметра "name" з массива "option"
-      .sort((a, b) => a.localeCompare(b)) // Сортировка по алфавиту,
+    ai_types: sortMultiSelectOptions(row.ai_types),
+    ai_uses: sortMultiSelectOptions(row.ai_uses),
+    ai_sector: sortMultiSelectOptions(row.ai_sector),
+    ai_api: sortMultiSelectOptions(row.ai_api),
+    ai_cost: sortMultiSelectOptions(row.ai_cost),
+    ai_from_ukr: sortMultiSelectOptions(row.ai_cost)
   }));
 
   res.status(200).json({ aiListStructured });

@@ -35,6 +35,11 @@ const AiList = () => {
       {aiList.map((ai, index) => (
         <div key={index}>
           <p>{ai.ai_name}</p>
+          <div>
+            {ai.ai_types.map((type: MultiSelectOption, innerIndex: number) => (
+              <p key={innerIndex}>{type.name}</p>
+            ))}
+          </div>
           {/* Render other properties as needed */}
         </div>
       ))}
