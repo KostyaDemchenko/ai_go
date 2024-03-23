@@ -1,0 +1,26 @@
+.filter-container {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  h3 {
+    margin-bottom: 10px;
+  }
+
+  .filter-options {
+    display: flex;
+    flex-direction: column;
+    max-height: 150px;
+    flex-wrap: wrap;
+
+    label {
+      margin-right: 10px;
+      margin-bottom: 5px;
+
+      input[type="checkbox"] {
+        margin-right: 5px;
+      }
+    }
+  }
+}
