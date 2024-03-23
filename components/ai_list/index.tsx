@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import FilterComponent from "@/components/filters_for_ai_list";
+import AccordionAiItems from "../AccordionAiItems";
 
 import "./style.scss";
 
@@ -106,9 +108,7 @@ const AiList = () => {
                       <p key={innerIndex}>{type.name}</p>
                     ))}
                   </div>
-                  <div className="description-box">
-                    <p>Опис</p>
-                  </div>
+                  <AccordionAiItems description={ai.ai_description} />
                   <div className="link-box">
                     <a href={ai.ai_url}>Посилання на AI</a>
                   </div>
