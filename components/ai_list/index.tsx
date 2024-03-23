@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+// import component css
+import "./style.scss";
+
 const fetchFromNotion = async (): Promise<aiListStructured[]> => {
   try {
     const deployedApiUrl = "/api/notion_ai_list"; // Replace with your actual deployed URL (which you've provided)
@@ -30,17 +33,54 @@ const AiList = () => {
     return <div>Loading...</div>; // Render loading indicator while data is being fetched
   }
 
+  // Function to render star rating
+  const renderStars = (rating: number) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <span key={i} style={{ color: i <= rating ? "gold" : "gray" }}>
+          ★
+        </span>
+      );
+    }
+    return stars;
+  };
+
   return (
-    <div>
+    <div className="ai-list-container">
       {aiList.map((ai, index) => (
-        <div key={index}>
-          <p>{ai.ai_name}</p>
-          <div>
-            {ai.ai_types.map((type: MultiSelectOption, innerIndex: number) => (
-              <p key={innerIndex}>{type.name}</p>
+        <div key={index} className="ai-item">
+          <img src={ai.ai_img_url} alt={ai.ai_name} />
+          <div className="content-box">
+            {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "UA") && (
+              <div>
+                <span role="img" aria-label="Ukraine flag">
+                  🇺🇦
+                </span>
+              </div>
+            )}
+            {ai.ai_from_ukr.map((type: MultiSelectOption, innerIndex: number) => (
+              <div>
+                <p key={innerIndex}>{type.name}</p>
+              </div>
             ))}
+            <p>{ai.ai_name}</p>
+            <div>
+              {renderStars(ai.ai_rate)}
+              <span>{ai.ai_rate}</span>
+            </div>
+            <div>
+              {ai.ai_types.map((type: MultiSelectOption, innerIndex: number) => (
+                <p key={innerIndex}>{type.name}</p>
+              ))}
+            </div>
+            <div className="description-box">
+              <p>Опис</p>
+            </div>
+            <div className="link-box">
+              <a href={ai.ai_url}>Посилання на AI</a>
+            </div>
           </div>
-          {/* Render other properties as needed */}
         </div>
       ))}
     </div>

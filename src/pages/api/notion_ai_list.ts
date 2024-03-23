@@ -64,7 +64,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     ai_sector: sortMultiSelectOptions(row.ai_sector),
     ai_api: sortMultiSelectOptions(row.ai_api),
     ai_cost: sortMultiSelectOptions(row.ai_cost),
-    ai_from_ukr: sortMultiSelectOptions(row.ai_cost)
+    ai_from_ukr: sortMultiSelectOptions(row.ai_from_ukr)
   }));
 
   res.status(200).json({ aiListStructured });
