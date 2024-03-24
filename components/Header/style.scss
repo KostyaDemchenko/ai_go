@@ -23,6 +23,11 @@ header {
 
     gap: 35px;
 
+    a {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
     a:hover {
       transform: 0.3s;
       color: var(--blue);

@@ -92,6 +92,9 @@ body {
   transition: 0.3s;
   color: var(--white);
 
+  font-size: 14px;
+  font-weight: 500;
+
   &:hover {
     transition: 0.1s;
     -webkit-box-shadow: 0px 0px 5px 0px var(--blue);
