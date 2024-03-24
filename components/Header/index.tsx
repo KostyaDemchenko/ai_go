@@ -10,7 +10,9 @@ import "./style.scss";
 const Header = () => {
   return (
     <header>
-      <Image src={logo} alt="ai-go-logo" />
+      <a href="/" className="logo-box">
+        <Image src={logo} alt="ai-go-logo" />
+      </a>
       <div className="link-box">
         <a href="/page_list">ШІ-сервіси</a>
         <a href="">Промпти</a>

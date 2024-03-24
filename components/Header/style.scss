@@ -8,7 +8,11 @@ header {
   width: 100%;
   padding: 15px 0;
 
-  img {
+  .logo-box {
+    width: fit-content;
+  }
+
+  .logo-box img {
     width: 105px;
     height: auto;
   }
