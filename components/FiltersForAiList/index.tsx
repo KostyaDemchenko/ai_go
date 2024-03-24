@@ -7,7 +7,7 @@ interface FilterComponentProps {
   selectedTypes: string[];
   handleTypeSelect: (type: string) => void;
 }
-const FilterComponent: React.FC<FilterComponentProps> = ({
+const FilterForAiList: React.FC<FilterComponentProps> = ({
   types,
   selectedTypes,
   handleTypeSelect
@@ -32,4 +32,4 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
   );
 };
 
-export default FilterComponent;
+export default FilterForAiList;

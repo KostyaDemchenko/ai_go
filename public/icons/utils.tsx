@@ -1,7 +1,7 @@
-import spotify from "/public/icons/Spotify.svg";
+import arrowRight from "./arrow_forward.svg";
 
 const obj: { [key: string]: string } = {
-  spotify: spotify
+  arrowRight: arrowRight
 };
 
 export default obj;

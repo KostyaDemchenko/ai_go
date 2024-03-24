@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import icons from "@/public/icons/utils";
 
-interface AccordionAiItemstProps {
+interface AccordionAiItemsProps {
   description: string;
 }
 
-const AccordionAiItems: React.FC<AccordionAiItemstProps> = ({ description }) => {
+const AccordionAiItems: React.FC<AccordionAiItemsProps> = ({ description }) => {
   const [expanded, setExpanded] = useState(false);
 
   const toggleAccordion = () => {
@@ -15,6 +16,8 @@ const AccordionAiItems: React.FC<AccordionAiItemstProps> = ({ description }) => 
     <div className="accordion">
       <div className="accordion-header" onClick={toggleAccordion}>
         <p>Опис</p>
+        {/* Используем иконку arrowRight */}
+        <img src={icons.arrowRight} alt="Arrow" />
       </div>
       {expanded && (
         <div className="accordion-content">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import FilterComponent from "@/components/filters_for_ai_list";
+import FilterForAiList from "@/components/FiltersForAiList";
 import AccordionAiItems from "../AccordionAiItems";
 
 import "./style.scss";
@@ -66,7 +66,7 @@ const AiList = () => {
 
   return (
     <div>
-      <FilterComponent
+      <FilterForAiList
         types={aiList.reduce<string[]>((acc, ai) => {
           ai.ai_types.forEach((type) => {
             if (!acc.includes(type.name)) {
