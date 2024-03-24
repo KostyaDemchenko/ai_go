@@ -1,0 +1,33 @@
+/* FLEX */
+
+@mixin flex($justify_content, $align_items: normal) {
+  justify-content: $justify_content;
+  align-items: $align_items;
+  display: flex;
+}
+
+@mixin width($width, $max-width: none) {
+  width: $width;
+  max-width: $max-width;
+}
+
+@mixin f-direction($direction) {
+  flex-direction: $direction;
+}
+
+@mixin max-w-media($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin container {
+  --container-top-padding: 0;
+  --container-side-padding: 15px;
+  --container-width: 1390px;
+
+  width: 100%;
+  margin: 0 auto;
+  max-width: var(--container-width);
+  padding: var(--container-top-padding) var(--container-side-padding);
+}

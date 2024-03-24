@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import icons from "@/public/icons/utils";
+import Image from "next/image";
+import iconObj from "@/public/icons/utils";
+
+import "./style.scss";
 
 interface AccordionAiItemsProps {
   description: string;
@@ -17,7 +20,7 @@ const AccordionAiItems: React.FC<AccordionAiItemsProps> = ({ description }) => {
       <div className="accordion-header" onClick={toggleAccordion}>
         <p>Опис</p>
         {/* Используем иконку arrowRight */}
-        <img src={icons.arrowRight} alt="Arrow" />
+        <Image src={iconObj.arrowRight} alt="Arrow" />
       </div>
       {expanded && (
         <div className="accordion-content">

@@ -65,7 +65,7 @@ const AiList = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <FilterForAiList
         types={aiList.reduce<string[]>((acc, ai) => {
           ai.ai_types.forEach((type) => {
@@ -78,6 +78,66 @@ const AiList = () => {
         selectedTypes={selectedTypes}
         handleTypeSelect={handleTypeSelect}
       />
+      <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_uses.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      />
+      {/* <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_sector.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      />
+      <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_api.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      />
+      <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_cost.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      />
+      <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_from_ukr.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      /> */}
 
       <div className="ai-list-container">
         {aiList.map(

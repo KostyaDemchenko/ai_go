@@ -1,0 +1,27 @@
+@import "@/src/app/shortClasses.scss";
+
+header {
+  @include container;
+  @include flex(space-between, center);
+  @include f-direction(row);
+
+  width: 100%;
+  padding: 15px 0;
+
+  img {
+    width: 105px;
+    height: auto;
+  }
+
+  .link-box {
+    @include flex(flex-start, center);
+    @include f-direction(row);
+
+    gap: 35px;
+
+    a:hover {
+      transform: 0.3s;
+      color: var(--blue);
+    }
+  }
+}

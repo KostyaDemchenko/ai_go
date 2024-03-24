@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main>
       <div>
-        <a href="/PageList">link</a>
+        <a href="/page_list">link</a>
       </div>
     </main>
   );

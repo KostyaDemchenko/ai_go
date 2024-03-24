@@ -1,0 +1,38 @@
+@import "@/src/app/shortClasses.scss";
+
+.search-box {
+  @include flex(flex-start, center);
+  @include f-direction(row);
+
+  position: relative;
+  background-color: var(--half-black);
+  gap: 10px;
+  max-width: 465px;
+  width: 100%;
+  padding: 12px 9px;
+  border-radius: 5px;
+  border: 1px solid var(--half-black);
+  transition: 0.3s;
+
+  &:hover {
+    transition: 0.3s;
+    border: 1px solid var(--darck-grey);
+  }
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+
+  button {
+    @include flex(center, center);
+
+    width: 20px;
+    height: 20px;
+  }
+
+  input {
+    @include flex(flex-start, center);
+    width: 100%;
+  }
+}
