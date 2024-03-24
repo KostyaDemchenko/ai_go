@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import FilterForAiList from "@/components/FiltersForAiList";
+import Preloader from "@/components/Preloader";
 import AccordionAiItems from "../AccordionAiItems";
 
 import "./style.scss";
@@ -48,7 +49,7 @@ const AiList = () => {
   };
 
   if (aiList === null) {
-    return <div>Loading...</div>; // Render loading indicator while data is being fetched
+    return <Preloader />; // Render loading indicator while data is being fetched
   }
 
   // Function to render star rating
