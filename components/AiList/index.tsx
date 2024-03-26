@@ -42,42 +42,116 @@ const AiList = () => {
 
   return (
     <div className="container">
+      <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_input.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      />
+      <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_uses.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      />
+      {/* <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_sector.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      />
+      <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_api.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      />
+      <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_cost.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      />
+      <FilterForAiList
+        types={aiList.reduce<string[]>((acc, ai) => {
+          ai.ai_from_ukr.forEach((type) => {
+            if (!acc.includes(type.name)) {
+              acc.push(type.name);
+            }
+          });
+          return acc;
+        }, [])}
+        selectedTypes={selectedTypes}
+        handleTypeSelect={handleTypeSelect}
+      /> */}
+
       <div className="ai-list-container">
-        {aiList.map((ai, index) => (
-          <div key={index} className="ai-item">
-            <img className="prev-img" src={ai.ai_img_url} alt={ai.ai_name} />
-            <div className="content-box">
-              <p>{ai.ai_name}</p>
-              <CartRate rate={ai.ai_rate} />
-              <AccordionAiItems description={ai.ai_description} />
-              <AiLinkBox url={ai.ai_url} />
-              <div className="property-box">
-                {/* {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "UA") && (
-                <div>
-                  <span role="img" aria-label="Ukraine flag">
-                    🇺🇦
-                  </span>
+        {aiList.map(
+          (ai, index) =>
+            shouldDisplayAIItem(ai.ai_input) && (
+              <div key={index} className="ai-item">
+                <img src={ai.ai_img_url} alt={ai.ai_name} />
+                <div className="content-box">
+                  {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "UA") && (
+                    <div>
+                      <span role="img" aria-label="Ukraine flag">
+                        🇺🇦
+                      </span>
+                    </div>
+                  )}
+                  {ai.ai_from_ukr.map((type: MultiSelectOption, innerIndex: number) => (
+                    <div key={innerIndex}>
+                      <p>{type.name}</p>
+                    </div>
+                  ))}
+                  <p>{ai.ai_name}</p>
+                  <div>
+                    {renderStars(ai.ai_rate)}
+                    <span>{ai.ai_rate}</span>
+                  </div>
+                  <div>
+                    {ai.ai_input.map((type: MultiSelectOption, innerIndex: number) => (
+                      <p key={innerIndex}>{type.name}</p>
+                    ))}
+                  </div>
+                  <AccordionAiItems description={ai.ai_description} />
+                  <div className="link-box">
+                    <a href={ai.ai_url}>Посилання на AI</a>
+                  </div>
                 </div>
-              )}
-              {ai.ai_from_ukr.map((type: MultiSelectOption, innerIndex: number) => (
-                <div key={innerIndex}>
-                  <p>{type.name}</p>
-                </div>
-              ))}
-              <div>
-                {ai.ai_input.map((type: MultiSelectOption, innerIndex: number) => (
-                  <p key={innerIndex}>{type.name}</p>
-                ))}
               </div>
-              <div>
-                {ai.ai_uses.map((type: MultiSelectOption, innerIndex: number) => (
-                  <p key={innerIndex}>{type.name}</p>
-                ))}
-              </div> */}
-              </div>
-            </div>
-          </div>
-        ))}
+            )
+        )}
       </div>
     </div>
   );
