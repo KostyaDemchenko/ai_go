@@ -11,13 +11,8 @@
   width: 100%;
   padding: 12px 9px;
   border-radius: 5px;
-  border: 1px solid var(--half-black);
+  border: 1px solid var(--grey);
   transition: 0.3s;
-
-  &:hover {
-    transition: 0.3s;
-    border: 1px solid var(--darck-grey);
-  }
 
   img {
     width: 18px;
