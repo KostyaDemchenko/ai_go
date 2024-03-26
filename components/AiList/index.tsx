@@ -69,7 +69,7 @@ const AiList = () => {
     <div className="container">
       <FilterForAiList
         types={aiList.reduce<string[]>((acc, ai) => {
-          ai.ai_types.forEach((type) => {
+          ai.ai_input.forEach((type) => {
             if (!acc.includes(type.name)) {
               acc.push(type.name);
             }
@@ -143,7 +143,7 @@ const AiList = () => {
       <div className="ai-list-container">
         {aiList.map(
           (ai, index) =>
-            shouldDisplayAIItem(ai.ai_types) && (
+            shouldDisplayAIItem(ai.ai_input) && (
               <div key={index} className="ai-item">
                 <img src={ai.ai_img_url} alt={ai.ai_name} />
                 <div className="content-box">
@@ -165,7 +165,7 @@ const AiList = () => {
                     <span>{ai.ai_rate}</span>
                   </div>
                   <div>
-                    {ai.ai_types.map((type: MultiSelectOption, innerIndex: number) => (
+                    {ai.ai_input.map((type: MultiSelectOption, innerIndex: number) => (
                       <p key={innerIndex}>{type.name}</p>
                     ))}
                   </div>
