@@ -6,15 +6,17 @@ interface FilterComponentProps {
   types: string[];
   selectedTypes: string[];
   handleTypeSelect: (type: string) => void;
+  filterName: string;
 }
 const FilterForAiList: React.FC<FilterComponentProps> = ({
   types,
   selectedTypes,
-  handleTypeSelect
+  handleTypeSelect,
+  filterName
 }) => {
   return (
     <div className="filter-container">
-      <h3>Filter by Type:</h3>
+      <h3>Filter by {filterName}:</h3>
       <div className="filter-options">
         {types.map((type: string) => (
           <label key={type}>

@@ -8,7 +8,8 @@ import "./style.scss";
 
 const AiList = () => {
   const [aiList, setAiList] = useState<aiListStructured[] | null>(null);
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [selectedInputTypes, setSelectedInputTypes] = useState<string[]>([]);
+  const [selectedOutputTypes, setSelectedOutputTypes] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,15 +34,23 @@ const AiList = () => {
     }
   };
 
-  const handleTypeSelect = (type: string) => {
-    if (selectedTypes.includes(type)) {
-      setSelectedTypes(selectedTypes.filter((t) => t !== type));
+  const handleInputTypeSelect = (type: string) => {
+    if (selectedInputTypes.includes(type)) {
+      setSelectedInputTypes(selectedInputTypes.filter((t) => t !== type));
     } else {
-      setSelectedTypes([...selectedTypes, type]);
+      setSelectedInputTypes([...selectedInputTypes, type]);
     }
   };
 
-  const shouldDisplayAIItem = (types: MultiSelectOption[]) => {
+  const handleOutputTypeSelect = (type: string) => {
+    if (selectedOutputTypes.includes(type)) {
+      setSelectedOutputTypes(selectedOutputTypes.filter((t) => t !== type));
+    } else {
+      setSelectedOutputTypes([...selectedOutputTypes, type]);
+    }
+  };
+
+  const shouldDisplayAIItem = (types: MultiSelectOption[], selectedTypes: string[]) => {
     if (selectedTypes.length === 0) {
       return true;
     }
@@ -67,83 +76,55 @@ const AiList = () => {
 
   return (
     <div className="container">
-      <FilterForAiList
-        types={aiList.reduce<string[]>((acc, ai) => {
-          ai.ai_input.forEach((type) => {
-            if (!acc.includes(type.name)) {
-              acc.push(type.name);
-            }
-          });
-          return acc;
-        }, [])}
-        selectedTypes={selectedTypes}
-        handleTypeSelect={handleTypeSelect}
-      />
-      <FilterForAiList
-        types={aiList.reduce<string[]>((acc, ai) => {
-          ai.ai_uses.forEach((type) => {
-            if (!acc.includes(type.name)) {
-              acc.push(type.name);
-            }
-          });
-          return acc;
-        }, [])}
-        selectedTypes={selectedTypes}
-        handleTypeSelect={handleTypeSelect}
-      />
-      {/* <FilterForAiList
-        types={aiList.reduce<string[]>((acc, ai) => {
-          ai.ai_sector.forEach((type) => {
-            if (!acc.includes(type.name)) {
-              acc.push(type.name);
-            }
-          });
-          return acc;
-        }, [])}
-        selectedTypes={selectedTypes}
-        handleTypeSelect={handleTypeSelect}
-      />
-      <FilterForAiList
-        types={aiList.reduce<string[]>((acc, ai) => {
-          ai.ai_api.forEach((type) => {
-            if (!acc.includes(type.name)) {
-              acc.push(type.name);
-            }
-          });
-          return acc;
-        }, [])}
-        selectedTypes={selectedTypes}
-        handleTypeSelect={handleTypeSelect}
-      />
-      <FilterForAiList
-        types={aiList.reduce<string[]>((acc, ai) => {
-          ai.ai_cost.forEach((type) => {
-            if (!acc.includes(type.name)) {
-              acc.push(type.name);
-            }
-          });
-          return acc;
-        }, [])}
-        selectedTypes={selectedTypes}
-        handleTypeSelect={handleTypeSelect}
-      />
-      <FilterForAiList
-        types={aiList.reduce<string[]>((acc, ai) => {
-          ai.ai_from_ukr.forEach((type) => {
-            if (!acc.includes(type.name)) {
-              acc.push(type.name);
-            }
-          });
-          return acc;
-        }, [])}
-        selectedTypes={selectedTypes}
-        handleTypeSelect={handleTypeSelect}
-      /> */}
+      <div className="top-box">
+        <div className="filter-container">
+          <FilterForAiList
+            filterName="Inputs"
+            types={aiList.reduce<string[]>((acc, ai) => {
+              ai.ai_input.forEach((type) => {
+                if (!acc.includes(type.name)) {
+                  acc.push(type.name);
+                }
+              });
+              return acc;
+            }, [])}
+            selectedTypes={selectedInputTypes}
+            handleTypeSelect={handleInputTypeSelect}
+          />
+          <FilterForAiList
+            filterName="Outputs"
+            types={aiList.reduce<string[]>((acc, ai) => {
+              ai.ai_output.forEach((type) => {
+                if (!acc.includes(type.name)) {
+                  acc.push(type.name);
+                }
+              });
+              return acc;
+            }, [])}
+            selectedTypes={selectedOutputTypes}
+            handleTypeSelect={handleOutputTypeSelect}
+          />
+          <FilterForAiList
+            filterName="Uses"
+            types={aiList.reduce<string[]>((acc, ai) => {
+              ai.ai_uses.forEach((type) => {
+                if (!acc.includes(type.name)) {
+                  acc.push(type.name);
+                }
+              });
+              return acc;
+            }, [])}
+            selectedTypes={selectedInputTypes}
+            handleTypeSelect={handleInputTypeSelect}
+          />
+        </div>
+      </div>
 
       <div className="ai-list-container">
         {aiList.map(
           (ai, index) =>
-            shouldDisplayAIItem(ai.ai_input) && (
+            shouldDisplayAIItem(ai.ai_input, selectedInputTypes) &&
+            shouldDisplayAIItem(ai.ai_output, selectedOutputTypes) && (
               <div key={index} className="ai-item">
                 <img src={ai.ai_img_url} alt={ai.ai_name} />
                 <div className="content-box">
