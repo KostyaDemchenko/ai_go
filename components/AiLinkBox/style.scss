@@ -1,0 +1,26 @@
+@import "@/src/app/shortClasses.scss";
+
+.ai-link-box {
+  @include flex(center, center);
+  width: 32px;
+  height: 32px;
+
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  background-color: var(--dark-grey);
+
+  border-radius: 0 15px 0 15px;
+
+  a {
+    width: 18px;
+    height: 18px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}

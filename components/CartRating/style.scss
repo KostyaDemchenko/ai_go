@@ -1,0 +1,26 @@
+@import "@/src/app/shortClasses.scss";
+
+.cart-rate-container {
+  @include flex(center, center);
+  @include f-direction(row);
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  gap: 7px;
+  padding: 7px;
+
+  background-color: var(--dark-grey);
+  color: var(--light-grey);
+
+  border-radius: 15px 0 15px 0;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}

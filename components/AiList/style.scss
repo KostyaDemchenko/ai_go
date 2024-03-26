@@ -1,32 +1,29 @@
+@import "@/src/app/shortClasses.scss";
+
 .ai-list-container {
-  display: flex;
-  flex-direction: row;
+  @include flex(space-between, flex-start);
+  @include f-direction(row);
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 75px;
-  height: 100%;
-  max-width: 1390px;
+  gap: 25px;
   width: 100%;
-  padding: 0 30px;
-  margin: 0 auto;
 
   .ai-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 350px;
-    width: 100%;
-    gap: 30px;
-    padding: 15px;
-    background-color: #fbfbfb;
-    color: var(--black);
-    border-radius: 15px;
-    -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
-    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+    @include flex(center, center);
+    @include f-direction(column);
+    gap: 20px;
 
-    img {
+    position: relative;
+
+    max-width: 290px;
+    width: 100%;
+    padding: 10px;
+
+    background-color: var(--dark-grey);
+    color: var(--white);
+
+    border-radius: 15px;
+
+    .prev-img {
       width: 100%;
       height: 200px;
       object-fit: cover;
