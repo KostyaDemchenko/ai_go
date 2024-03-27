@@ -2,6 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+
+import AnimLogo from "@/public/Preloader.gif";
+
 import "./style.scss";
 
 interface MainPreloaderProps {
@@ -29,7 +32,7 @@ const MainPreloader: React.FC<MainPreloaderProps> = ({ children }) => {
     <div className="preloader-container">
       {isLoading ? (
         <div className="main-preloader">
-          <Image src="/preloader.gif" alt="Preloader" width={300} height={300} />
+          <Image src={AnimLogo} alt="Preloader" width={300} height={300} />
         </div>
       ) : (
         <>{children}</>
