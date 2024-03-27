@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import CartRate from "@/components/CartRating";
-import Preloader from "@/components/Preloader";
+import ListPreloader from "@/components/ListPreloader";
 import AccordionAiItems from "@/components/AccordionAiItems";
 import AiLinkBox from "@/components/AiLinkBox";
 
@@ -37,7 +37,7 @@ const AiList = () => {
 
   // Preloader
   if (aiList === null) {
-    return <Preloader />; // Render loading indicator while data is being fetched
+    return <ListPreloader />; // Render loading indicator while data is being fetched
   }
 
   return (
