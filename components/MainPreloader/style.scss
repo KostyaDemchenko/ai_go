@@ -1,0 +1,7 @@
+@import "@/src/app/shortClasses.scss";
+
+.main-preloader {
+  @include flex(center, center);
+  width: 100dvw;
+  height: 100dvh;
+}

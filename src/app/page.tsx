@@ -2,15 +2,18 @@
 
 import React from "react";
 
+import MainPreloader from "@/components/MainPreloader";
 import Header from "@/components/Header";
 
 import "./globals.scss";
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main></main>
-    </>
+    <MainPreloader>
+      <>
+        <Header />
+        <main></main>
+      </>
+    </MainPreloader>
   );
 }

@@ -19,7 +19,6 @@ const AccordionAiItems: React.FC<AccordionAiItemsProps> = ({ description }) => {
     <div className="accordion">
       <div className="accordion-header" onClick={toggleAccordion}>
         <p className="title">Опис</p>
-        {/* Используем иконку arrowRight */}
         <Image className="icon" src={iconObj.arrowRight} alt="Arrow" />
       </div>
       {expanded && (
