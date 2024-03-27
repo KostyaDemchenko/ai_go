@@ -12,7 +12,7 @@ interface AiLinkProps {
 const AiLink: React.FC<AiLinkProps> = ({ url }) => {
   return (
     <div className="ai-link-box">
-      <a href={url}>
+      <a href={url} target="_blank" rel="noopener noreferrer">
         <Image className="icon" src={iconObj.open_in_new_link} alt="open in new" />
       </a>
     </div>

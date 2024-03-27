@@ -47,33 +47,30 @@ const AiList = () => {
           <div key={index} className="ai-item">
             <img className="prev-img" src={ai.ai_img_url} alt={ai.ai_name} />
             <div className="content-box">
-              <p>{ai.ai_name}</p>
               <CartRate rate={ai.ai_rate} />
-              <AccordionAiItems description={ai.ai_description} />
               <AiLinkBox url={ai.ai_url} />
-              <div className="property-box">
-                {/* {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "UA") && (
-                <div>
-                  <span role="img" aria-label="Ukraine flag">
-                    🇺🇦
-                  </span>
-                </div>
-              )}
-              {ai.ai_from_ukr.map((type: MultiSelectOption, innerIndex: number) => (
-                <div key={innerIndex}>
-                  <p>{type.name}</p>
-                </div>
-              ))}
-              <div>
-                {ai.ai_input.map((type: MultiSelectOption, innerIndex: number) => (
-                  <p key={innerIndex}>{type.name}</p>
-                ))}
+              <div className="ai-title-box">
+                <p className="ai-name">{ai.ai_name}</p>
+                {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "🇺🇦") && (
+                  <div>
+                    <span role="img" aria-label="Ukraine flag">
+                      🇺🇦
+                    </span>
+                  </div>
+                )}
               </div>
-              <div>
-                {ai.ai_uses.map((type: MultiSelectOption, innerIndex: number) => (
-                  <p key={innerIndex}>{type.name}</p>
+              <AccordionAiItems description={ai.ai_description} />
+              <div className="property-box">
+                {[
+                  ...ai.ai_uses.map((type: MultiSelectOption) => type.name),
+                  ...ai.ai_sector.map((type: MultiSelectOption) => type.name),
+                  ...ai.ai_cost.map((type: MultiSelectOption) => type.name),
+                  ...ai.ai_api.map((type: MultiSelectOption) => type.name)
+                ].map((name: string, index: number) => (
+                  <p className="property" key={index}>
+                    {name}
+                  </p>
                 ))}
-              </div> */}
               </div>
             </div>
           </div>
