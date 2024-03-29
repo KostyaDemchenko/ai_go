@@ -45,7 +45,12 @@ const AiList: React.FC = () => {
       const filteredData = aiList!.filter(
         (ai) =>
           ai.ai_input.some((input) => selectedCategories.includes(input.name)) ||
-          ai.ai_output.some((output) => selectedCategories.includes(output.name))
+          ai.ai_output.some((output) => selectedCategories.includes(output.name)) ||
+          ai.ai_cost.some((cost) => selectedCategories.includes(cost.name)) ||
+          ai.ai_uses.some((uses) => selectedCategories.includes(uses.name)) ||
+          ai.ai_sector.some((sector) => selectedCategories.includes(sector.name)) ||
+          ai.ai_api.some((api) => selectedCategories.includes(api.name)) ||
+          ai.ai_from_ukr.some((urk) => selectedCategories.includes(urk.name))
       );
       setFilteredAiList(filteredData);
     }
@@ -72,6 +77,26 @@ const AiList: React.FC = () => {
         />
         <AiFilter
           categories={getUniqueCategories(aiList.map((ai) => ai.ai_output))}
+          onSelectCategory={handleCategoryFilter}
+        />
+        <AiFilter
+          categories={getUniqueCategories(aiList.map((ai) => ai.ai_cost))}
+          onSelectCategory={handleCategoryFilter}
+        />
+        <AiFilter
+          categories={getUniqueCategories(aiList.map((ai) => ai.ai_uses))}
+          onSelectCategory={handleCategoryFilter}
+        />
+        <AiFilter
+          categories={getUniqueCategories(aiList.map((ai) => ai.ai_sector))}
+          onSelectCategory={handleCategoryFilter}
+        />
+        <AiFilter
+          categories={getUniqueCategories(aiList.map((ai) => ai.ai_api))}
+          onSelectCategory={handleCategoryFilter}
+        />
+        <AiFilter
+          categories={getUniqueCategories(aiList.map((ai) => ai.ai_from_ukr))}
           onSelectCategory={handleCategoryFilter}
         />
       </div>
