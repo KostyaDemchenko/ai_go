@@ -2,6 +2,7 @@
 
 import React from "react";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import AiList from "@/components/AiList";
 
 import "./style.scss";
@@ -14,6 +15,7 @@ export default function page_list() {
       <main>
         <AiList />
       </main>
+      <Footer />
     </>
   );
 }
