@@ -1,0 +1,35 @@
+@import "@/src/app/shortClasses.scss";
+
+.ai-filter-container {
+  @include flex(center, flex-start);
+  @include f-direction(column);
+  width: fit-content;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+
+  .top-section {
+    @include flex(space-between, center);
+    @include f-direction(row);
+    width: fit-content;
+    gap: 10px;
+    padding: 9px 15px;
+
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+
+    .title {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  .bottom-section {
+    @include flex(flex-start, flex-start);
+    @include f-direction(column);
+    width: 100%;
+    gap: 5px;
+    max-height: 200px;
+
+    overflow-y: auto;
+  }
+}

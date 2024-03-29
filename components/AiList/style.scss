@@ -1,5 +1,11 @@
 @import "@/src/app/shortClasses.scss";
 
+.ai-filter-sort-container {
+  @include flex(space-between, flex-start);
+  @include f-direction(row);
+  width: 100%;
+}
+
 .ai-list-container {
   @include flex(space-between, flex-start);
   @include f-direction(row);

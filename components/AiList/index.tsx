@@ -71,32 +71,39 @@ const AiList: React.FC = () => {
   return (
     <main>
       <div className="container">
-        <div>
+        <div className="ai-filter-sort-container">
           <AiFilter
+            filterName="Вхідні данні"
             categories={getUniqueCategories(aiList.map((ai) => ai.ai_input))}
             onSelectCategory={handleCategoryFilter}
           />
           <AiFilter
+            filterName="Вихідні данні"
             categories={getUniqueCategories(aiList.map((ai) => ai.ai_output))}
             onSelectCategory={handleCategoryFilter}
           />
           <AiFilter
+            filterName="Ціна"
             categories={getUniqueCategories(aiList.map((ai) => ai.ai_cost))}
             onSelectCategory={handleCategoryFilter}
           />
           <AiFilter
+            filterName="Технологія ШІ"
             categories={getUniqueCategories(aiList.map((ai) => ai.ai_uses))}
             onSelectCategory={handleCategoryFilter}
           />
           <AiFilter
+            filterName="Сектор використання"
             categories={getUniqueCategories(aiList.map((ai) => ai.ai_sector))}
             onSelectCategory={handleCategoryFilter}
           />
           <AiFilter
+            filterName="API"
             categories={getUniqueCategories(aiList.map((ai) => ai.ai_api))}
             onSelectCategory={handleCategoryFilter}
           />
           <AiFilter
+            filterName="🇺🇦"
             categories={getUniqueCategories(aiList.map((ai) => ai.ai_from_ukr))}
             onSelectCategory={handleCategoryFilter}
           />
