@@ -1,9 +1,6 @@
 // Preloader.tsx
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
-
-import AnimLogo from "@/public/Preloader.gif";
 
 import "./style.scss";
 

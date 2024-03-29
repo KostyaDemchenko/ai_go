@@ -19,4 +19,5 @@ type aiListStructured = {
   ai_api: MultiSelectOption[];
   ai_cost: MultiSelectOption[];
   ai_from_ukr: MultiSelectOption[];
+  [key: string]: any;
 };

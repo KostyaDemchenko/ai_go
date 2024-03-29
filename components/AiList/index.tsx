@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+// components/AiList/index.tsx
 
+import React, { useState, useEffect } from "react";
+import AiFilter from "@/components/AiFilter";
 import CartRate from "@/components/CartRating";
 import ListPreloader from "@/components/ListPreloader";
 import AccordionAiItems from "@/components/AccordionAiItems";
@@ -7,23 +9,24 @@ import AiLinkBox from "@/components/AiLinkBox";
 
 import "./style.scss";
 
-const AiList = () => {
+const AiList: React.FC = () => {
   const [aiList, setAiList] = useState<aiListStructured[] | null>(null);
+  const [filteredAiList, setFilteredAiList] = useState<aiListStructured[] | null>(null);
 
-  // Fetch data
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const aiListData = await fetchFromNotion();
-        setAiList(aiListData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
     fetchData();
   }, []);
 
-  // Fetch data
+  const fetchData = async () => {
+    try {
+      const aiListData = await fetchFromNotion();
+      setAiList(aiListData);
+      setFilteredAiList(aiListData); // Initialize filtered list with all data
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const fetchFromNotion = async (): Promise<aiListStructured[]> => {
     try {
       const deployedApiUrl = "/api/notion_ai_list";
@@ -35,46 +38,80 @@ const AiList = () => {
     }
   };
 
-  // Preloader
+  const handleCategoryFilter = (selectedCategories: string[]) => {
+    if (selectedCategories.length === 0) {
+      setFilteredAiList(aiList); // Show all items when no categories are selected
+    } else {
+      const filteredData = aiList!.filter(
+        (ai) =>
+          ai.ai_input.some((input) => selectedCategories.includes(input.name)) ||
+          ai.ai_output.some((output) => selectedCategories.includes(output.name))
+      );
+      setFilteredAiList(filteredData);
+    }
+  };
+
+  const getUniqueCategories = (data: MultiSelectOption[][]) => {
+    let categories = new Set<string>();
+    data.forEach((item) => {
+      item.forEach((category) => categories.add(category.name));
+    });
+    return Array.from(categories);
+  };
+
   if (aiList === null) {
-    return <ListPreloader />; // Render loading indicator while data is being fetched
+    return <ListPreloader />;
   }
 
   return (
     <div className="container">
+      <div>
+        <AiFilter
+          categories={getUniqueCategories(aiList.map((ai) => ai.ai_input))}
+          onSelectCategory={handleCategoryFilter}
+        />
+        <AiFilter
+          categories={getUniqueCategories(aiList.map((ai) => ai.ai_output))}
+          onSelectCategory={handleCategoryFilter}
+        />
+      </div>
       <div className="ai-list-container">
-        {aiList.map((ai, index) => (
-          <div key={index} className="ai-item">
-            <img className="prev-img" src={ai.ai_img_url} alt={ai.ai_name} />
-            <div className="content-box">
-              <CartRate rate={ai.ai_rate} />
-              <AiLinkBox url={ai.ai_url} />
-              <div className="ai-title-box">
-                <p className="ai-name">{ai.ai_name}</p>
-                {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "🇺🇦") && (
-                  <div>
-                    <span role="img" aria-label="Ukraine flag">
-                      🇺🇦
-                    </span>
-                  </div>
-                )}
-              </div>
-              <AccordionAiItems description={ai.ai_description} />
-              <div className="property-box">
-                {[
-                  ...ai.ai_uses.map((type: MultiSelectOption) => type.name),
-                  ...ai.ai_sector.map((type: MultiSelectOption) => type.name),
-                  ...ai.ai_cost.map((type: MultiSelectOption) => type.name),
-                  ...ai.ai_api.map((type: MultiSelectOption) => type.name)
-                ].map((name: string, index: number) => (
-                  <p className="property" key={index}>
-                    {name}
-                  </p>
-                ))}
+        {filteredAiList && filteredAiList.length > 0 ? (
+          filteredAiList.map((ai, index) => (
+            <div key={index} className="ai-item">
+              <img className="prev-img" src={ai.ai_img_url} alt={ai.ai_name} />
+              <div className="content-box">
+                <CartRate rate={ai.ai_rate} />
+                <AiLinkBox url={ai.ai_url} />
+                <div className="ai-title-box">
+                  <p className="ai-name">{ai.ai_name}</p>
+                  {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "🇺🇦") && (
+                    <div>
+                      <span role="img" aria-label="Ukraine flag">
+                        🇺🇦
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <AccordionAiItems description={ai.ai_description} />
+                <div className="property-box">
+                  {[
+                    ...ai.ai_uses.map((type: MultiSelectOption) => type.name),
+                    ...ai.ai_sector.map((type: MultiSelectOption) => type.name),
+                    ...ai.ai_cost.map((type: MultiSelectOption) => type.name),
+                    ...ai.ai_api.map((type: MultiSelectOption) => type.name)
+                  ].map((name: string, index: number) => (
+                    <p className="property" key={index}>
+                      {name}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No items match the selected categories.</p>
+        )}
       </div>
     </div>
   );
