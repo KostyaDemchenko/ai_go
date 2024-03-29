@@ -12,9 +12,7 @@ export default function page_list() {
   return (
     <>
       <Header />
-      <main>
-        <AiList />
-      </main>
+      <AiList />
       <Footer />
     </>
   );
