@@ -5,16 +5,16 @@
   @include f-direction(column);
   width: fit-content;
   border-radius: 5px;
-  border: 1px solid var(--primary);
+  background-color: var(--dark-grey);
+  transition: height 0.3s ease; /* додано анімацію висоти контейнера */
 
   .top-section {
     @include flex(space-between, center);
     @include f-direction(row);
-    width: fit-content;
+    background-color: var(--primary);
+    width: calc(100% - 30px);
     gap: 10px;
     padding: 9px 15px;
-
-    border: 1px solid var(--primary);
     border-radius: 5px;
 
     .title {
@@ -28,8 +28,49 @@
     @include f-direction(column);
     width: 100%;
     gap: 5px;
-    max-height: 200px;
-
+    max-height: 0; /* початково ховаємо нижню секцію */
+    background-color: var(--dark-grey);
+    border-radius: 5px;
     overflow-y: auto;
+    transition: max-height 0.3s ease; /* додано анімацію для максимальної висоти */
+
+    label {
+      @include flex(flex-start, center);
+      @include f-direction(row);
+      gap: 5px;
+      padding: 0 15px;
+      font-weight: 200;
+      font-size: 14px;
+
+      &:nth-child(1) {
+        padding-top: 9px;
+      }
+
+      &:nth-last-child(1) {
+        padding-bottom: 9px;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 1px;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--dark-grey);
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--grey);
+      border-radius: 5px;
+    }
+  }
+
+  &.open {
+    .bottom-section {
+      max-height: 200px; /* показуємо нижню секцію з анімацією */
+    }
   }
 }
