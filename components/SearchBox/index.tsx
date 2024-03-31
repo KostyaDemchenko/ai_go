@@ -17,7 +17,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ onSearch }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setSearchQuery(query);
-    onSearch(query); // Викликаємо функцію пошуку при зміні введеного запиту
+    onSearch(query);
   };
 
   return (

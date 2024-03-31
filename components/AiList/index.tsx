@@ -9,6 +9,7 @@ import ListPreloader from "@/components/ListPreloader";
 import AccordionAiItems from "@/components/AccordionAiItems";
 import AiLinkBox from "@/components/AiLinkBox";
 import SearchBox from "@/components/SearchBox";
+import Pagination from "@/components/Pagination";
 
 import iconObj from "@/public/icons/utils";
 
@@ -18,6 +19,8 @@ const AiList: React.FC = () => {
   const [aiList, setAiList] = useState<aiListStructured[] | null>(null);
   const [filteredAiList, setFilteredAiList] = useState<aiListStructured[] | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [itemsPerPage] = useState<number>(12);
 
   useEffect(() => {
     fetchData();
@@ -27,7 +30,7 @@ const AiList: React.FC = () => {
     try {
       const aiListData = await fetchFromNotion();
       setAiList(aiListData);
-      setFilteredAiList(aiListData); // Initialize filtered list with all data
+      setFilteredAiList(aiListData);
     } catch (error) {
       console.error(error);
     }
@@ -46,7 +49,7 @@ const AiList: React.FC = () => {
 
   const handleCategoryFilter = (selectedCategories: string[]) => {
     if (selectedCategories.length === 0) {
-      setFilteredAiList(aiList); // Show all items when no categories are selected
+      setFilteredAiList(aiList);
     } else {
       const filteredData = aiList!.filter(
         (ai) =>
@@ -60,6 +63,7 @@ const AiList: React.FC = () => {
       );
       setFilteredAiList(filteredData);
     }
+    setCurrentPage(1); // При зміні фільтрації повертаємося на першу сторінку
   };
 
   const handleSearch = (query: string) => {
@@ -68,6 +72,7 @@ const AiList: React.FC = () => {
       ai.ai_name.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredAiList(filteredData);
+    setCurrentPage(1); // При зміні пошукового запиту повертаємося на першу сторінку
   };
 
   const getUniqueCategories = (data: MultiSelectOption[][]) => {
@@ -77,6 +82,14 @@ const AiList: React.FC = () => {
     });
     return Array.from(categories);
   };
+
+  // Отримання поточних елементів на сторінці
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredAiList?.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Зміна сторінки
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   if (aiList === null) {
     return <ListPreloader />;
@@ -151,8 +164,8 @@ const AiList: React.FC = () => {
           </div>
         </div>
         <div className="ai-list-container">
-          {filteredAiList && filteredAiList.length > 0 ? (
-            filteredAiList.map((ai, index) => (
+          {currentItems && currentItems.length > 0 ? (
+            currentItems.map((ai, index) => (
               <div key={index} className="ai-item">
                 <img className="prev-img" src={ai.ai_img_url} alt={ai.ai_name} />
                 <div className="content-box">
@@ -188,6 +201,12 @@ const AiList: React.FC = () => {
             <p>No items match the selected categories.</p>
           )}
         </div>
+        <Pagination
+          currentPage={currentPage}
+          itemsPerPage={itemsPerPage}
+          totalItems={filteredAiList?.length || 0}
+          paginate={paginate}
+        />
       </div>
     </main>
   );
