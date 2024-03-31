@@ -17,6 +17,7 @@ import "./style.scss";
 const AiList: React.FC = () => {
   const [aiList, setAiList] = useState<aiListStructured[] | null>(null);
   const [filteredAiList, setFilteredAiList] = useState<aiListStructured[] | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {
     fetchData();
@@ -61,6 +62,14 @@ const AiList: React.FC = () => {
     }
   };
 
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    const filteredData = aiList!.filter((ai) =>
+      ai.ai_name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredAiList(filteredData);
+  };
+
   const getUniqueCategories = (data: MultiSelectOption[][]) => {
     let categories = new Set<string>();
     data.forEach((item) => {
@@ -81,7 +90,7 @@ const AiList: React.FC = () => {
           <div className="ai-filters-sort-search-container">
             <div className="ai-filters-search-container">
               <div className="ai-search-container">
-                <SearchBox />
+                <SearchBox onSearch={handleSearch} />
               </div>
               <div className="ai-filters-container">
                 <div className="left-side">

@@ -1,3 +1,5 @@
+// components/SearchBox/index.tsx
+
 import React, { useState } from "react";
 import Image from "next/image";
 
@@ -5,22 +7,22 @@ import iconObj from "@/public/icons/utils";
 
 import "./style.scss";
 
-const SearchBox = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+interface SearchBoxProps {
+  onSearch: (query: string) => void;
+}
+
+const SearchBox: React.FC<SearchBoxProps> = ({ onSearch }) => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Добавьте вашу логику обработки запроса здесь
-    console.log("Выполняется поиск для запроса:", searchQuery);
+    const query = e.target.value;
+    setSearchQuery(query);
+    onSearch(query); // Викликаємо функцію пошуку при зміні введеного запиту
   };
 
   return (
-    <form onSubmit={handleSubmit} className="search-box">
-      <button type="submit">
+    <form className="search-box">
+      <button type="button" disabled>
         <Image src={iconObj.search} alt="Arrow" />
       </button>
       <input type="text" value={searchQuery} onChange={handleChange} placeholder="Я шукаю..." />
