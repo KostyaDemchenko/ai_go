@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
+import CustomCheckbox from "@/components/Checkbox";
 import iconObj from "@/public/icons/utils";
 
 import "./style.scss";
@@ -36,8 +37,7 @@ const AiFilter: React.FC<AiFilterProps> = ({ categories, onSelectCategory, filte
       <div className={`bottom-section ${isBottomSectionVisible ? "open" : ""}`}>
         {categories.map((category) => (
           <label key={category}>
-            <input
-              type="checkbox"
+            <CustomCheckbox
               checked={selectedCategories.includes(category)}
               onChange={() => handleCategoryToggle(category)}
             />

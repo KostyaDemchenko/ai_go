@@ -7,7 +7,7 @@
 }
 
 .ai-list-container {
-  @include flex(space-between, flex-start);
+  @include flex(flex-start, flex-start);
   @include f-direction(row);
   flex-wrap: wrap;
   gap: 25px;
