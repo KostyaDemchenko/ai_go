@@ -1,114 +1,111 @@
 @import "@/src/app/shortClasses.scss";
 
 footer {
+  @include container;
+  @include flex(center, center);
+  @include f-direction(column);
+  padding-top: 35px;
+  padding-bottom: 35px;
   width: 100%;
 
-  .container {
-    @include flex(center, center);
+  gap: 35px;
+
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .link {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .col {
+    @include flex(flex-start, flex-start);
     @include f-direction(column);
-    padding-top: 35px;
-    padding-bottom: 35px;
+    gap: 15px;
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--grey);
+  }
+
+  .top-section {
+    @include flex(space-between, flex-start);
+    @include f-direction(row);
     width: 100%;
 
-    gap: 35px;
-
-    .title {
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .link {
-      font-size: 14px;
-      font-weight: 400;
-    }
-
-    .col {
-      @include flex(flex-start, flex-start);
-      @include f-direction(column);
-      gap: 15px;
-    }
-
-    .line {
-      width: 100%;
-      height: 1px;
-      background-color: var(--grey);
-    }
-
-    .top-section {
-      @include flex(space-between, flex-start);
-      @include f-direction(row);
+    .first-column {
+      max-width: 310px;
       width: 100%;
 
-      .first-column {
-        max-width: 310px;
-        width: 100%;
+      .description {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--dark-white);
+      }
+
+      .mail-box {
+        @include flex(flex-start, center);
+        @include f-direction(row);
+        gap: 7px;
+      }
+    }
+
+    .second-column,
+    .third-column,
+    .fourth-column {
+      max-width: 200px;
+      width: 100%;
+    }
+
+    .fifth-column {
+      max-width: 450px;
+      width: 100%;
+      gap: 35px;
+
+      .text-box {
+        @include flex(flex-start, flex-start);
+        @include f-direction(column);
+        gap: 10px;
 
         .description {
           font-size: 14px;
           font-weight: 400;
           color: var(--dark-white);
         }
-
-        .mail-box {
-          @include flex(flex-start, center);
-          @include f-direction(row);
-          gap: 7px;
-        }
       }
 
-      .second-column,
-      .third-column,
-      .fourth-column {
-        max-width: 200px;
+      .input-box {
+        @include flex(space-between, center);
+        @include f-direction(row);
+        gap: 12px;
+
         width: 100%;
-      }
 
-      .fifth-column {
-        max-width: 450px;
-        width: 100%;
-        gap: 35px;
-
-        .text-box {
-          @include flex(flex-start, flex-start);
-          @include f-direction(column);
-          gap: 10px;
-
-          .description {
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--dark-white);
-          }
-        }
-
-        .input-box {
-          @include flex(space-between, center);
-          @include f-direction(row);
-          gap: 12px;
-
+        input {
           width: 100%;
-
-          input {
-            width: 100%;
-            background-color: var(--half-black);
-            padding: 10px 9px;
-            border-radius: 5px;
-            border: 1px solid var(--grey);
-            transition: 0.3s;
-          }
+          background-color: var(--half-black);
+          padding: 10px 9px;
+          border-radius: 5px;
+          border: 1px solid var(--grey);
+          transition: 0.3s;
         }
       }
     }
+  }
 
-    .bottom-section {
-      @include flex(space-between, center);
-      @include f-direction(row);
-      width: 100%;
+  .bottom-section {
+    @include flex(space-between, center);
+    @include f-direction(row);
+    width: 100%;
 
-      .copyright {
-        font-size: 12px;
-        font-weight: 400;
-        color: var(--dark-white);
-      }
+    .copyright {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--dark-white);
     }
   }
 }
