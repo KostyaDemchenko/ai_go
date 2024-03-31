@@ -1,0 +1,50 @@
+@import "@/src/app/shortClasses.scss";
+
+.pagination {
+  @include flex(center, center);
+  @include f-direction(row);
+
+  gap: 15px;
+
+  .prev-page,
+  .next-page {
+    @include flex(center, center);
+    @include f-direction(row);
+    width: 24px;
+    height: 24px;
+  }
+
+  .page-list {
+    @include flex(center, center);
+    @include f-direction(row);
+
+    gap: 10px;
+
+    .active {
+      @include flex(center, center);
+      @include f-direction(row);
+
+      font-size: 12px;
+      font-weight: 500;
+
+      color: var(--white);
+      background-color: var(--primary);
+      width: 30px;
+      height: 30px;
+
+      border-radius: 5px;
+    }
+
+    .inactive {
+      @include flex(center, center);
+      @include f-direction(row);
+
+      font-size: 12px;
+      font-weight: 300;
+
+      color: var(--dark-white);
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
