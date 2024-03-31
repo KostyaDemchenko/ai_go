@@ -2,8 +2,9 @@
 
 import React from "react";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import AiList from "@/components/AiList";
+import Footer from "@/components/Footer";
+import ListPreloader from "@/components/ListPreloader";
 
 import "./style.scss";
 import "@/src/app/globals.scss";
@@ -12,7 +13,13 @@ export default function page_list() {
   return (
     <>
       <Header />
-      <AiList />
+      <main>
+        <div className="container">
+          <h2 className="page-title">Нейромережі</h2>
+          <AiList />
+          {/* <ListPreloader /> */}
+        </div>
+      </main>
       <Footer />
     </>
   );

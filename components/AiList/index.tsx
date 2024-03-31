@@ -96,119 +96,116 @@ const AiList: React.FC = () => {
   }
 
   return (
-    <main>
-      <div className="container">
-        <div className="page-settings">
-          <h2 className="page-title">Нейромережі</h2>
-          <div className="ai-filters-sort-search-container">
-            <div className="ai-filters-search-container">
-              <div className="ai-search-container">
-                <SearchBox onSearch={handleSearch} />
+    <>
+      <div className="page-settings">
+        <div className="ai-filters-sort-search-container">
+          <div className="ai-filters-search-container">
+            <div className="ai-search-container">
+              <SearchBox onSearch={handleSearch} />
+            </div>
+            <div className="ai-filters-container">
+              <div className="left-side">
+                <AiFilter
+                  inActive={true}
+                  filterName="Вхідні данні"
+                  categories={getUniqueCategories(aiList.map((ai) => ai.ai_input))}
+                  onSelectCategory={handleCategoryFilter}
+                />
+                <Image
+                  className="icon p-t-10"
+                  src={iconObj.arrowRightDash}
+                  width={20}
+                  height={20}
+                  alt="Arrow to right"
+                />
+                <AiFilter
+                  inActive
+                  filterName="Вихідні данні"
+                  categories={getUniqueCategories(aiList.map((ai) => ai.ai_output))}
+                  onSelectCategory={handleCategoryFilter}
+                />
               </div>
-              <div className="ai-filters-container">
-                <div className="left-side">
-                  <AiFilter
-                    inActive={true}
-                    filterName="Вхідні данні"
-                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_input))}
-                    onSelectCategory={handleCategoryFilter}
-                  />
-                  <Image
-                    className="icon p-t-10"
-                    src={iconObj.arrowRightDash}
-                    width={20}
-                    height={20}
-                    alt="Arrow to right"
-                  />
-                  <AiFilter
-                    inActive
-                    filterName="Вихідні данні"
-                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_output))}
-                    onSelectCategory={handleCategoryFilter}
-                  />
-                </div>
-                <div className="right-side">
-                  <AiFilter
-                    inActive={false}
-                    filterName="Ціна"
-                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_cost))}
-                    onSelectCategory={handleCategoryFilter}
-                  />
-                  <AiFilter
-                    inActive={false}
-                    filterName="Технологія ШІ"
-                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_uses))}
-                    onSelectCategory={handleCategoryFilter}
-                  />
-                  <AiFilter
-                    inActive={false}
-                    filterName="Сектор використання"
-                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_sector))}
-                    onSelectCategory={handleCategoryFilter}
-                  />
-                  <AiFilter
-                    inActive={false}
-                    filterName="API"
-                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_api))}
-                    onSelectCategory={handleCategoryFilter}
-                  />
-                  <AiFilter
-                    inActive={false}
-                    filterName="🇺🇦"
-                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_from_ukr))}
-                    onSelectCategory={handleCategoryFilter}
-                  />
-                </div>
+              <div className="right-side">
+                <AiFilter
+                  inActive={false}
+                  filterName="Ціна"
+                  categories={getUniqueCategories(aiList.map((ai) => ai.ai_cost))}
+                  onSelectCategory={handleCategoryFilter}
+                />
+                <AiFilter
+                  inActive={false}
+                  filterName="Технологія ШІ"
+                  categories={getUniqueCategories(aiList.map((ai) => ai.ai_uses))}
+                  onSelectCategory={handleCategoryFilter}
+                />
+                <AiFilter
+                  inActive={false}
+                  filterName="Сектор використання"
+                  categories={getUniqueCategories(aiList.map((ai) => ai.ai_sector))}
+                  onSelectCategory={handleCategoryFilter}
+                />
+                <AiFilter
+                  inActive={false}
+                  filterName="API"
+                  categories={getUniqueCategories(aiList.map((ai) => ai.ai_api))}
+                  onSelectCategory={handleCategoryFilter}
+                />
+                <AiFilter
+                  inActive={false}
+                  filterName="🇺🇦"
+                  categories={getUniqueCategories(aiList.map((ai) => ai.ai_from_ukr))}
+                  onSelectCategory={handleCategoryFilter}
+                />
               </div>
             </div>
           </div>
         </div>
-        <div className="ai-list-container">
-          {currentItems && currentItems.length > 0 ? (
-            currentItems.map((ai, index) => (
-              <div key={index} className="ai-item">
-                <img className="prev-img" src={ai.ai_img_url} alt={ai.ai_name} />
-                <div className="content-box">
-                  <CartRate rate={ai.ai_rate} />
-                  <AiLinkBox url={ai.ai_url} />
-                  <div className="ai-title-box">
-                    <p className="ai-name">{ai.ai_name}</p>
-                    {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "🇺🇦") && (
-                      <div>
-                        <span role="img" aria-label="Ukraine flag">
-                          🇺🇦
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  <AccordionAiItems description={ai.ai_description} />
-                  <div className="property-box">
-                    {[
-                      ...ai.ai_uses.map((type: MultiSelectOption) => type.name),
-                      ...ai.ai_sector.map((type: MultiSelectOption) => type.name),
-                      ...ai.ai_cost.map((type: MultiSelectOption) => type.name),
-                      ...ai.ai_api.map((type: MultiSelectOption) => type.name)
-                    ].map((name: string, index: number) => (
-                      <p className="property" key={index}>
-                        {name}
-                      </p>
-                    ))}
-                  </div>
+      </div>
+      <div className="ai-list-container">
+        {currentItems && currentItems.length > 0 ? (
+          currentItems.map((ai, index) => (
+            <div key={index} className="ai-item">
+              <img className="prev-img" src={ai.ai_img_url} alt={ai.ai_name} />
+              <div className="content-box">
+                <CartRate rate={ai.ai_rate} />
+                <AiLinkBox url={ai.ai_url} />
+                <div className="ai-title-box">
+                  <p className="ai-name">{ai.ai_name}</p>
+                  {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "🇺🇦") && (
+                    <div>
+                      <span role="img" aria-label="Ukraine flag">
+                        🇺🇦
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <AccordionAiItems description={ai.ai_description} />
+                <div className="property-box">
+                  {[
+                    ...ai.ai_uses.map((type: MultiSelectOption) => type.name),
+                    ...ai.ai_sector.map((type: MultiSelectOption) => type.name),
+                    ...ai.ai_cost.map((type: MultiSelectOption) => type.name),
+                    ...ai.ai_api.map((type: MultiSelectOption) => type.name)
+                  ].map((name: string, index: number) => (
+                    <p className="property" key={index}>
+                      {name}
+                    </p>
+                  ))}
                 </div>
               </div>
-            ))
-          ) : (
-            <p>No items match the selected categories.</p>
-          )}
-        </div>
-        <Pagination
-          currentPage={currentPage}
-          itemsPerPage={itemsPerPage}
-          totalItems={filteredAiList?.length || 0}
-          paginate={paginate}
-        />
+            </div>
+          ))
+        ) : (
+          <p>No items match the selected categories.</p>
+        )}
       </div>
-    </main>
+      <Pagination
+        currentPage={currentPage}
+        itemsPerPage={itemsPerPage}
+        totalItems={filteredAiList?.length || 0}
+        paginate={paginate}
+      />
+    </>
   );
 };
 

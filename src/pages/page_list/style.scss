@@ -1,0 +1,14 @@
+@import "@/src/app/shortClasses.scss";
+
+main {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.container {
+  @include flex(center, center);
+  @include f-direction(column);
+
+  width: 100%;
+  gap: 60px;
+}

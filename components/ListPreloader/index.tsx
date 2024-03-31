@@ -4,10 +4,14 @@ import "./style.scss";
 
 const ListPreloader = () => {
   // Создаем массив с 15 элементами (можно использовать любое значение)
-  const repeatArray = new Array(16).fill(null);
+  const repeatArray = new Array(12).fill(null);
 
   return (
     <div className="preloader-container">
+      <div className="preloader-settings">
+        <div className="preloader-search"></div>
+        <div className="preloader-filters"></div>
+      </div>
       <div className="ai-list-container">
         {repeatArray.map((_, index) => (
           <div key={index} className="ai-item">
@@ -25,6 +29,7 @@ const ListPreloader = () => {
           </div>
         ))}
       </div>
+      <div className="pleoader-pagination"></div>
     </div>
   );
 };

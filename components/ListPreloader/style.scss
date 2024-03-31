@@ -2,16 +2,46 @@
 
 .preloader-container {
   @include flex(center, center);
+  @include f-direction(column);
 
+  max-width: 1390px;
   width: 100%;
-  height: calc(100dvh - 76px);
+  gap: 60px;
+
+  margin: 0 auto;
+
+  .preloader-settings {
+    @include flex(flex-start, flex-start);
+    @include f-direction(column);
+    width: 100%;
+
+    gap: 20px;
+
+    .preloader-search {
+      width: 80%;
+      height: 40px;
+      border-radius: 5px;
+      background: linear-gradient(to right, var(--black), var(--grey));
+      background-size: 200% 100%;
+      animation: gradientAnimation 2s linear infinite;
+    }
+
+    .preloader-filters {
+      width: 100%;
+      height: 40px;
+      border-radius: 5px;
+      background: linear-gradient(to right, var(--black), var(--grey));
+      background-size: 200% 100%;
+      animation: gradientAnimation 2s linear infinite;
+    }
+  }
 
   .ai-list-container {
     @include flex(center, center);
     @include f-direction(row);
     flex-wrap: wrap;
-    gap: 25px;
-    width: 1390px;
+    gap: 25px 50px;
+    width: 100%;
     height: 100%;
 
     .ai-item {
@@ -27,12 +57,8 @@
         width: 100%;
         height: 190px;
         border-radius: 5px;
-        background: linear-gradient(
-          to right,
-          var(--black),
-          var(--grey)
-        ); // Изначальный градиент от серого к белому
-        background-size: 200% 100%; // Устанавливаем размер фона (200% для движения градиента с лева на право)
+        background: linear-gradient(to right, var(--black), var(--grey));
+        background-size: 200% 100%;
         animation: gradientAnimation 2s linear infinite;
       }
 
@@ -45,12 +71,8 @@
           width: 190px;
           height: 30px;
           border-radius: 5px;
-          background: linear-gradient(
-            to right,
-            var(--black),
-            var(--grey)
-          ); // Изначальный градиент от серого к белому
-          background-size: 200% 100%; // Устанавливаем размер фона (200% для движения градиента с лева на право)
+          background: linear-gradient(to right, var(--black), var(--grey));
+          background-size: 200% 100%;
           animation: gradientAnimation 2s linear infinite;
         }
 
@@ -58,12 +80,8 @@
           width: 100%;
           height: 30px;
           border-radius: 5px;
-          background: linear-gradient(
-            to right,
-            var(--black),
-            var(--grey)
-          ); // Изначальный градиент от серого к белому
-          background-size: 200% 100%; // Устанавливаем размер фона (200% для движения градиента с лева на право)
+          background: linear-gradient(to right, var(--black), var(--grey));
+          background-size: 200% 100%;
           animation: gradientAnimation 2s linear infinite;
         }
 
@@ -78,17 +96,23 @@
             width: 80px;
             height: 25px;
             border-radius: 5px;
-            background: linear-gradient(
-              to right,
-              var(--black),
-              var(--grey)
-            ); // Изначальный градиент от серого к белому
-            background-size: 200% 100%; // Устанавливаем размер фона (200% для движения градиента с лева на право)
+            background: linear-gradient(to right, var(--black), var(--grey));
+            background-size: 200% 100%;
             animation: gradientAnimation 2s linear infinite;
           }
         }
       }
     }
+  }
+
+  .pleoader-pagination {
+    max-width: 430px;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    background: linear-gradient(to right, var(--black), var(--grey));
+    background-size: 200% 100%;
+    animation: gradientAnimation 2s linear infinite;
   }
 }
 
@@ -96,7 +120,10 @@
   0% {
     background-position: 0 0; // Начальное положение градиента (с крайней левой стороны)
   }
-  100% {
+  50% {
     background-position: 100% 0; // Конечное положение градиента (с крайней правой стороны)
+  }
+  100% {
+    background-position: 0 0; // Конечное положение градиента (с крайней правой стороны)
   }
 }
