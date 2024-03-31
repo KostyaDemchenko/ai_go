@@ -5,10 +5,9 @@
   @include f-direction(row);
 
   position: relative;
-  background-color: var(--half-black);
+  background-color: var(--black);
   gap: 10px;
-  max-width: 465px;
-  width: 100%;
+  width: calc(100% - 18px);
   padding: 12px 9px;
   border-radius: 5px;
   border: 1px solid var(--grey);

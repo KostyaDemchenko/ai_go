@@ -10,9 +10,15 @@ interface AiFilterProps {
   categories: string[];
   onSelectCategory: (selectedCategories: string[]) => void;
   filterName: string;
+  inActive: boolean;
 }
 
-const AiFilter: React.FC<AiFilterProps> = ({ categories, onSelectCategory, filterName }) => {
+const AiFilter: React.FC<AiFilterProps> = ({
+  categories,
+  onSelectCategory,
+  filterName,
+  inActive
+}) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [isBottomSectionVisible, setIsBottomSectionVisible] = useState<boolean>(false);
 
@@ -30,7 +36,7 @@ const AiFilter: React.FC<AiFilterProps> = ({ categories, onSelectCategory, filte
 
   return (
     <div className={`ai-filter-container ${isBottomSectionVisible ? "open" : ""}`}>
-      <div className="top-section" onClick={toggleBottomSection}>
+      <div className={`top-section ${inActive ? "in-active" : ""}`} onClick={toggleBottomSection}>
         <p className="title">{filterName}</p>
         <Image className="icon" src={iconObj.arrowDown} width={16} height={16} alt="Arrow" />
       </div>

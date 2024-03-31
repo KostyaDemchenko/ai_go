@@ -6,7 +6,7 @@
   width: fit-content;
   border-radius: 5px;
   background-color: var(--dark-grey);
-  transition: height 0.3s ease; /* додано анімацію висоти контейнера */
+  transition: height 0.3s ease;
 
   .top-section {
     @include flex(space-between, center);
@@ -21,6 +21,16 @@
       font-size: 14px;
       font-weight: 500;
     }
+
+    &.in-active {
+      background-color: var(--black);
+      border: 1px solid var(--primary);
+    }
+
+    &.active {
+      background-color: var(--primary);
+      border: 1px solid var(--black);
+    }
   }
 
   .bottom-section {
@@ -28,11 +38,11 @@
     @include f-direction(column);
     width: 100%;
     gap: 5px;
-    max-height: 0; /* початково ховаємо нижню секцію */
+    max-height: 0;
     background-color: var(--dark-grey);
     border-radius: 5px;
     overflow-y: auto;
-    transition: max-height 0.3s ease; /* додано анімацію для максимальної висоти */
+    transition: max-height 0.3s ease;
 
     label {
       @include flex(flex-start, center);
@@ -46,7 +56,7 @@
         padding-top: 9px;
       }
 
-      &:nth-last-child(1) {
+      &:last-child {
         padding-bottom: 9px;
       }
     }
@@ -70,7 +80,7 @@
 
   &.open {
     .bottom-section {
-      max-height: 200px; /* показуємо нижню секцію з анімацією */
+      max-height: 200px;
     }
   }
 }

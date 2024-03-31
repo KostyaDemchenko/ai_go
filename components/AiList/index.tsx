@@ -1,11 +1,16 @@
 // components/AiList/index.tsx
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
+
 import AiFilter from "@/components/AiFilter";
 import CartRate from "@/components/CartRating";
 import ListPreloader from "@/components/ListPreloader";
 import AccordionAiItems from "@/components/AccordionAiItems";
 import AiLinkBox from "@/components/AiLinkBox";
+import SearchBox from "@/components/SearchBox";
+
+import iconObj from "@/public/icons/utils";
 
 import "./style.scss";
 
@@ -71,42 +76,70 @@ const AiList: React.FC = () => {
   return (
     <main>
       <div className="container">
-        <div className="ai-filter-sort-container">
-          <AiFilter
-            filterName="Вхідні данні"
-            categories={getUniqueCategories(aiList.map((ai) => ai.ai_input))}
-            onSelectCategory={handleCategoryFilter}
-          />
-          <AiFilter
-            filterName="Вихідні данні"
-            categories={getUniqueCategories(aiList.map((ai) => ai.ai_output))}
-            onSelectCategory={handleCategoryFilter}
-          />
-          <AiFilter
-            filterName="Ціна"
-            categories={getUniqueCategories(aiList.map((ai) => ai.ai_cost))}
-            onSelectCategory={handleCategoryFilter}
-          />
-          <AiFilter
-            filterName="Технологія ШІ"
-            categories={getUniqueCategories(aiList.map((ai) => ai.ai_uses))}
-            onSelectCategory={handleCategoryFilter}
-          />
-          <AiFilter
-            filterName="Сектор використання"
-            categories={getUniqueCategories(aiList.map((ai) => ai.ai_sector))}
-            onSelectCategory={handleCategoryFilter}
-          />
-          <AiFilter
-            filterName="API"
-            categories={getUniqueCategories(aiList.map((ai) => ai.ai_api))}
-            onSelectCategory={handleCategoryFilter}
-          />
-          <AiFilter
-            filterName="🇺🇦"
-            categories={getUniqueCategories(aiList.map((ai) => ai.ai_from_ukr))}
-            onSelectCategory={handleCategoryFilter}
-          />
+        <div className="page-settings">
+          <h2 className="page-title">Нейромережі</h2>
+          <div className="ai-filters-sort-search-container">
+            <div className="ai-filters-search-container">
+              <div className="ai-search-container">
+                <SearchBox />
+              </div>
+              <div className="ai-filters-container">
+                <div className="left-side">
+                  <AiFilter
+                    inActive={true}
+                    filterName="Вхідні данні"
+                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_input))}
+                    onSelectCategory={handleCategoryFilter}
+                  />
+                  <Image
+                    className="icon p-t-10"
+                    src={iconObj.arrowRightDash}
+                    width={20}
+                    height={20}
+                    alt="Arrow to right"
+                  />
+                  <AiFilter
+                    inActive
+                    filterName="Вихідні данні"
+                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_output))}
+                    onSelectCategory={handleCategoryFilter}
+                  />
+                </div>
+                <div className="right-side">
+                  <AiFilter
+                    inActive={false}
+                    filterName="Ціна"
+                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_cost))}
+                    onSelectCategory={handleCategoryFilter}
+                  />
+                  <AiFilter
+                    inActive={false}
+                    filterName="Технологія ШІ"
+                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_uses))}
+                    onSelectCategory={handleCategoryFilter}
+                  />
+                  <AiFilter
+                    inActive={false}
+                    filterName="Сектор використання"
+                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_sector))}
+                    onSelectCategory={handleCategoryFilter}
+                  />
+                  <AiFilter
+                    inActive={false}
+                    filterName="API"
+                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_api))}
+                    onSelectCategory={handleCategoryFilter}
+                  />
+                  <AiFilter
+                    inActive={false}
+                    filterName="🇺🇦"
+                    categories={getUniqueCategories(aiList.map((ai) => ai.ai_from_ukr))}
+                    onSelectCategory={handleCategoryFilter}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="ai-list-container">
           {filteredAiList && filteredAiList.length > 0 ? (

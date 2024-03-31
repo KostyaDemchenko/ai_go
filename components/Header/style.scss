@@ -8,29 +8,37 @@ header {
   width: 100%;
   padding: 15px 0;
 
-  .logo-box {
-    width: fit-content;
-  }
-
-  .logo-box img {
-    width: 105px;
-    height: auto;
-  }
-
-  .link-box {
-    @include flex(flex-start, center);
+  .left-side {
+    @include flex(space-between, center);
     @include f-direction(row);
 
-    gap: 35px;
+    max-width: 580px;
+    width: 100%;
 
-    a {
-      font-size: 14px;
-      font-weight: 400;
+    .logo-box {
+      width: fit-content;
     }
 
-    a:hover {
-      transform: 0.3s;
-      color: var(--primary);
+    .logo-box img {
+      width: 105px;
+      height: auto;
+    }
+
+    .link-box {
+      @include flex(flex-start, center);
+      @include f-direction(row);
+
+      gap: 35px;
+
+      a {
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      a:hover {
+        transform: 0.3s;
+        color: var(--primary);
+      }
     }
   }
 }

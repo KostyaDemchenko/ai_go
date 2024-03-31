@@ -15,7 +15,7 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ checked, onChange }) =>
     <div className="custom-checkbox" onClick={onChange}>
       <div className={`checkbox ${checked ? "checked" : ""}`}>
         {checked && (
-          <Image className="icon" src={iconObj.check} width={14} height={14} alt="Arrow" />
+          <Image className="icon" src={iconObj.check} width={14} height={14} alt="check" />
         )}
       </div>
     </div>
