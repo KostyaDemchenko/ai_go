@@ -158,6 +158,7 @@ const AiList: React.FC = () => {
                 />
               </div>
             </div>
+            <div className="ai-sort-container">{/* here should be sort */}</div>
           </div>
         </div>
       </div>

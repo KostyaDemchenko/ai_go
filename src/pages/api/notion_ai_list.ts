@@ -12,6 +12,7 @@ type Row = {
   ai_url: { id: string; url: string };
   ai_img_url: { id: string; url: string };
   ai_rate: { id: string; name: string; type: string; number: { format: string } };
+  ai_date_post: { id: string; name: string; type: string; date: { start: string } };
   ai_input: { id: string; multi_select: { id: string; name: string; color: string }[] };
   ai_output: { id: string; multi_select: { id: string; name: string; color: string }[] };
   ai_uses: { id: string; multi_select: { id: string; name: string; color: string }[] };
@@ -60,6 +61,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     ai_url: row.ai_url.url,
     ai_img_url: row.ai_img_url.url,
     ai_rate: row.ai_rate.number || 0,
+    ai_date_post: row.ai_date_post.date.start || "Default Start Date",
     ai_input: sortMultiSelectOptions(row.ai_input),
     ai_output: sortMultiSelectOptions(row.ai_output),
     ai_uses: sortMultiSelectOptions(row.ai_uses),

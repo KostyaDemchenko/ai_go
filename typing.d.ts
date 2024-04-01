@@ -12,6 +12,7 @@ type aiListStructured = {
   ai_url: string;
   ai_img_url: string;
   ai_rate: number;
+  ai_date_post: number;
   ai_input: MultiSelectOption[];
   ai_output: MultiSelectOption[];
   ai_uses: MultiSelectOption[];
