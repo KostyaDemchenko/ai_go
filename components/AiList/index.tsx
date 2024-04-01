@@ -10,6 +10,7 @@ import AccordionAiItems from "@/components/AccordionAiItems";
 import AiLinkBox from "@/components/AiLinkBox";
 import SearchBox from "@/components/SearchBox";
 import Pagination from "@/components/Pagination";
+import SortOptions from "@/components/AiListSortOptions"; // Доданий імпорт нового компонента
 
 import iconObj from "@/public/icons/utils";
 
@@ -21,6 +22,7 @@ const AiList: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage] = useState<number>(12);
+  const [sortType, setSortType] = useState<string>("");
 
   useEffect(() => {
     fetchData();
@@ -73,6 +75,32 @@ const AiList: React.FC = () => {
     );
     setFilteredAiList(filteredData);
     setCurrentPage(1); // При зміні пошукового запиту повертаємося на першу сторінку
+  };
+
+  const handleSort = (type: string) => {
+    setSortType(type);
+    let sortedList = [...(filteredAiList ?? [])];
+    switch (type) {
+      case "newest":
+        sortedList.sort(
+          (a, b) => (new Date(b.ai_date_post) as any) - (new Date(a.ai_date_post) as any)
+        );
+        break;
+      case "oldest":
+        sortedList.sort(
+          (a, b) => (new Date(a.ai_date_post) as any) - (new Date(b.ai_date_post) as any)
+        );
+        break;
+      case "highest-rated":
+        sortedList.sort((a, b) => b.ai_rate - a.ai_rate);
+        break;
+      case "lowest-rated":
+        sortedList.sort((a, b) => a.ai_rate - b.ai_rate);
+        break;
+      default:
+        break;
+    }
+    setFilteredAiList(sortedList);
   };
 
   const getUniqueCategories = (data: MultiSelectOption[][]) => {
@@ -158,7 +186,9 @@ const AiList: React.FC = () => {
                 />
               </div>
             </div>
-            <div className="ai-sort-container">{/* here should be sort */}</div>
+          </div>
+          <div className="ai-sort-container">
+            <SortOptions handleSort={handleSort} />
           </div>
         </div>
       </div>
