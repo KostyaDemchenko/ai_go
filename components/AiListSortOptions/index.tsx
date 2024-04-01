@@ -22,24 +22,24 @@ const SortOptions: React.FC<SortOptionsProps> = ({ handleSort }) => {
     <div className={`sort-options-container ${isSortVisible ? "open" : ""}`}>
       <div className="sort-options-title" onClick={toggleSort}>
         <p>Сортування</p>
-        <Image className="icon" src={iconObj.arrowDown} width={16} height={16} alt="Arrow" />
+        <Image className="icon" src={iconObj.sort} width={16} height={16} alt="Arrow" />
       </div>
       <div className={`sort-options-list ${isSortVisible ? "open" : ""}`}>
         <button onClick={() => handleSort("newest")}>
-          <Image className="icon" src={iconObj.arrowDown} width={20} height={20} alt="Arrow" />
-          Newest to Oldest
+          <Image className="icon" src={iconObj.dateUp} width={20} height={20} alt="Arrow" />
+          За датою
         </button>
         <button onClick={() => handleSort("oldest")}>
-          <Image className="icon" src={iconObj.arrowDown} width={20} height={20} alt="Arrow" />
-          Oldest to Newest
+          <Image className="icon" src={iconObj.dateDown} width={20} height={20} alt="Arrow" />
+          За датою
         </button>
         <button onClick={() => handleSort("highest-rated")}>
-          <Image className="icon" src={iconObj.arrowDown} width={20} height={20} alt="Arrow" />
-          Highest Rated
+          <Image className="icon" src={iconObj.ratingUp} width={20} height={20} alt="Arrow" />
+          За рейтином
         </button>
         <button onClick={() => handleSort("lowest-rated")}>
-          <Image className="icon" src={iconObj.arrowDown} width={20} height={20} alt="Arrow" />
-          Lowest Rated
+          <Image className="icon" src={iconObj.ratingDown} width={20} height={20} alt="Arrow" />
+          За рейтином
         </button>
       </div>
     </div>

@@ -16,6 +16,7 @@
       @include flex(flex-start, flex-start);
       @include f-direction(column);
       gap: 20px;
+      width: 100%;
 
       .ai-search-container {
         width: 100%;
@@ -26,6 +27,8 @@
         @include f-direction(row);
 
         gap: 35px;
+
+        width: 100%;
 
         .left-side {
           @include flex(flex-start, flex-start);

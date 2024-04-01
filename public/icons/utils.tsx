@@ -9,6 +9,13 @@ import check from "./check.svg";
 import like from "./like.svg";
 import mail from "./mail.svg";
 
+// sort
+import sort from "./sort-icons/sort.svg";
+import date_up from "./sort-icons/date_up.svg";
+import date_down from "./sort-icons/date_down.svg";
+import rating_up from "./sort-icons/trending_up.svg";
+import rating_down from "./sort-icons/trending_down.svg";
+
 const obj: { [key: string]: string } = {
   open_in_new_link: open_in_new_link,
   arrowRightDash: arrowRightDash,
@@ -19,7 +26,15 @@ const obj: { [key: string]: string } = {
   search: search,
   check: check,
   like: like,
-  mail: mail
+  mail: mail,
+
+  // sort
+
+  sort: sort,
+  dateUp: date_up,
+  dateDown: date_down,
+  ratingUp: rating_up,
+  ratingDown: rating_down
 };
 
 export default obj;

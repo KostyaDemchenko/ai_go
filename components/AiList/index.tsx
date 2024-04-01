@@ -185,10 +185,10 @@ const AiList: React.FC = () => {
                   onSelectCategory={handleCategoryFilter}
                 />
               </div>
+              <div className="ai-sort-container">
+                <SortOptions handleSort={handleSort} />
+              </div>
             </div>
-          </div>
-          <div className="ai-sort-container">
-            <SortOptions handleSort={handleSort} />
           </div>
         </div>
       </div>
