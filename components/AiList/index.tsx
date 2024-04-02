@@ -3,14 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-import AiFilter from "@/components/AiFilter";
-import CartRate from "@/components/CartRating";
-import ListPreloader from "@/components/ListPreloader";
-import AccordionAiItems from "@/components/AccordionAiItems";
-import AiLinkBox from "@/components/AiLinkBox";
+import AiFilter from "@/components/AiListFilter";
+import CartRate from "@/components/AiListCartRating";
+import ListPreloader from "@/components/AiListPreloader";
+import AccordionAiItems from "@/components/AiListCardAccordion";
+import AiLinkBox from "@/components/AiListLinkBox";
 import SearchBox from "@/components/SearchBox";
 import Pagination from "@/components/Pagination";
-import SortOptions from "@/components/AiListSortOptions"; // Доданий імпорт нового компонента
+import SortOptions from "@/components/AiListSort"; // Доданий імпорт нового компонента
 
 import iconObj from "@/public/icons/utils";
 

@@ -38,7 +38,11 @@ const AiFilter: React.FC<AiFilterProps> = ({
     <div className={`ai-filter-container ${isBottomSectionVisible ? "open" : ""}`}>
       <div className={`top-section ${inActive ? "in-active" : ""}`} onClick={toggleBottomSection}>
         <p className="title">{filterName}</p>
-        <Image className="icon" src={iconObj.arrowDown} width={16} height={16} alt="Arrow" />
+        <Image
+          className={`icon ${isBottomSectionVisible ? "rotate" : ""}`}
+          src={iconObj.arrowRight}
+          alt="Arrow"
+        />
       </div>
       <div className={`bottom-section ${isBottomSectionVisible ? "open" : ""}`}>
         {categories.map((category) => (

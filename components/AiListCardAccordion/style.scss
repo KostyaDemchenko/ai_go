@@ -21,16 +21,27 @@
     .icon {
       width: 16px;
       height: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .rotate {
+      transform: rotate(90deg);
     }
   }
 
   .accordion-content {
     width: 100%;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 
     .description {
       font-size: 14px;
       font-weight: 400;
       color: var(--white);
     }
+  }
+
+  &.expanded .accordion-content {
+    overflow: auto;
   }
 }

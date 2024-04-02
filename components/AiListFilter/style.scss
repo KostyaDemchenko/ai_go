@@ -31,6 +31,16 @@
       background-color: var(--primary);
       border: 1px solid var(--black);
     }
+
+    .icon {
+      transform: rotate(90deg);
+      transition: transform 0.3s ease;
+    }
+
+    .rotate {
+      transform: rotate(-90deg);
+      transition: transform 0.3s ease;
+    }
   }
 
   .bottom-section {
