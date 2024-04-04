@@ -8,7 +8,7 @@ import CartRate from "@/components/AiListCartRating";
 import ListPreloader from "@/components/AiListPreloader";
 import AccordionAiItems from "@/components/AiListCardAccordion";
 import AiLinkBox from "@/components/AiListLinkBox";
-import SearchBox from "@/components/SearchBox";
+import SearchBox from "@/components/AiListSearchBox";
 import Pagination from "@/components/Pagination";
 import SortOptions from "@/components/AiListSort"; // Доданий імпорт нового компонента
 
