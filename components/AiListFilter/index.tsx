@@ -11,22 +11,22 @@ interface AiFilterProps {
   onSelectCategory: (selectedCategories: string[]) => void;
   filterName: string;
   inActive: boolean;
+  selectedCategories: string[]; // Добавляем свойство selectedCategories
 }
 
 const AiFilter: React.FC<AiFilterProps> = ({
   categories,
   onSelectCategory,
   filterName,
-  inActive
+  inActive,
+  selectedCategories
 }) => {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [isBottomSectionVisible, setIsBottomSectionVisible] = useState<boolean>(false);
 
   const handleCategoryToggle = (category: string) => {
     const updatedCategories = selectedCategories.includes(category)
-      ? selectedCategories.filter((cat) => cat !== category)
+      ? selectedCategories.filter((cat: string) => cat !== category)
       : [...selectedCategories, category];
-    setSelectedCategories(updatedCategories);
     onSelectCategory(updatedCategories);
   };
 

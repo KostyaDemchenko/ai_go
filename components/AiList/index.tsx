@@ -19,6 +19,7 @@ import "./style.scss";
 const AiList: React.FC = () => {
   const [aiList, setAiList] = useState<aiListStructured[] | null>(null);
   const [filteredAiList, setFilteredAiList] = useState<aiListStructured[] | null>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage] = useState<number>(12);
@@ -50,18 +51,21 @@ const AiList: React.FC = () => {
   };
 
   const handleCategoryFilter = (selectedCategories: string[]) => {
+    setSelectedCategories(selectedCategories);
     if (selectedCategories.length === 0) {
       setFilteredAiList(aiList);
     } else {
-      const filteredData = aiList!.filter(
-        (ai) =>
-          ai.ai_input.some((input) => selectedCategories.includes(input.name)) ||
-          ai.ai_output.some((output) => selectedCategories.includes(output.name)) ||
-          ai.ai_cost.some((cost) => selectedCategories.includes(cost.name)) ||
-          ai.ai_uses.some((uses) => selectedCategories.includes(uses.name)) ||
-          ai.ai_sector.some((sector) => selectedCategories.includes(sector.name)) ||
-          ai.ai_api.some((api) => selectedCategories.includes(api.name)) ||
-          ai.ai_from_ukr.some((urk) => selectedCategories.includes(urk.name))
+      const filteredData = aiList!.filter((ai) =>
+        selectedCategories.every(
+          (category) =>
+            ai.ai_input.some((input) => input.name === category) ||
+            ai.ai_output.some((output) => output.name === category) ||
+            ai.ai_cost.some((cost) => cost.name === category) ||
+            ai.ai_uses.some((uses) => uses.name === category) ||
+            ai.ai_sector.some((sector) => sector.name === category) ||
+            ai.ai_api.some((api) => api.name === category) ||
+            ai.ai_from_ukr.some((urk) => urk.name === category)
+        )
       );
       setFilteredAiList(filteredData);
     }
@@ -134,10 +138,13 @@ const AiList: React.FC = () => {
             <div className="ai-filters-container">
               <div className="left-side">
                 <AiFilter
-                  inActive={true}
+                  inActive
                   filterName="Вхідні данні"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_input))}
-                  onSelectCategory={handleCategoryFilter}
+                  onSelectCategory={(selectedCategories) => {
+                    handleCategoryFilter(selectedCategories);
+                  }}
+                  selectedCategories={selectedCategories}
                 />
                 <Image
                   className="icon p-t-10"
@@ -150,7 +157,10 @@ const AiList: React.FC = () => {
                   inActive
                   filterName="Вихідні данні"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_output))}
-                  onSelectCategory={handleCategoryFilter}
+                  onSelectCategory={(selectedCategories) => {
+                    handleCategoryFilter(selectedCategories);
+                  }}
+                  selectedCategories={selectedCategories}
                 />
               </div>
               <div className="right-side">
@@ -158,31 +168,46 @@ const AiList: React.FC = () => {
                   inActive={false}
                   filterName="Ціна"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_cost))}
-                  onSelectCategory={handleCategoryFilter}
+                  onSelectCategory={(selectedCategories) => {
+                    handleCategoryFilter(selectedCategories);
+                  }}
+                  selectedCategories={selectedCategories}
                 />
                 <AiFilter
                   inActive={false}
                   filterName="Технологія ШІ"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_uses))}
-                  onSelectCategory={handleCategoryFilter}
+                  onSelectCategory={(selectedCategories) => {
+                    handleCategoryFilter(selectedCategories);
+                  }}
+                  selectedCategories={selectedCategories}
                 />
                 <AiFilter
                   inActive={false}
                   filterName="Сектор використання"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_sector))}
-                  onSelectCategory={handleCategoryFilter}
+                  onSelectCategory={(selectedCategories) => {
+                    handleCategoryFilter(selectedCategories);
+                  }}
+                  selectedCategories={selectedCategories}
                 />
                 <AiFilter
                   inActive={false}
                   filterName="API"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_api))}
-                  onSelectCategory={handleCategoryFilter}
+                  onSelectCategory={(selectedCategories) => {
+                    handleCategoryFilter(selectedCategories);
+                  }}
+                  selectedCategories={selectedCategories}
                 />
                 <AiFilter
                   inActive={false}
                   filterName="🇺🇦"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_from_ukr))}
-                  onSelectCategory={handleCategoryFilter}
+                  onSelectCategory={(selectedCategories) => {
+                    handleCategoryFilter(selectedCategories);
+                  }}
+                  selectedCategories={selectedCategories}
                 />
               </div>
               <div className="ai-sort-container">
