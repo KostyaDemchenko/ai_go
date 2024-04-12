@@ -1,0 +1,12 @@
+@import "@/src/app/shortClasses.scss";
+
+.page-last-info-box-preloader {
+  @include container;
+  @include flex(flex-start, flex-start);
+  @include f-direction(column);
+
+  width: 100%;
+  gap: 60px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}

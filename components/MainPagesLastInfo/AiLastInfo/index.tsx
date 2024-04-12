@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 // Preloder
-import AiCartPreloader from "@/components/AiListPreloader/AiCartPreloader";
+import MainPagePreloader from "@/components/MainPagePreloader";
 
 // Components
 import CartRate from "@/components/AiListCartRating";
@@ -67,7 +67,7 @@ const AiLastInfo: React.FC = () => {
   }, [aiList, sortType, itemsPerPage]);
 
   if (aiList === null) {
-    return <AiCartPreloader cardCount={4} />;
+    return <MainPagePreloader />;
   }
 
   return (
