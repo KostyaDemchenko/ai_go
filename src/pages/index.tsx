@@ -3,8 +3,9 @@
 import React from "react";
 
 import Head from "next/head";
-import MainPreloader from "@/components/MainPreloader";
 import Header from "@/components/Header";
+import MainPreloader from "@/components/MainPreloader";
+import MainPagesLastInfo from "@/components/MainPagesLastInfo";
 import Footer from "@/components/Footer";
 import MainSearch from "@/components/MainSearch";
 
@@ -23,6 +24,7 @@ export default function Home() {
       <MainPreloader>
         <Header />
         <MainSearch />
+        <MainPagesLastInfo />
         <Footer />
       </MainPreloader>
     </>

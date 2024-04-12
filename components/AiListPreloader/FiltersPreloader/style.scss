@@ -1,0 +1,12 @@
+@import "@/src/app/shortClasses.scss";
+
+@include gradientAnimation;
+
+.preloader-filters {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  background: linear-gradient(to right, var(--black), var(--grey));
+  background-size: 200% 100%;
+  animation: gradientAnimation 2s linear infinite;
+}

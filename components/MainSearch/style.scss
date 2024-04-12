@@ -10,7 +10,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  width: 100%;
+  width: calc(100dvw - 5px);
   height: 100%;
 
   .container {

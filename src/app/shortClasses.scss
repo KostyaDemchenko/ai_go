@@ -31,3 +31,17 @@
   max-width: var(--container-width);
   padding: var(--container-top-padding) var(--container-side-padding);
 }
+
+@mixin gradientAnimation {
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0 0; // Начальное положение градиента (с крайней левой стороны)
+    }
+    50% {
+      background-position: 100% 0; // Конечное положение градиента (с крайней правой стороны)
+    }
+    100% {
+      background-position: 0 0; // Конечное положение градиента (с крайней правой стороны)
+    }
+  }
+}

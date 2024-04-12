@@ -4,6 +4,7 @@ import paginationBack from "./pagination-back.svg";
 import paginationUp from "./pagination-up.svg";
 import arrowRight from "./arrow_forward.svg";
 import arrowDown from "./arrow_down.svg";
+import openLink from "./open_link.svg";
 import search from "./search.svg";
 import check from "./check.svg";
 import like from "./like.svg";
@@ -23,6 +24,7 @@ const obj: { [key: string]: string } = {
   paginationUp: paginationUp,
   arrowRight: arrowRight,
   arrowDown: arrowDown,
+  openLink: openLink,
   search: search,
   check: check,
   like: like,
