@@ -6,7 +6,8 @@ header {
   @include f-direction(row);
 
   width: 100%;
-  padding: 15px 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
 
   .left-side {
     @include flex(space-between, center);
