@@ -29,7 +29,7 @@ const MainPreloader: React.FC<MainPreloaderProps> = ({ children }) => {
     <div className="preloader-container">
       {isLoading ? (
         <div className="main-preloader">
-          <img src="/Preloader.gif" alt="Preloader" width={300} height={300} />
+          <img src="/video/preloader.gif" alt="Preloader" width={300} height={300} />
         </div>
       ) : (
         <>{children}</>
