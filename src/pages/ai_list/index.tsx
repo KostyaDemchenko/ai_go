@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 import "./style.scss";
 import "@/src/app/globals.scss";
 
-export default function page_list() {
+export default function ai_list() {
   return (
     <>
       {/* Metadata */}

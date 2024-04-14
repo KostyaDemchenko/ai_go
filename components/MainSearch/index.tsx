@@ -20,7 +20,7 @@ const MainSearch: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push("/page_list");
+    router.push("/ai_list");
   };
 
   return (

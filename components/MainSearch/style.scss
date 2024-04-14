@@ -4,7 +4,7 @@
   @include flex(flex-start, flex-start);
   @include f-direction(column);
   gap: 20px;
-  min-height: calc(100dvh - 69px);
+  min-height: 70dvh;
 
   background-image: url("./img/MainPageBg.png");
   background-repeat: no-repeat;

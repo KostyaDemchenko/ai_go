@@ -73,7 +73,7 @@ const AiLastInfo: React.FC = () => {
   return (
     <>
       <div className="page-last-info-box">
-        <a href="./page_list" className="page-link">
+        <a href="./ai_list" className="page-link">
           Нейромережі
           <Image className="icon" src={iconObj.openLink} alt="Open link" />
         </a>

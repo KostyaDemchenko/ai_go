@@ -13,7 +13,7 @@ const Header = () => {
           <Image src={logo} alt="ai-go-logo" />
         </a>
         <div className="link-box">
-          <a href="/page_list">ШІ-сервіси</a>
+          <a href="/ai_list">ШІ-сервіси</a>
           <a href="">Промпти</a>
           <a href="">Навчання</a>
           <a href="">Блог</a>
