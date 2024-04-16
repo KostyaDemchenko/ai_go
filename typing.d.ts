@@ -6,6 +6,7 @@ type MultiSelectOption = {
   color: string;
 };
 
+// Ai_List
 type aiListStructured = {
   ai_name: string;
   ai_description: string;
@@ -20,5 +21,19 @@ type aiListStructured = {
   ai_api: MultiSelectOption[];
   ai_cost: MultiSelectOption[];
   ai_from_ukr: MultiSelectOption[];
+  [key: string]: any;
+};
+
+// Promts_List
+type promtsListStructured = {
+  prompt_name: string;
+  prompt_ai_url: string;
+  prompt_result_img_url: string;
+  prompt_pattern: string;
+  prompt_type: MultiSelectOption[];
+  prompt_speciality: MultiSelectOption[];
+  prompt_ai_title: MultiSelectOption[];
+  prompt_rate: number;
+  prompt_date_post: number;
   [key: string]: any;
 };
