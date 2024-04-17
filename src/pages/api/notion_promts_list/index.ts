@@ -8,8 +8,10 @@ const notion = new Client({ auth: notionSecret });
 
 type Row = {
   prompt_name: { id: string; title: [{ type: string; text: { content: string } }] };
+  promt_result_type: { id: string; multi_select: { id: string; name: string; color: string }[] };
   prompt_ai_url: { id: string; url: string };
   prompt_result_img_url: { id: string; url: string };
+  prompt_result_video_url: { id: string; url: string };
   prompt_pattern: { id: string; rich_text: { text: { content: string } }[] };
   prompt_type: { id: string; multi_select: { id: string; name: string; color: string }[] };
   prompt_speciality: { id: string; multi_select: { id: string; name: string; color: string }[] };
@@ -49,8 +51,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const promtsListStructured = rows.map((row) => ({
     prompt_name: row.prompt_name.title?.[0]?.text?.content ?? "Default Name",
+    promt_result_type: sortMultiSelectOptions(row.promt_result_type),
     prompt_ai_url: row.prompt_ai_url.url,
     prompt_result_img_url: row.prompt_result_img_url.url,
+    prompt_result_video_url: row.prompt_result_video_url.url,
     prompt_pattern:
       row.prompt_pattern.rich_text
         .map((richText) => richText.text.content)
