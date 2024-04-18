@@ -4,10 +4,13 @@ import paginationBack from "./pagination-back.svg";
 import paginationUp from "./pagination-up.svg";
 import arrowRight from "./arrow_forward.svg";
 import arrowDown from "./arrow_down.svg";
+import doneAlert from "./done_alert.svg";
 import openLink from "./open_link.svg";
 import search from "./search.svg";
+import close from "./close.svg";
 import check from "./check.svg";
 import like from "./like.svg";
+import copy from "./copy.svg";
 import mail from "./mail.svg";
 
 // sort
@@ -24,10 +27,13 @@ const obj: { [key: string]: string } = {
   paginationUp: paginationUp,
   arrowRight: arrowRight,
   arrowDown: arrowDown,
+  doneAlert: doneAlert,
   openLink: openLink,
   search: search,
+  close: close,
   check: check,
   like: like,
+  copy: copy,
   mail: mail,
 
   // sort

@@ -10,6 +10,7 @@ import MainPagePreloader from "@/components/MainPagePreloader";
 import CartRate from "@/components/AiListCartRating";
 import AccordionAiItems from "@/components/AiListCardAccordion";
 import AiLinkBox from "@/components/AiListLinkBox";
+import CopyButton from "@/components/CopyTextBtn";
 
 import iconObj from "@/public/icons/utils";
 
@@ -77,6 +78,7 @@ const AiLastInfo: React.FC = () => {
           Нейромережі
           <Image className="icon" src={iconObj.openLink} alt="Open link" />
         </a>
+        {/* <CopyButton text="Нейромережі" /> */}
         <div className="ai-list-container">
           {filteredAiList && filteredAiList.length > 0 ? (
             filteredAiList.map((ai, index) => (
