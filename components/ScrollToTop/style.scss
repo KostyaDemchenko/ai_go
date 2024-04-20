@@ -1,16 +1,26 @@
+@import "@/src/app/shortClasses.scss";
+
 .scrollToTopButton {
+  @include flex(center, center);
+  @include f-direction(row);
+
   position: fixed;
+
   bottom: 20px;
   right: 35px;
+
+  width: 48px;
+  height: 48px;
+
   background-color: var(--dark-grey);
   border-radius: 5px;
-  padding: 12px;
   cursor: pointer;
   z-index: 1000;
-  transition: ease-in-out 0.3s;
-}
+  transition: ease-in-out 0.2s;
 
-.scrollToTopButton:hover {
-  transition: ease-in-out 0.3s;
-  background-color: var(--primary);
+  &:hover {
+    transition: ease-in-out 0.2s;
+    box-shadow: 0px 0px 5px 0px var(--primary);
+    background-color: var(--primary);
+  }
 }
