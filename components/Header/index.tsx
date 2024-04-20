@@ -14,7 +14,7 @@ const Header = () => {
         </a>
         <div className="link-box">
           <a href="/ai_list">ШІ-сервіси</a>
-          <a href="">Промпти</a>
+          <a href="/prompts_page">Промпти</a>
           <a href="">Навчання</a>
           <a href="">Блог</a>
           <a href="">Про нас</a>
