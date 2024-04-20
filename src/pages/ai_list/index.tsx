@@ -4,6 +4,7 @@ import React from "react";
 
 import Head from "next/head";
 import Header from "@/components/Header";
+import ScrollToTop from "@/components/ScrollToTop";
 import AiList from "@/components/AiList";
 import Footer from "@/components/Footer";
 
@@ -23,6 +24,7 @@ export default function ai_list() {
         <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
       </Head>
       {/* Metadata */}
+      <ScrollToTop />
       <Header />
       <main>
         <div className="container">
