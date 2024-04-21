@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Alert from "@/components/Alert";
+import Alert from "@/components/BasicСomponents/Alert";
 
 import iconObj from "@/public/icons/utils";
 

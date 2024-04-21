@@ -3,14 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-import AiFilter from "@/components/AiListFilter";
-import CartRate from "@/components/AiListCartRating";
-import ListPreloader from "@/components/AiListPreloader";
-import AccordionAiItems from "@/components/AiListCardAccordion";
-import AiLinkBox from "@/components/AiListLinkBox";
-import SearchBox from "@/components/AiListSearchBox";
-import Pagination from "@/components/Pagination";
-import SortOptions from "@/components/AiListSort"; // Доданий імпорт нового компонента
+import Filter from "@/components/BasicСomponents/Filter";
+import CartRate from "@/components/AiListPageComponents/AiListCartRating";
+import ListPreloader from "@/components/AiListPageComponents/AiListPreloader";
+import AccordionAiItems from "@/components/AiListPageComponents/AiListCardAccordion";
+import AiLinkBox from "@/components/AiListPageComponents/AiListLinkBox";
+import SearchBox from "@/components/AiListPageComponents/AiListSearchBox";
+import Pagination from "@/components/BasicСomponents/Pagination";
+import SortOptions from "@/components/AiListPageComponents/AiListSort"; // Доданий імпорт нового компонента
 
 import iconObj from "@/public/icons/utils";
 
@@ -137,7 +137,7 @@ const AiList: React.FC = () => {
             </div>
             <div className="ai-filters-container">
               <div className="left-side">
-                <AiFilter
+                <Filter
                   inActive
                   filterName="Вхідні данні"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_input))}
@@ -153,7 +153,7 @@ const AiList: React.FC = () => {
                   height={20}
                   alt="Arrow to right"
                 />
-                <AiFilter
+                <Filter
                   inActive
                   filterName="Вихідні данні"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_output))}
@@ -164,7 +164,7 @@ const AiList: React.FC = () => {
                 />
               </div>
               <div className="right-side">
-                <AiFilter
+                <Filter
                   inActive={false}
                   filterName="Ціна"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_cost))}
@@ -173,7 +173,7 @@ const AiList: React.FC = () => {
                   }}
                   selectedCategories={selectedCategories}
                 />
-                <AiFilter
+                <Filter
                   inActive={false}
                   filterName="Технологія ШІ"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_uses))}
@@ -182,7 +182,7 @@ const AiList: React.FC = () => {
                   }}
                   selectedCategories={selectedCategories}
                 />
-                <AiFilter
+                <Filter
                   inActive={false}
                   filterName="Сектор використання"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_sector))}
@@ -191,7 +191,7 @@ const AiList: React.FC = () => {
                   }}
                   selectedCategories={selectedCategories}
                 />
-                <AiFilter
+                <Filter
                   inActive={false}
                   filterName="API"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_api))}
@@ -200,7 +200,7 @@ const AiList: React.FC = () => {
                   }}
                   selectedCategories={selectedCategories}
                 />
-                <AiFilter
+                <Filter
                   inActive={false}
                   filterName="🇺🇦"
                   categories={getUniqueCategories(aiList.map((ai) => ai.ai_from_ukr))}

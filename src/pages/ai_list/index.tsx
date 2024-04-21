@@ -3,10 +3,10 @@
 import React from "react";
 
 import Head from "next/head";
-import Header from "@/components/Header";
-import ScrollToTop from "@/components/ScrollToTop";
-import AiList from "@/components/AiList";
-import Footer from "@/components/Footer";
+import Header from "@/components/BasicСomponents/Header";
+import ScrollToTop from "@/components/BasicСomponents/ScrollToTop";
+import AiList from "@/components/AiListPageComponents/AiList";
+import Footer from "@/components/BasicСomponents/Footer";
 
 import "./style.scss";
 import "@/src/app/globals.scss";

@@ -4,13 +4,13 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 // Preloder
-import MainPagePreloader from "@/components/MainPagePreloader";
+import MainPagePreloader from "@/components/MainPageComponents/MainPagePreloader";
 
 // Components
-import CartRate from "@/components/AiListCartRating";
-import AccordionAiItems from "@/components/AiListCardAccordion";
-import AiLinkBox from "@/components/AiListLinkBox";
-import CopyButton from "@/components/CopyTextBtn";
+import CartRate from "@/components/AiListPageComponents/AiListCartRating";
+import AccordionAiItems from "@/components/AiListPageComponents/AiListCardAccordion";
+import AiLinkBox from "@/components/AiListPageComponents/AiListLinkBox";
+import CopyButton from "@/components/BasicСomponents/CopyTextBtn";
 
 import iconObj from "@/public/icons/utils";
 

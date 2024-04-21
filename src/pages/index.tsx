@@ -3,11 +3,11 @@
 import React from "react";
 
 import Head from "next/head";
-import Header from "@/components/Header";
-import MainPreloader from "@/components/MainPreloader";
-import MainPagesLastInfo from "@/components/MainPagesLastInfo";
-import Footer from "@/components/Footer";
-import MainSearch from "@/components/MainSearch";
+import Header from "@/components/BasicСomponents/Header";
+import MainPreloader from "@/components/MainPageComponents/MainPreloader";
+import MainPagesLastInfo from "@/components/MainPageComponents/MainPagesLastInfo";
+import Footer from "@/components/BasicСomponents/Footer";
+import MainSearch from "@/components/MainPageComponents/MainSearch";
 
 import "@/src/app/globals.scss";
 

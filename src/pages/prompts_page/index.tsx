@@ -3,8 +3,10 @@
 import React from "react";
 
 import Head from "next/head";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/BasicСomponents/Header";
+import PromptsList from "@/components/PromptsListComponents/PromptsList";
+import ScrollToTop from "@/components/BasicСomponents/ScrollToTop";
+import Footer from "@/components/BasicСomponents/Footer";
 
 import "./style.scss";
 import "@/src/app/globals.scss";
@@ -23,10 +25,11 @@ export default function promts_page() {
       </Head>
       {/* Metadata */}
       <Header />
+      <ScrollToTop />
       <main>
         <div className="container">
           <h2 className="page-title">Промпти</h2>
-          {/* <PromtList /> */}
+          <PromptsList />
         </div>
       </main>
       <Footer />

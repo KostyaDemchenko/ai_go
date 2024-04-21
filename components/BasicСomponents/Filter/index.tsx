@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import CustomCheckbox from "@/components/Checkbox";
+import CustomCheckbox from "@/components/BasicСomponents/Checkbox";
 import iconObj from "@/public/icons/utils";
 
 import "./style.scss";
@@ -14,7 +14,7 @@ interface AiFilterProps {
   selectedCategories: string[]; // Добавляем свойство selectedCategories
 }
 
-const AiFilter: React.FC<AiFilterProps> = ({
+const Filter: React.FC<AiFilterProps> = ({
   categories,
   onSelectCategory,
   filterName,
@@ -59,4 +59,4 @@ const AiFilter: React.FC<AiFilterProps> = ({
   );
 };
 
-export default AiFilter;
+export default Filter;

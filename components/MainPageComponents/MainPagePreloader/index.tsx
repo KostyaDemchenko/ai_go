@@ -1,6 +1,6 @@
 import React from "react";
 
-import AiCartPreloader from "@/components/AiListPreloader/AiCartPreloader";
+import AiCartPreloader from "@/components/AiListPageComponents/AiListPreloader/AiCartPreloader";
 import PagesTitle from "./PagesTitlePreloader";
 
 import "./style.scss";
