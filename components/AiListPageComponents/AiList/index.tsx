@@ -10,7 +10,7 @@ import AccordionAiItems from "@/components/AiListPageComponents/AiListCardAccord
 import AiLinkBox from "@/components/AiListPageComponents/AiListLinkBox";
 import SearchBox from "@/components/AiListPageComponents/AiListSearchBox";
 import Pagination from "@/components/BasicСomponents/Pagination";
-import SortOptions from "@/components/AiListPageComponents/AiListSort"; // Доданий імпорт нового компонента
+import SortOptions from "@/components/BasicСomponents/ListSort"; // Доданий імпорт нового компонента
 
 import iconObj from "@/public/icons/utils";
 

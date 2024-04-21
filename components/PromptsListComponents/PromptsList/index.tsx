@@ -9,7 +9,7 @@ import ListPreloader from "@/components/AiListPageComponents/AiListPreloader";
 import Filter from "@/components/BasicСomponents/Filter";
 import AccordionAiItems from "@/components/AiListPageComponents/AiListCardAccordion";
 import Pagination from "@/components/BasicСomponents/Pagination";
-import SortOptions from "@/components/AiListPageComponents/AiListSort";
+import SortOptions from "@/components/BasicСomponents/ListSort";
 
 import "./style.scss";
 
@@ -119,7 +119,7 @@ const PromptsList: React.FC = () => {
           <div className="prompts-filters-container">
             <Filter
               inActive={false}
-              filterName="Ціна"
+              filterName="Тип"
               categories={getUniqueCategories(promptsList.map((prompt) => prompt.prompt_type))}
               onSelectCategory={(selectedCategories) => {
                 handleCategoryFilter(selectedCategories);
@@ -128,7 +128,7 @@ const PromptsList: React.FC = () => {
             />
             <Filter
               inActive={false}
-              filterName="Технологія ШІ"
+              filterName="Спеціалізація"
               categories={getUniqueCategories(
                 promptsList.map((prompt) => prompt.prompt_speciality)
               )}
@@ -139,7 +139,7 @@ const PromptsList: React.FC = () => {
             />
             <Filter
               inActive={false}
-              filterName="Сектор використання"
+              filterName="Нейромережа"
               categories={getUniqueCategories(promptsList.map((prompt) => prompt.prompt_ai_title))}
               onSelectCategory={(selectedCategories) => {
                 handleCategoryFilter(selectedCategories);
