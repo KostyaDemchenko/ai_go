@@ -52,11 +52,18 @@
 
     border-radius: 15px;
 
-    .prev-img {
-      width: 100%;
+    .top-box {
+      position: relative;
+
       height: 200px;
-      object-fit: cover;
-      border-radius: 5px;
+      width: 100%;
+
+      .prev-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
     }
 
     .content-box {

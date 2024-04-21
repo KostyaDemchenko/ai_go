@@ -7,7 +7,9 @@ import Image from "next/image";
 import ListPreloader from "@/components/AiListPageComponents/AiListPreloader";
 
 import Filter from "@/components/BasicСomponents/Filter";
-import AccordionAiItems from "@/components/AiListPageComponents/AiListCardAccordion";
+import CartRate from "@/components/PromptsListComponents/CartRating";
+import DownloadBtn from "@/components/BasicСomponents/DownloadBtn";
+import AccordionPromptsItems from "@/components/PromptsListComponents/AccordionPromtsItems";
 import Pagination from "@/components/BasicСomponents/Pagination";
 import SortOptions from "@/components/BasicСomponents/ListSort";
 
@@ -156,21 +158,23 @@ const PromptsList: React.FC = () => {
         {currentItems && currentItems.length > 0 ? (
           currentItems.map((prompt, index) => (
             <div key={index} className="prompt-item">
-              <img
-                className="prev-img"
-                src={prompt.prompt_result_img_url}
-                alt={prompt.prompt_name}
-              />
+              <div className="top-box">
+                <CartRate rate={prompt.prompt_rate} />
+                <img
+                  className="prev-img"
+                  src={prompt.prompt_result_img_url}
+                  alt={prompt.prompt_name}
+                />
+                <DownloadBtn downloadLink={prompt.prompt_result_img_url} />
+              </div>
               <div className="content-box">
-                {/* RATE */}
-                {/* DOWNLOAD */}
                 <div className="prompt-title-box">
                   <a className="prompt-ai-title" href={prompt.prompt_ai_url}>
                     {prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)}
                   </a>
                   <p className="prompt-name">{prompt.prompt_name}</p>
                 </div>
-                <AccordionAiItems description={prompt.prompt_pattern} />
+                <AccordionPromptsItems promptsContent={prompt.prompt_pattern} />
                 <div className="property-box">
                   {[
                     ...prompt.prompt_type.map((type: MultiSelectOption) => type.name),

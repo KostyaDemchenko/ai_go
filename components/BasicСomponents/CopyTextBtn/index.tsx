@@ -15,7 +15,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(text).then(() => {
-      setAlertVisible(true);
+      setAlertVisible(true); // Открываем алерт при копировании
     });
   };
 
@@ -23,7 +23,6 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
     setAlertVisible(false);
   };
 
-  // Автоматическое закрытие алерта после 3 секунд
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     if (alertVisible) {

@@ -1,6 +1,10 @@
 @import "@/src/app/shortClasses.scss";
 
 .copy-btn-container {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+
   button {
     @include flex(center, center);
     @include f-direction(row);

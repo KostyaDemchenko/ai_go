@@ -1,0 +1,21 @@
+@import "@/src/app/shortClasses.scss";
+
+.download-btn-container {
+  @include flex(center, center);
+  @include f-direction(row);
+  position: absolute;
+
+  width: 22px;
+  height: 22px;
+
+  bottom: 5px;
+  right: 5px;
+
+  background-color: var(--dark-grey);
+  border-radius: 5px;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}

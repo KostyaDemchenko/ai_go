@@ -7,6 +7,7 @@ import arrowRight from "./arrow_forward.svg";
 import arrowDown from "./arrow_down.svg";
 import doneAlert from "./done_alert.svg";
 import openLink from "./open_link.svg";
+import download from "./download.svg";
 import search from "./search.svg";
 import close from "./close.svg";
 import check from "./check.svg";
@@ -31,6 +32,7 @@ const obj: { [key: string]: string } = {
   arrowDown: arrowDown,
   doneAlert: doneAlert,
   openLink: openLink,
+  download: download,
   search: search,
   close: close,
   check: check,
