@@ -4,6 +4,7 @@ import React from "react";
 
 import Head from "next/head";
 import Header from "@/components/BasicСomponents/Header";
+import ScrollToTop from "@/components/BasicСomponents/ScrollToTop";
 import MainPreloader from "@/components/MainPageComponents/MainPreloader";
 import MainPagesLastInfo from "@/components/MainPageComponents/MainPagesLastInfo";
 import Footer from "@/components/BasicСomponents/Footer";
@@ -23,6 +24,7 @@ export default function Home() {
       {/* Metadata */}
       <MainPreloader>
         <Header />
+        <ScrollToTop />
         <MainSearch />
         <MainPagesLastInfo />
         <Footer />
