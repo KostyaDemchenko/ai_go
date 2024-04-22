@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-import Alert from "@/components/BasicСomponents/Alert";
+import { ToastContainer, toast, Slide } from "react-toastify";
 
 import iconObj from "@/public/icons/utils";
 
+import "react-toastify/dist/ReactToastify.css";
 import "./style.scss";
 
 interface CopyButtonProps {
@@ -11,37 +12,39 @@ interface CopyButtonProps {
 }
 
 const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
-  const [alertVisible, setAlertVisible] = useState(false);
-
   const handleCopy = () => {
     navigator.clipboard.writeText(text).then(() => {
-      setAlertVisible(true); // Открываем алерт при копировании
+      const copiedTextPreview = text.substring(0, 10) + (text.length > 10 ? "..." : "");
+      toast(`Скопійовано: ${copiedTextPreview}`, {
+        transition: Slide,
+        position: "top-right",
+        autoClose: 5000,
+        theme: "dark"
+      });
     });
   };
 
-  const closeAlert = () => {
-    setAlertVisible(false);
-  };
-
-  useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    if (alertVisible) {
-      timeoutId = setTimeout(() => {
-        closeAlert();
-      }, 3000);
-    }
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [alertVisible]);
-
   return (
-    <div className="copy-btn-container">
-      <button onClick={handleCopy}>
-        <Image className="icon" src={iconObj.copy} width={16} height={16} alt="Copy" />
-      </button>
-      {alertVisible && <Alert message="Текст скопирован!" onClose={closeAlert} />}
-    </div>
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <div className="copy-btn-container">
+        <button onClick={handleCopy}>
+          <Image className="icon" src={iconObj.copy} width={16} height={16} alt="Copy" />
+        </button>
+      </div>
+      <ToastContainer />
+    </>
   );
 };
 

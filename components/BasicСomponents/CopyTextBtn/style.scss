@@ -19,3 +19,14 @@
     }
   }
 }
+
+// Alert-customized
+
+.Toastify__toast-theme--dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.Toastify__progress-bar-theme--dark {
+  background: var(--primary);
+}
