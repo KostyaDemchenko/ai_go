@@ -4,7 +4,6 @@ import React from "react";
 
 import Head from "next/head";
 import Header from "@/components/BasicСomponents/Header";
-import Alert from "@/components/BasicСomponents/Alert";
 import PromptsList from "@/components/PromptsListComponents/PromptsList";
 import ScrollToTop from "@/components/BasicСomponents/ScrollToTop";
 import Footer from "@/components/BasicСomponents/Footer";
