@@ -24,43 +24,49 @@ const Footer = () => {
           </a>
         </div>
         <div className="second-column col">
-          <p className="title">ШІ-сервіси</p>
-          <a href="" className="link">
+          <a className="title" href="/ai_list">
+            ШІ-сервіси
+          </a>
+          <a href="/ai_list" className="link">
             Chat GPT
           </a>
-          <a href="" className="link">
+          <a href="/ai_list" className="link">
             Midjourney
           </a>
-          <a href="" className="link">
+          <a href="/ai_list" className="link">
             DALL-E
           </a>
-          <a href="" className="link">
+          <a href="/ai_list" className="link">
             PHCrhoma
           </a>
-          <a href="" className="link">
+          <a href="/ai_list" className="link">
             Stable Diffusion
           </a>
         </div>
         <div className="third-column col">
-          <p className="title">Промпти</p>
-          <a href="" className="link">
-            Промпти Chat GPT{" "}
+          <a className="title" href="/prompts_page">
+            Промпти
           </a>
-          <a href="" className="link">
+          <a href="/prompts_page" className="link">
+            Промпти Chat GPT
+          </a>
+          <a href="/prompts_page" className="link">
             Промпти Midjourney
           </a>
-          <a href="" className="link">
+          <a href="/prompts_page" className="link">
             Промпти DALL-E
           </a>
-          <a href="" className="link">
+          <a href="/prompts_page" className="link">
             Промпти PHCrhoma
           </a>
-          <a href="" className="link">
+          <a href="/prompts_page" className="link">
             Промпти Stable Diffusion
           </a>
         </div>
         <div className="fourth-column col">
-          <p className="title">Мапа сайту</p>
+          <a className="title" href="/">
+            Мапа сайту
+          </a>
           <a href="" className="link">
             Навчання
           </a>

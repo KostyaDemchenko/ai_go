@@ -13,11 +13,25 @@ footer {
   .title {
     font-size: 16px;
     font-weight: 600;
+
+    transition: ease-in-out 0.2s;
+
+    &:hover {
+      color: var(--primary);
+      transition: ease-in-out 0.2s;
+    }
   }
 
   .link {
     font-size: 14px;
     font-weight: 400;
+
+    transition: ease-in-out 0.2s;
+
+    &:hover {
+      color: var(--primary);
+      transition: ease-in-out 0.2s;
+    }
   }
 
   .col {
