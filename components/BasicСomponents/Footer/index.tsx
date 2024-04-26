@@ -96,7 +96,13 @@ const Footer = () => {
       <div className="line"></div>
       <div className="bottom-section">
         <p className="copyright">© 2024. AiGO. Усі права збережені.</p>
-        <p className="copyright">Закони та умови</p>
+        <a
+          href="https://zakon.rada.gov.ua/laws/show/2811-20#n461"
+          target="_blank"
+          className="copyright"
+        >
+          Закони та умови
+        </a>
       </div>
     </footer>
   );

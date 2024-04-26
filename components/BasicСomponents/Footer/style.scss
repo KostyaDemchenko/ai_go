@@ -120,6 +120,13 @@ footer {
       font-size: 12px;
       font-weight: 400;
       color: var(--dark-white);
+
+      transition: ease-in-out 0.2s;
+
+      &:hover {
+        color: var(--primary);
+        transition: ease-in-out 0.2s;
+      }
     }
   }
 }

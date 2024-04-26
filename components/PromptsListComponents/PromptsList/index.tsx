@@ -169,7 +169,7 @@ const PromptsList: React.FC = () => {
               </div>
               <div className="content-box">
                 <div className="prompt-title-box">
-                  <a className="prompt-ai-title" href={prompt.prompt_ai_url}>
+                  <a className="prompt-ai-title" target="_blank" href={prompt.prompt_ai_url}>
                     {prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)}
                   </a>
                   <p className="prompt-name">{prompt.prompt_name}</p>
