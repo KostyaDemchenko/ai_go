@@ -18,7 +18,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
       toast(`Скопійовано: ${copiedTextPreview}`, {
         transition: Slide,
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         theme: "dark"
       });
     });
@@ -28,7 +28,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
     <>
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -37,6 +37,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
         draggable
         pauseOnHover
         theme="dark"
+        transition={Slide}
       />
       <div className="copy-btn-container">
         <button onClick={handleCopy}>
