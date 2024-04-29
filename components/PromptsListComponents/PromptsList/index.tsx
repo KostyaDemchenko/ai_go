@@ -1,7 +1,7 @@
 // components/promptsList/index.tsx
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import YoutubeModal from "@/components/BasicСomponents/YoutubeModal";
 
 // re-write
 import ListPreloader from "@/components/AiListPageComponents/AiListPreloader";
@@ -21,6 +21,7 @@ const PromptsList: React.FC = () => {
     null
   );
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedVideoUrl, setSelectedVideoUrl] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage] = useState<number>(12);
   const [sortType, setSortType] = useState<string>("");
@@ -160,11 +161,21 @@ const PromptsList: React.FC = () => {
             <div key={index} className="prompt-item">
               <div className="top-box">
                 <CartRate rate={prompt.prompt_rate} />
-                <img
-                  className="prev-img"
-                  src={prompt.prompt_result_img_url}
-                  alt={prompt.prompt_name}
-                />
+                {prompt.promt_result_type.find((type) => type.name === "video") ? (
+                  // Если тип - видео, показываем триггер модального окна
+                  <YoutubeModal
+                    videoTitle={prompt.prompt_name}
+                    videoUrl={prompt.prompt_result_video_url}
+                    imageUrl={prompt.prompt_result_img_url}
+                  />
+                ) : (
+                  // Если тип - изображение, показываем изображение
+                  <img
+                    className="prev-img"
+                    src={prompt.prompt_result_img_url}
+                    alt={prompt.prompt_name}
+                  />
+                )}
                 <DownloadBtn downloadLink={prompt.prompt_result_img_url} />
               </div>
               <div className="content-box">

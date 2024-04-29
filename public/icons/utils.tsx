@@ -8,6 +8,7 @@ import arrowDown from "./arrow_down.svg";
 import doneAlert from "./done_alert.svg";
 import openLink from "./open_link.svg";
 import download from "./download.svg";
+import playBtn from "./play_btn.svg";
 import search from "./search.svg";
 import close from "./close.svg";
 import check from "./check.svg";
@@ -33,6 +34,7 @@ const obj: { [key: string]: string } = {
   doneAlert: doneAlert,
   openLink: openLink,
   download: download,
+  playBtn: playBtn,
   search: search,
   close: close,
   check: check,

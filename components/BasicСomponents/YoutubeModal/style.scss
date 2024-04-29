@@ -1,0 +1,87 @@
+@import "@/src/app/shortClasses.scss";
+
+.prev-box {
+  position: relative;
+  cursor: pointer;
+
+  .icon {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 62px;
+    height: 62px;
+    transition: ease-in-out 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: ease-in-out 0.2s;
+    }
+  }
+}
+
+.rodal {
+  .rodal-mask {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .rodal-dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 101;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+    @include flex(flex-start, flex-start);
+    @include f-direction(column);
+
+    gap: 15px;
+
+    max-width: 1370px;
+    max-height: 700px;
+
+    background-color: var(--black);
+
+    h4 {
+      color: var(--white);
+      font-weight: 400;
+      font-size: 24px;
+    }
+
+    iframe {
+      border-radius: 10px;
+    }
+
+    .rodal-close {
+      position: absolute;
+      cursor: pointer;
+      top: 16px;
+      right: 16px;
+      width: 20px;
+      height: 20px;
+
+      &:before,
+      &:after {
+        position: absolute;
+        content: "";
+        height: 2px;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        margin-top: -1px;
+        background: var(--white);
+        border-radius: 100%;
+        transition: background 0.2s;
+      }
+    }
+  }
+}
