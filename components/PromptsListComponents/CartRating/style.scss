@@ -5,6 +5,8 @@
   @include f-direction(row);
   position: absolute;
 
+  z-index: 5;
+
   bottom: 5px;
   left: 5px;
 
