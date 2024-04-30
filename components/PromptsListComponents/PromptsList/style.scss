@@ -36,7 +36,7 @@
   gap: 25px 50px;
   width: 100%;
 
-  min-height: 750px;
+  min-height: calc(60dvh - 71px);
 
   .prompt-item {
     @include flex(center, center);

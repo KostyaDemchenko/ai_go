@@ -64,7 +64,7 @@
   gap: 25px 50px;
   width: 100%;
 
-  min-height: 750px;
+  min-height: calc(70dvh - 71px);
 
   .ai-item {
     @include flex(center, center);
