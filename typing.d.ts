@@ -41,14 +41,14 @@ type promtsListStructured = {
 };
 
 // News_List_Types
-type promtsListStructured = {
+type newsListStructured = {
   news_name: string;
   news_type: MultiSelectOption[];
   news_img_url: string;
   news_video_url: string;
   news_source_url: string;
-  news_text_prev: string;
   news_text_full: string;
+  news_time_to_read: number;
   news_date_post: number;
   [key: string]: any;
 };

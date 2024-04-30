@@ -1,7 +1,6 @@
 // components/promptsList/index.tsx
 
 import React, { useState, useEffect } from "react";
-import YoutubeModal from "@/components/BasicСomponents/YoutubeModal";
 
 // re-write
 import ListPreloader from "@/components/AiListPageComponents/AiListPreloader";
@@ -12,6 +11,7 @@ import DownloadBtn from "@/components/BasicСomponents/DownloadBtn";
 import AccordionPromptsItems from "@/components/PromptsListComponents/AccordionPromtsItems";
 import Pagination from "@/components/BasicСomponents/Pagination";
 import SortOptions from "@/components/BasicСomponents/ListSort";
+import YoutubeModal from "@/components/BasicСomponents/YoutubeModal";
 
 import "./style.scss";
 
@@ -21,7 +21,6 @@ const PromptsList: React.FC = () => {
     null
   );
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedVideoUrl, setSelectedVideoUrl] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage] = useState<number>(12);
   const [sortType, setSortType] = useState<string>("");

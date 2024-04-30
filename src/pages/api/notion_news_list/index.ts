@@ -12,8 +12,8 @@ type Row = {
   news_img_url: { id: string; url: string };
   news_video_url: { id: string; url: string };
   news_source_url: { id: string; url: string };
-  news_text_prev: { id: string; rich_text: { text: { content: string } }[] };
   news_text_full: { id: string; rich_text: { text: { content: string } }[] };
+  news_time_to_read: { id: string; name: string; type: string; number: { format: string } };
   news_date_post: { id: string; name: string; type: string; date: { start: string } };
 };
 
@@ -52,16 +52,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     news_img_url: row.news_img_url.url,
     news_video_url: row.news_video_url.url,
     news_sourse_url: row.news_source_url.url,
-    news_text_prev:
-      row.news_text_prev.rich_text
-        .map((richText) => richText.text.content)
-        .filter((content) => content.trim() !== "")
-        .join(" ") || "Default Description",
     news_text_full:
       row.news_text_full.rich_text
         .map((richText) => richText.text.content)
         .filter((content) => content.trim() !== "")
         .join(" ") || "Default Description",
+    news_time_to_read: row.news_time_to_read.number || "Default Time to Read",
     news_date_post: row.news_date_post.date.start || "Default Start Date"
   }));
 

@@ -12,6 +12,7 @@ import playBtn from "./play_btn.svg";
 import search from "./search.svg";
 import close from "./close.svg";
 import check from "./check.svg";
+import time from "./time.svg";
 import like from "./like.svg";
 import copy from "./copy.svg";
 import mail from "./mail.svg";
@@ -39,6 +40,7 @@ const obj: { [key: string]: string } = {
   close: close,
   check: check,
   like: like,
+  time: time,
   copy: copy,
   mail: mail,
 

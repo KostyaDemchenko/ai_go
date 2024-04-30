@@ -70,7 +70,7 @@ const Footer = () => {
           <a href="" className="link">
             Навчання
           </a>
-          <a href="" className="link">
+          <a href="/news_page" className="link">
             Блог
           </a>
           <a href="" className="link">

@@ -44,7 +44,7 @@ class YoutubeModal extends React.Component<Props, State> {
         <div className="prev-box" onClick={this.handleOpenModal}>
           <img
             className="prev-img"
-            src={"https://i.ytimg.com/vi/" + videoUrl + "/maxresdefault.jpg"}
+            src={"https://i.ytimg.com/vi/" + imageUrl + "/maxresdefault.jpg"}
             alt="Watch Video"
           />
           <Image src={iconObj.playBtn} alt="Open modal" className="icon" />
