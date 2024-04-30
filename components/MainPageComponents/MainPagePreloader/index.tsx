@@ -10,6 +10,8 @@ const MainPagePreloader = () => {
     <div className="page-last-info-box-preloader">
       <PagesTitle />
       <AiCartPreloader cardCount={4} />
+      <AiCartPreloader cardCount={4} />
+      <AiCartPreloader cardCount={4} />
     </div>
   );
 };

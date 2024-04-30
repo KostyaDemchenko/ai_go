@@ -1,6 +1,6 @@
 @import "@/src/app/shortClasses.scss";
 
-.cart-rate-container {
+.prompt-cart-rate-container {
   @include flex(center, center);
   @include f-direction(row);
   position: absolute;

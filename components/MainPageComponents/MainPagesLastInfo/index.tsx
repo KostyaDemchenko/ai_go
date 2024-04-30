@@ -1,10 +1,10 @@
 // components/MainPagesLastInfo/index.tsx
 
 import React from "react";
-import Image from "next/image";
 
-import iconObj from "@/public/icons/utils";
 import AiLastInfo from "./AiLastInfo";
+import NewsLastInfo from "./NewsLastInfo";
+import PromtsLastInfo from "./PromptsLastInfo";
 
 import "./style.scss";
 
@@ -14,9 +14,9 @@ const MainPagesLastInfo: React.FC = () => {
   return (
     <>
       <div className="container-last-info-pages">
-        {/* news last info */}
+        <NewsLastInfo />
         <AiLastInfo />
-        {/* promts last info */}
+        <PromtsLastInfo />
       </div>
     </>
   );

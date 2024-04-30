@@ -11,7 +11,7 @@ interface CartRateProps {
 
 const CartRate: React.FC<CartRateProps> = ({ rate }) => {
   return (
-    <div className="cart-rate-container">
+    <div className="prompt-cart-rate-container">
       <Image className="icon" src={iconObj.like} alt="star" />
       <p>{rate}</p>
     </div>
