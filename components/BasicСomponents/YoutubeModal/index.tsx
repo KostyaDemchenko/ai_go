@@ -57,7 +57,6 @@ class YoutubeModal extends React.Component<Props, State> {
           height={0}
           customStyles={{ height: "100%", width: "100%" }}
         >
-          <h4>{videoTitle}</h4>
           <iframe
             width="100%"
             height="100%"
