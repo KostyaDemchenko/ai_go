@@ -64,6 +64,8 @@
   gap: 25px 50px;
   width: 100%;
 
+  min-height: 750px;
+
   .ai-item {
     @include flex(center, center);
     @include f-direction(column);
