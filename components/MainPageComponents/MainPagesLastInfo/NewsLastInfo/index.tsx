@@ -3,6 +3,7 @@ import Image from "next/image";
 
 // Preloder
 import MainPagePreloader from "@/components/MainPageComponents/MainPagePreloader";
+import NewsCart from "@/components/NewsListPageComponents/NewsCart";
 
 import iconObj from "@/public/icons/utils";
 
@@ -73,33 +74,17 @@ const NewsLastInfo: React.FC = () => {
             <p>No items to display.</p>
           ) : (
             newsList.map((news: newsListStructured, index: number) => (
-              <div className="news-item" key={index}>
-                <div className="top-box">
-                  <img className="prev-img" src={news.news_img_url} alt={news.news_name} />
-                </div>
-                <div className="content-box">
-                  <div className="news-title-box">
-                    <p className="news-name">{news.news_name.slice(0, 25)}...</p>
-                    <div
-                      className="news-preview"
-                      dangerouslySetInnerHTML={{ __html: news.news_text_full.slice(0, 60) + "..." }}
-                    />
-                  </div>
-                  <div className="news-info">
-                    <div className="time-to-read-box">
-                      <Image
-                        src={iconObj.time}
-                        alt="Time to read"
-                        className="icon"
-                        width={100}
-                        height={100}
-                      />
-                      <p className="time-to-read">{news.news_time_to_read} хв.</p>
-                    </div>
-                    <p className="data-post">{news.news_date_post}</p>
-                  </div>
-                </div>
-              </div>
+              <NewsCart
+                key={index}
+                news_img_url={news.news_img_url}
+                news_name={news.news_name}
+                news_text_full={news.news_text_full}
+                news_time_to_read={news.news_time_to_read}
+                news_date_post={news.news_date_post}
+                news_type={news.news_type}
+                news_source_url={news.news_source_url}
+                news_video_url={news.news_video_url}
+              />
             ))
           )}
         </div>
