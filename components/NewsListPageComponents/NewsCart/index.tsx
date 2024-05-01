@@ -12,6 +12,7 @@ interface Props {
   news_name: string;
   news_text_full: string;
   news_video_url: string;
+  news_source_url: string;
   news_time_to_read: number;
   news_date_post: number;
   news_type: MultiSelectOption[];
@@ -49,7 +50,8 @@ class NewsCart extends React.Component<Props, State> {
       news_time_to_read,
       news_date_post,
       news_type,
-      news_video_url
+      news_video_url,
+      news_source_url
     } = this.props;
     return (
       <>
@@ -107,7 +109,17 @@ class NewsCart extends React.Component<Props, State> {
           <div className="news-content-full">
             <h4 className="news-title-full">{news_name}</h4>
             <p className="news-text-full" dangerouslySetInnerHTML={{ __html: news_text_full }} />
-            <p className="data-post">{news_date_post}</p>
+            <div className="news-data">
+              <a
+                className="news-source"
+                href={news_source_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Джерело новини
+              </a>
+              <p className="data-post">{news_date_post}</p>
+            </div>
           </div>
         </Rodal>
       </>

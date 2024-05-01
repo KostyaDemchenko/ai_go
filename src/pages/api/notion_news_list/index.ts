@@ -51,7 +51,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     news_type: sortMultiSelectOptions(row.news_type),
     news_img_url: row.news_img_url.url,
     news_video_url: row.news_video_url.url,
-    news_sourse_url: row.news_source_url.url,
+    news_source_url: row.news_source_url.url,
     news_text_full:
       row.news_text_full.rich_text
         .map((richText) => richText.text.content)

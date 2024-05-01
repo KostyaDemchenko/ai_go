@@ -68,6 +68,7 @@ const NewsList: React.FC = () => {
               news_time_to_read={news.news_time_to_read}
               news_date_post={news.news_date_post}
               news_type={news.news_type}
+              news_source_url={news.news_source_url}
               news_video_url={news.news_video_url}
             />
           ))
