@@ -1,0 +1,72 @@
+@import "@/src/app/shortClasses.scss";
+
+.coming-soon-modal {
+  .rodal-mask {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .rodal-dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 101;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+    @include flex(flex-start, flex-start);
+    @include f-direction(column);
+
+    gap: 15px;
+
+    max-width: 500px;
+
+    background-color: var(--black);
+
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+    }
+
+    .action-box {
+      @include flex(center, center);
+      @include f-direction(column);
+      gap: 35px;
+      width: 100%;
+
+      .text-box {
+        @include flex(flex-start, center);
+        @include f-direction(column);
+        gap: 15px;
+        width: 100%;
+
+        h4 {
+          font-size: 28px;
+          font-weight: 600;
+          color: var(--white);
+        }
+
+        .description {
+          font-size: 14px;
+          font-weight: 400;
+          color: var(--dark-white);
+          text-align: center;
+        }
+      }
+
+      .btn {
+        @include flex(center, center);
+        width: 100%;
+      }
+    }
+
+    .rodal-close {
+      display: none;
+    }
+  }
+}

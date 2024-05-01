@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import ComingSoon from "@/components/BasicСomponents/ModalComingSoon"; // Путь к компоненту модалки
 
 import logo from "@/public/ai-go_logo.svg";
-
 import "./style.scss";
 
 const Header = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
   return (
     <header>
       <div className="left-side">
@@ -22,14 +28,17 @@ const Header = () => {
       </div>
       <div className="right-side">
         <div className="btn-box">
-          <a href="" className="btn btn-inactive">
+          {/* Добавляем обработчик события для открытия модалки */}
+          <button onClick={openModal} className="btn btn-inactive">
             Увійти
-          </a>
+          </button>
           <a href="" className="btn btn-active">
             Реєстрація
           </a>
         </div>
       </div>
+      {/* Показываем модалку, если modalVisible равно true */}
+      <ComingSoon visible={modalVisible} onClose={() => setModalVisible(false)} />
     </header>
   );
 };

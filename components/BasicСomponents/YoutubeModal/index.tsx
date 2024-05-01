@@ -56,6 +56,7 @@ class YoutubeModal extends React.Component<Props, State> {
           width={0}
           height={0}
           customStyles={{ height: "100%", width: "100%" }}
+          className="youtube-modal"
         >
           <iframe
             width="100%"

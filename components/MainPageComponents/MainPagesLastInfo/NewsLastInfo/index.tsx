@@ -87,7 +87,13 @@ const NewsLastInfo: React.FC = () => {
                   </div>
                   <div className="news-info">
                     <div className="time-to-read-box">
-                      <Image src={iconObj.time} alt="Time to read" className="icon" />
+                      <Image
+                        src={iconObj.time}
+                        alt="Time to read"
+                        className="icon"
+                        width={100}
+                        height={100}
+                      />
                       <p className="time-to-read">{news.news_time_to_read} хв.</p>
                     </div>
                     <p className="data-post">{news.news_date_post}</p>

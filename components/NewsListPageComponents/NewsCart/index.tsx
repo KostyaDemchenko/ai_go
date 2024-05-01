@@ -81,6 +81,7 @@ class NewsCart extends React.Component<Props, State> {
           width={0}
           height={0}
           customStyles={{ height: "fit-content", width: "100%" }}
+          className="news-modal"
         >
           {news_type.find((type) => type.name === "video") ? (
             // Если тип - видео, показываем триггер модального окна
