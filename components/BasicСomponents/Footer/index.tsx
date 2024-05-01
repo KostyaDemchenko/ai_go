@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+
+import ComingSoon from "@/components/BasicСomponents/ModalComingSoon";
 
 import iconObj from "@/public/icons/utils";
 import logo from "@/public/ai-go_logo.svg";
@@ -7,6 +9,11 @@ import logo from "@/public/ai-go_logo.svg";
 import "./style.scss";
 
 const Footer = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
   return (
     <footer>
       <div className="top-section">
@@ -67,17 +74,14 @@ const Footer = () => {
           <a className="title" href="/">
             Мапа сайту
           </a>
-          <a href="" className="link">
+          <button onClick={openModal} className="link">
             Навчання
-          </a>
+          </button>
           <a href="/news_page" className="link">
             Блог
           </a>
           <a href="" className="link">
             Про нас
-          </a>
-          <a href="" className="link">
-            Зв’язатись з нами
           </a>
         </div>
         <div className="fifth-column col">
@@ -89,7 +93,9 @@ const Footer = () => {
           </div>
           <div className="input-box">
             <input type="text" placeholder="Ваш email" />
-            <button className="btn btn-active">Підписатись</button>
+            <button onClick={openModal} className="btn btn-active">
+              Підписатись
+            </button>
           </div>
         </div>
       </div>
@@ -104,6 +110,7 @@ const Footer = () => {
           Закони та умови
         </a>
       </div>
+      <ComingSoon visible={modalVisible} onClose={() => setModalVisible(false)} />
     </footer>
   );
 };
