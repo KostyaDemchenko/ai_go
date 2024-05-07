@@ -25,7 +25,7 @@ const Header = () => {
           <a href="/prompts_page">Промпти</a>
           <a href="/news_page">Блог</a>
           <button onClick={openModal}>Навчання</button>
-          <a href="">Про нас</a>
+          <a href="/about_us_page">Про нас</a>
         </div>
       </div>
       <div className="right-side">

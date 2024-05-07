@@ -1,0 +1,42 @@
+@import "@/src/app/shortClasses.scss";
+
+main {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.container {
+  @include flex(center, center);
+  @include f-direction(column);
+
+  width: 100%;
+  gap: 60px;
+
+  .about-us-container {
+    @include flex(flex-start, flex-start);
+    @include f-direction(row);
+
+    width: 100%;
+    gap: 50px;
+
+    img {
+      width: 50%;
+      object-fit: contain;
+      height: 100%;
+    }
+
+    .text-container {
+      @include flex(flex-start, flex-start);
+      @include f-direction(column);
+
+      width: 50%;
+      gap: 20px;
+
+      .description {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--dark-white);
+      }
+    }
+  }
+}

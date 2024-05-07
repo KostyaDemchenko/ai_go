@@ -80,7 +80,7 @@ const Footer = () => {
           <a href="/news_page" className="link">
             Блог
           </a>
-          <a href="" className="link">
+          <a href="/about_us_page" className="link">
             Про нас
           </a>
         </div>
