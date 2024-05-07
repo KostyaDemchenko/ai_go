@@ -17,6 +17,7 @@ main {
     @include f-direction(row);
 
     width: 100%;
+    min-height: calc(100dvh - 541px);
     gap: 50px;
 
     img {

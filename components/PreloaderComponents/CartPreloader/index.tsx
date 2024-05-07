@@ -2,11 +2,11 @@ import React from "react";
 
 import "./style.scss";
 
-interface AiCartPreloaderProps {
+interface CartPreloaderProps {
   cardCount: number;
 }
 
-const AiCartPreloader: React.FC<AiCartPreloaderProps> = ({ cardCount }) => {
+const CartPreloader: React.FC<CartPreloaderProps> = ({ cardCount }) => {
   const repeatArray = new Array(cardCount).fill(null);
 
   return (
@@ -30,4 +30,4 @@ const AiCartPreloader: React.FC<AiCartPreloaderProps> = ({ cardCount }) => {
   );
 };
 
-export default AiCartPreloader;
+export default CartPreloader;

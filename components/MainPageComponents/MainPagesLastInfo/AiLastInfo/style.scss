@@ -1,1 +1,82 @@
+@import "@/src/app/shortClasses.scss";
 
+.ai-item {
+  @include flex(center, center);
+  @include f-direction(column);
+  gap: 20px;
+
+  position: relative;
+
+  max-width: 290px;
+  width: 100%;
+  padding: 10px;
+
+  background-color: var(--dark-grey);
+  color: var(--white);
+
+  border-radius: 15px;
+
+  .prev-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  .content-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    width: 100%;
+
+    .ai-title-box {
+      @include flex(flex-start, center);
+      @include f-direction(row);
+      gap: 10px;
+
+      .ai-name {
+        font-size: 22px;
+        font-weight: 600;
+      }
+    }
+
+    .description {
+      background-color: var(--dark-grey);
+    }
+
+    .property-box {
+      @include flex(flex-start, flex-start);
+      @include f-direction(row);
+      flex-wrap: wrap;
+      gap: 5px;
+
+      .property {
+        font-size: 12px;
+        font-weight: 300;
+        padding: 3px 10px;
+        border: 1px solid var(--primary);
+        border-radius: 5px;
+      }
+
+      .property:nth-child(1) {
+        border: 1px solid #3babeb;
+      }
+      .property:nth-child(2) {
+        border: 1px solid #c4fb4e;
+      }
+      .property:nth-child(3) {
+        border: 1px solid #ec76ff;
+      }
+      .property:nth-child(4) {
+        border: 1px solid #868686;
+      }
+      .property:nth-child(5) {
+        border: 1px solid #f6a78b;
+      }
+      .property:nth-child(6) {
+        border: 1px solid #f5de34;
+      }
+    }
+  }
+}

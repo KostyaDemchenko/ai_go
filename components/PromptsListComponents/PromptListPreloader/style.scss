@@ -1,0 +1,20 @@
+@import "@/src/app/shortClasses.scss";
+
+.preloader-container {
+  @include flex(center, center);
+  @include f-direction(column);
+
+  max-width: 1390px;
+  width: 100%;
+  gap: 60px;
+
+  margin: 0 auto;
+
+  .preloader-settings {
+    @include flex(flex-start, flex-start);
+    @include f-direction(column);
+    width: 100%;
+
+    gap: 20px;
+  }
+}

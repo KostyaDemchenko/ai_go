@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import Filter from "@/components/BasicСomponents/Filter";
 import CartRate from "@/components/AiListPageComponents/AiListCartRating";
-import ListPreloader from "@/components/AiListPageComponents/AiListPreloader";
+import AiListPreloader from "@/components/AiListPageComponents/AiListPreloader";
 import AccordionAiItems from "@/components/AiListPageComponents/AiListCardAccordion";
 import AiLinkBox from "@/components/AiListPageComponents/AiListLinkBox";
 import SearchBox from "@/components/AiListPageComponents/AiListSearchBox";
@@ -124,7 +124,7 @@ const AiList: React.FC = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   if (aiList === null) {
-    return <ListPreloader />;
+    return <AiListPreloader />;
   }
 
   return (

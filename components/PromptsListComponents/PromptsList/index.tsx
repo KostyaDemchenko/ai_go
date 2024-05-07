@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 
 // re-write
-import ListPreloader from "@/components/AiListPageComponents/AiListPreloader";
 
 import Filter from "@/components/BasicСomponents/Filter";
 import CartRate from "@/components/PromptsListComponents/CartRating";
@@ -12,6 +11,8 @@ import AccordionPromptsItems from "@/components/PromptsListComponents/AccordionP
 import Pagination from "@/components/BasicСomponents/Pagination";
 import SortOptions from "@/components/BasicСomponents/ListSort";
 import YoutubeModal from "@/components/BasicСomponents/YoutubeModal";
+
+import PromptListPreloader from "@/components/PromptsListComponents/PromptListPreloader";
 
 import "./style.scss";
 
@@ -111,7 +112,7 @@ const PromptsList: React.FC = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   if (promptsList === null) {
-    return <ListPreloader />;
+    return <PromptListPreloader />;
   }
 
   return (

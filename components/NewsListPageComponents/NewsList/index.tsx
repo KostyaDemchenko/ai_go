@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import ListPreloader from "@/components/AiListPageComponents/AiListPreloader";
 import Pagination from "@/components/BasicСomponents/Pagination";
 import NewsCart from "@/components/NewsListPageComponents/NewsCart";
+import NewsListPreloader from "@/components/NewsListPageComponents/NewsListPreloader";
 
 import "./style.scss";
 
@@ -52,7 +53,7 @@ const NewsList: React.FC = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   if (sortedNewsList === null) {
-    return <ListPreloader />;
+    return <NewsListPreloader />;
   }
 
   return (
