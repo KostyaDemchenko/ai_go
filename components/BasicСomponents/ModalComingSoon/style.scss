@@ -18,50 +18,51 @@
     border-radius: 15px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
-    @include flex(flex-start, flex-start);
-    @include f-direction(column);
-
-    gap: 15px;
-
     max-width: 500px;
-
     background-color: var(--black);
 
-    img {
-      width: 100%;
-      height: 300px;
-      object-fit: contain;
-    }
-
-    .action-box {
-      @include flex(center, center);
+    .coming-soon-content-box {
+      @include flex(flex-start, flex-start);
       @include f-direction(column);
-      gap: 35px;
-      width: 100%;
 
-      .text-box {
-        @include flex(flex-start, center);
-        @include f-direction(column);
-        gap: 15px;
+      gap: 15px;
+
+      img {
         width: 100%;
-
-        h4 {
-          font-size: 28px;
-          font-weight: 600;
-          color: var(--white);
-        }
-
-        .description {
-          font-size: 14px;
-          font-weight: 400;
-          color: var(--dark-white);
-          text-align: center;
-        }
+        height: 300px;
+        object-fit: contain;
       }
 
-      .btn {
+      .action-box {
         @include flex(center, center);
+        @include f-direction(column);
+        gap: 35px;
         width: 100%;
+
+        .text-box {
+          @include flex(flex-start, center);
+          @include f-direction(column);
+          gap: 15px;
+          width: 100%;
+
+          h4 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--white);
+          }
+
+          .description {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--dark-white);
+            text-align: center;
+          }
+        }
+
+        .btn {
+          @include flex(center, center);
+          width: 100%;
+        }
       }
     }
 
