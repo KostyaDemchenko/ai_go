@@ -1,8 +1,7 @@
 // components/promptsList/index.tsx
 
 import React, { useState, useEffect } from "react";
-
-// re-write
+import { ToastContainer } from "react-toastify";
 
 import Filter from "@/components/BasicСomponents/Filter";
 import CartRate from "@/components/PromptsListComponents/CartRating";
@@ -210,6 +209,8 @@ const PromptsList: React.FC = () => {
         totalItems={filteredPromptsList?.length || 0}
         paginate={paginate}
       />
+
+      <ToastContainer />
     </>
   );
 };

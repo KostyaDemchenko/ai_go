@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { ToastContainer } from "react-toastify";
 
 // Preloder
 import MainPagePreloader from "@/components/MainPageComponents/MainPagePreloader";
@@ -124,6 +125,7 @@ const PromtsLastInfo: React.FC = () => {
           )}
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

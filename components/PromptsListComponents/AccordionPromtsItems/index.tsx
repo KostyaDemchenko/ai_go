@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { toast, Slide } from "react-toastify";
 
-import CopyButton from "@/components/BasicСomponents/CopyTextBtn";
-
 import iconObj from "@/public/icons/utils";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -16,6 +14,7 @@ interface AccordionPromptsItemsProps {
 const AccordionPromptsItems: React.FC<AccordionPromptsItemsProps> = ({ promptsContent }) => {
   const [expanded, setExpanded] = useState(false);
   const [contentHeight, setContentHeight] = useState<number | undefined>(0);
+  const [isHovered, setIsHovered] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -35,11 +34,20 @@ const AccordionPromptsItems: React.FC<AccordionPromptsItemsProps> = ({ promptsCo
       toast(`Скопійовано: ${copiedTextPreview}`, {
         transition: Slide,
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         theme: "dark"
       });
     });
   };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <div className={`accordion ${expanded ? "expanded" : ""}`}>
       <div className="accordion-header" onClick={toggleAccordion}>
@@ -60,10 +68,19 @@ const AccordionPromptsItems: React.FC<AccordionPromptsItemsProps> = ({ promptsCo
         }}
         ref={contentRef}
       >
-        <p className="description" onClick={handleCopy}>
+        <p
+          className="description"
+          onClick={handleCopy}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           {promptsContent}
+          {isHovered && (
+            <div className="copy-btn-container">
+              <Image className="icon" src={iconObj.copy} width={16} height={16} alt="Copy" />
+            </div>
+          )}
         </p>
-        <CopyButton text={promptsContent} />
       </div>
     </div>
   );

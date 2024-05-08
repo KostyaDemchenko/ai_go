@@ -62,4 +62,21 @@
   &.expanded .accordion-content {
     overflow: auto;
   }
+
+  .copy-btn-container {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    @include flex(center, center);
+    @include f-direction(row);
+    width: 22px;
+    height: 22px;
+    background-color: var(--dark-grey);
+    border-radius: 5px;
+
+    .icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
 }
