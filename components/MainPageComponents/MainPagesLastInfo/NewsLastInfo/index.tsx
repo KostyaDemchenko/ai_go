@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 // Preloder
-import MainPagePreloader from "@/components/MainPageComponents/MainPagePreloader";
+import MainPagePreloader from "@/components/MainPageComponents/MainPageLastInfoPreloader";
 import NewsCart from "@/components/NewsListPageComponents/NewsCart";
 
 import iconObj from "@/public/icons/utils";

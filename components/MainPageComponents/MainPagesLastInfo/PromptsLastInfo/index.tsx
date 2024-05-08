@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ToastContainer } from "react-toastify";
 
 // Preloder
-import MainPagePreloader from "@/components/MainPageComponents/MainPagePreloader";
+import MainPagePreloader from "@/components/MainPageComponents/MainPageLastInfoPreloader";
 
 // Components
 import CartRate from "@/components/PromptsListComponents/CartRating";
