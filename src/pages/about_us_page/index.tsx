@@ -23,7 +23,7 @@ export default function ai_list() {
           name="description"
           content="Ми - колектив експертів у сфері штучного інтелекту, які працюють над створенням передових нейромережових технологій. Наша команда зосереджена на досягненні високих стандартів якості та інноваційності у таких областях, як розпізнавання образів, природна мова та автономні системи. Наша мета - революціонізувати технології, зробивши їх доступними та ефективними для всіх.          "
         />
-        <meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg" />
+        <meta property="og:image" content="https://i.ytimg.com/vi/fM8PQBn1VaQ/maxresdefault.jpg" />
         <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
       </Head>
       {/* Metadata */}
