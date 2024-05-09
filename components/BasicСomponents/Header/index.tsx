@@ -2,16 +2,23 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import ComingSoon from "@/components/BasicСomponents/ModalComingSoon";
+import MenuMobile from "@/components/BasicСomponents/MenuMobile";
 
+import iconObj from "@/public/icons/utils";
 import logo from "@/public/ai-go_logo.svg";
 
 import "./style.scss";
 
 const Header = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const openModal = () => {
     setModalVisible(true);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -29,6 +36,12 @@ const Header = () => {
         </div>
       </div>
       <div className="right-side">
+        <div>
+          <button onClick={toggleMenu} className="menu-trigger">
+            <Image src={iconObj.menu} alt="menu trigger" />
+          </button>
+          <MenuMobile isOpen={isMenuOpen} onClose={toggleMenu} />
+        </div>
         <div className="btn-box">
           <button onClick={openModal} className="btn btn-inactive">
             Увійти

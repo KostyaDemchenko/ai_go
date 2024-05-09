@@ -1,0 +1,93 @@
+@import "@/src/app/shortClasses.scss";
+
+.menu {
+  display: none;
+
+  @media (max-width: 500px) {
+    @include flex(flex-start, flex-start);
+    @include f-direction(column);
+
+    position: fixed;
+    top: 0;
+    right: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--black);
+    transition: right 0.3s ease-in-out;
+    z-index: 200;
+  }
+
+  &.open {
+    right: 0;
+  }
+
+  .menuContainer {
+    @include flex(space-between, center);
+    @include f-direction(column);
+
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+
+    .topSection {
+      @include flex(flex-start, flex-start);
+      @include f-direction(column);
+
+      width: 100%;
+      gap: 45px;
+
+      .menuClose {
+        @include flex(space-between, center);
+        @include f-direction(row);
+        width: 100%;
+
+        .title {
+          font-size: 24px;
+          font-weight: 600;
+          color: var(--white);
+        }
+      }
+
+      .menuItems {
+        @include flex(flex-start, flex-start);
+        @include f-direction(column);
+
+        gap: 25px;
+
+        padding: 0;
+        list-style: none;
+
+        a,
+        button {
+          color: var(--white);
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .bottomSection {
+      width: 100%;
+
+      .btnBox {
+        @include flex(flex-start, center);
+        @include f-direction(column);
+
+        width: 100%;
+
+        gap: 10px;
+
+        button {
+          width: 100%;
+          @include flex(center, center);
+        }
+      }
+    }
+  }
+}

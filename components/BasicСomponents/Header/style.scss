@@ -9,12 +9,23 @@ header {
   padding-top: 15px;
   padding-bottom: 15px;
 
+  @include max-w-media(500px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    width: calc(100% - 40px);
+  }
+
   .left-side {
     @include flex(space-between, center);
     @include f-direction(row);
 
     max-width: 580px;
     width: 100%;
+
+    @include max-w-media(500px) {
+      max-width: fit-content;
+    }
 
     .logo-box {
       width: fit-content;
@@ -34,11 +45,30 @@ header {
       a {
         font-size: 14px;
         font-weight: 400;
+
+        &:hover {
+          color: var(--primary);
+        }
       }
 
-      a:hover {
-        transform: 0.3s;
-        color: var(--primary);
+      @include max-w-media(500px) {
+        display: none;
+      }
+    }
+  }
+
+  .right-side {
+    .menu-trigger {
+      display: none; // Скрыть триггер на десктопных устройствах
+
+      @include max-w-media(500px) {
+        display: flex;
+      }
+    }
+
+    .btn-box {
+      @include max-w-media(500px) {
+        display: none;
       }
     }
   }

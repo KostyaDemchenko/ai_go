@@ -13,6 +13,7 @@ import search from "./search.svg";
 import close from "./close.svg";
 import check from "./check.svg";
 import time from "./time.svg";
+import menu from "./menu.svg";
 import like from "./like.svg";
 import copy from "./copy.svg";
 import mail from "./mail.svg";
@@ -41,6 +42,7 @@ const obj: { [key: string]: string } = {
   check: check,
   like: like,
   time: time,
+  menu: menu,
   copy: copy,
   mail: mail,
 
