@@ -30,59 +30,61 @@ const Footer = () => {
             aigo.lib@gmail.com
           </a>
         </div>
-        <div className="second-column col">
-          <a className="title" href="/ai_list">
-            ШІ-сервіси
-          </a>
-          <a href="/ai_list" className="link">
-            Chat GPT
-          </a>
-          <a href="/ai_list" className="link">
-            Midjourney
-          </a>
-          <a href="/ai_list" className="link">
-            DALL-E
-          </a>
-          <a href="/ai_list" className="link">
-            PHCrhoma
-          </a>
-          <a href="/ai_list" className="link">
-            Stable Diffusion
-          </a>
-        </div>
-        <div className="third-column col">
-          <a className="title" href="/prompts_page">
-            Промпти
-          </a>
-          <a href="/prompts_page" className="link">
-            Промпти Chat GPT
-          </a>
-          <a href="/prompts_page" className="link">
-            Промпти Midjourney
-          </a>
-          <a href="/prompts_page" className="link">
-            Промпти DALL-E
-          </a>
-          <a href="/prompts_page" className="link">
-            Промпти PHCrhoma
-          </a>
-          <a href="/prompts_page" className="link">
-            Промпти Stable Diffusion
-          </a>
-        </div>
-        <div className="fourth-column col">
-          <a className="title" href="/">
-            Мапа сайту
-          </a>
-          <button onClick={openModal} className="link">
-            Навчання
-          </button>
-          <a href="/news_page" className="link">
-            Блог
-          </a>
-          <a href="/about_us_page" className="link">
-            Про нас
-          </a>
+        <div className="site-navigation">
+          <div className="second-column col">
+            <a className="title" href="/ai_list">
+              ШІ-сервіси
+            </a>
+            <a href="/ai_list" className="link">
+              Chat GPT
+            </a>
+            <a href="/ai_list" className="link">
+              Midjourney
+            </a>
+            <a href="/ai_list" className="link">
+              DALL-E
+            </a>
+            <a href="/ai_list" className="link">
+              PHCrhoma
+            </a>
+            <a href="/ai_list" className="link">
+              Stable Diffusion
+            </a>
+          </div>
+          <div className="third-column col">
+            <a className="title" href="/prompts_page">
+              Промпти
+            </a>
+            <a href="/prompts_page" className="link">
+              Промпти Chat GPT
+            </a>
+            <a href="/prompts_page" className="link">
+              Промпти Midjourney
+            </a>
+            <a href="/prompts_page" className="link">
+              Промпти DALL-E
+            </a>
+            <a href="/prompts_page" className="link">
+              Промпти PHCrhoma
+            </a>
+            <a href="/prompts_page" className="link">
+              Промпти Stable Diffusion
+            </a>
+          </div>
+          <div className="fourth-column col">
+            <a className="title" href="/">
+              Мапа сайту
+            </a>
+            <button onClick={openModal} className="link">
+              Навчання
+            </button>
+            <a href="/news_page" className="link">
+              Блог
+            </a>
+            <a href="/about_us_page" className="link">
+              Про нас
+            </a>
+          </div>
         </div>
         <div className="fifth-column col">
           <div className="text-box">

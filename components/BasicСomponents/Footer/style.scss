@@ -8,6 +8,11 @@ footer {
   padding-bottom: 35px;
   width: 100%;
 
+  @include max-w-media(500px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
   gap: 35px;
 
   .title {
@@ -51,6 +56,13 @@ footer {
     @include f-direction(row);
     width: 100%;
 
+    @include max-w-media(500px) {
+      @include flex(flex-start, flex-start);
+      @include f-direction(column);
+
+      gap: 35px;
+    }
+
     .first-column {
       max-width: 310px;
       width: 100%;
@@ -68,11 +80,26 @@ footer {
       }
     }
 
-    .second-column,
-    .third-column,
-    .fourth-column {
-      max-width: 200px;
+    .site-navigation {
+      @include flex(flex-start, flex-start);
+      @include f-direction(row);
       width: 100%;
+
+      @include max-w-media(500px) {
+        flex-wrap: wrap;
+        gap: 30px 70px;
+      }
+
+      .second-column,
+      .third-column,
+      .fourth-column {
+        max-width: 200px;
+        width: 100%;
+
+        @include max-w-media(500px) {
+          max-width: fit-content;
+        }
+      }
     }
 
     .fifth-column {
