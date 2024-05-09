@@ -30,6 +30,15 @@
   margin: 0 auto;
   max-width: var(--container-width);
   padding: var(--container-top-padding) var(--container-side-padding);
+
+  @include max-w-media(500px) {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: calc(100% - 30px);
+    width: 100%;
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
 }
 
 @mixin gradientAnimation {

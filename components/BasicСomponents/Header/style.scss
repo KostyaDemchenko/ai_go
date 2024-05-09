@@ -12,8 +12,8 @@ header {
   @include max-w-media(500px) {
     padding-top: 20px;
     padding-bottom: 20px;
-
-    width: calc(100% - 40px);
+    margin: 0;
+    width: 100%;
   }
 
   .left-side {
@@ -25,6 +25,7 @@ header {
 
     @include max-w-media(500px) {
       max-width: fit-content;
+      width: calc(100% - 30px);
     }
 
     .logo-box {
