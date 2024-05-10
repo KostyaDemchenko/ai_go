@@ -13,6 +13,10 @@
   border: 1px solid var(--grey);
   transition: 0.3s;
 
+  @include max-w-media(500px) {
+    padding: 10px 7px;
+  }
+
   img {
     width: 18px;
     height: 18px;

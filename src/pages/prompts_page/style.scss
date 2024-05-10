@@ -3,6 +3,11 @@
 main {
   padding-top: 60px;
   padding-bottom: 60px;
+
+  @include max-w-media(500px) {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
 }
 
 .container {

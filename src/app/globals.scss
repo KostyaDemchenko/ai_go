@@ -126,6 +126,10 @@ body {
   font-weight: 600;
   text-align: left;
   width: 100%;
+
+  @include max-w-media(500px) {
+    font-size: 24px;
+  }
 }
 
 .swiper {

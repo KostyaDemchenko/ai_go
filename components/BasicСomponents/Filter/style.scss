@@ -17,6 +17,12 @@
     padding: 9px 15px;
     border-radius: 5px;
 
+    @include max-w-media(500px) {
+      box-sizing: border-box;
+      width: 100%;
+      gap: 30px;
+    }
+
     .title {
       font-size: 14px;
       font-weight: 500;
