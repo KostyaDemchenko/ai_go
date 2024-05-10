@@ -21,6 +21,10 @@
     max-width: 500px;
     background-color: var(--black);
 
+    @media (max-width: 500px) {
+      max-width: 360px;
+    }
+
     .coming-soon-content-box {
       @include flex(flex-start, flex-start);
       @include f-direction(column);
@@ -29,7 +33,7 @@
 
       img {
         width: 100%;
-        height: 300px;
+        height: 100%;
         object-fit: contain;
       }
 
@@ -49,6 +53,10 @@
             font-size: 24px;
             font-weight: 600;
             color: var(--white);
+
+            @media (max-width: 500px) {
+              font-size: 20px;
+            }
           }
 
           .description {
@@ -56,12 +64,17 @@
             font-weight: 400;
             color: var(--dark-white);
             text-align: center;
+
+            @media (max-width: 500px) {
+              font-size: 14px;
+            }
           }
         }
 
         .btn {
           @include flex(center, center);
           width: 100%;
+          font-weight: 300;
         }
       }
     }
