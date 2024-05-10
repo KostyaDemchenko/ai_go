@@ -9,4 +9,9 @@
   background: linear-gradient(to right, var(--black), var(--grey));
   background-size: 200% 100%;
   animation: gradientAnimation 2s linear infinite;
+
+  @include max-w-media(500px) {
+    width: 150px;
+    height: 30px;
+  }
 }
