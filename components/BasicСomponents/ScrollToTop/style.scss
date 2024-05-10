@@ -23,4 +23,11 @@
     box-shadow: 0px 0px 5px 0px var(--primary);
     background-color: var(--primary);
   }
+
+  @include max-w-media(500px) {
+    width: 40px;
+    height: 40px;
+    bottom: 15px;
+    right: 15px;
+  }
 }
