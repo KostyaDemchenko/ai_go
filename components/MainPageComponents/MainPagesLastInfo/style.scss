@@ -5,6 +5,15 @@
   @include flex(flex-start, flex-start);
   @include f-direction(column);
 
+  @include max-w-media(500px) {
+    --container-side-padding: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
   width: 100%;
   gap: 60px;
   padding-top: 60px;
@@ -16,6 +25,10 @@
     flex-wrap: wrap;
     gap: 25px 50px;
     width: 100%;
+
+    @include max-w-media(500px) {
+      display: none;
+    }
 
     .ai-item {
       @include flex(center, center);
@@ -102,6 +115,10 @@
     width: 100%;
     gap: 25px;
 
+    @include max-w-media(500px) {
+      width: 100%;
+    }
+
     .page-link {
       @include flex(flex-start, center);
       @include f-direction(row);
@@ -110,9 +127,19 @@
       font-size: 42px;
       font-weight: 700;
 
+      @include max-w-media(500px) {
+        font-size: 24px;
+        padding-left: 15px;
+      }
+
       .icon {
         width: 40px;
         height: 40px;
+
+        @include max-w-media(500px) {
+          width: 32px;
+          height: 32px;
+        }
       }
     }
   }

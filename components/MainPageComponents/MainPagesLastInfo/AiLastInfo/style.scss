@@ -1,5 +1,17 @@
 @import "@/src/app/shortClasses.scss";
 
+.aiSwiper {
+  display: none;
+
+  @include max-w-media(500px) {
+    display: flex;
+  }
+
+  .swiper-slide {
+    margin: 0 15px;
+  }
+}
+
 .ai-item {
   @include flex(center, center);
   @include f-direction(column);

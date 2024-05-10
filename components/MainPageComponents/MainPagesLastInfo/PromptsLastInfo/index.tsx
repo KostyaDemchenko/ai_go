@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ToastContainer } from "react-toastify";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
 
 // Preloder
 import MainPagePreloader from "@/components/MainPageComponents/MainPageLastInfoPreloader";
@@ -124,6 +129,63 @@ const PromtsLastInfo: React.FC = () => {
             ))
           )}
         </div>
+        <Swiper
+          slidesPerView={"auto"}
+          spaceBetween={0}
+          pagination={{
+            clickable: true
+          }}
+          // loop={true}
+          className="promptsSwiper"
+        >
+          {promptsList.length === 0 ? (
+            <p>No items to display.</p>
+          ) : (
+            promptsList.map((prompt: promtsListStructured, index: number) => (
+              <SwiperSlide key={index} className="prompt-item">
+                <div className="top-box">
+                  <CartRate rate={prompt.prompt_rate} />
+                  {prompt.promt_result_type.find((type) => type.name === "video") ? (
+                    // Если тип - видео, показываем триггер модального окна
+                    <YoutubeModal
+                      videoTitle={prompt.prompt_name}
+                      videoUrl={prompt.prompt_result_video_url}
+                      imageUrl={prompt.prompt_result_img_url}
+                    />
+                  ) : (
+                    // Если тип - изображение, показываем изображение
+                    <img
+                      className="prev-img"
+                      src={prompt.prompt_result_img_url}
+                      alt={prompt.prompt_name}
+                    />
+                  )}
+                  <DownloadBtn downloadLink={prompt.prompt_result_img_url} />
+                </div>
+                <div className="content-box">
+                  <div className="prompt-title-box">
+                    <a className="prompt-ai-title" target="_blank" href={prompt.prompt_ai_url}>
+                      {prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)}
+                    </a>
+                    <p className="prompt-name">{prompt.prompt_name}</p>
+                  </div>
+                  <AccordionPromptsItems promptsContent={prompt.prompt_pattern} />
+                  <div className="property-box">
+                    {[
+                      ...prompt.prompt_type.map((type: MultiSelectOption) => type.name),
+                      ...prompt.prompt_speciality.map((type: MultiSelectOption) => type.name),
+                      ...prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)
+                    ].map((name: string, index: number) => (
+                      <p className="property" key={index}>
+                        {name}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))
+          )}
+        </Swiper>
       </div>
       <ToastContainer />
     </>

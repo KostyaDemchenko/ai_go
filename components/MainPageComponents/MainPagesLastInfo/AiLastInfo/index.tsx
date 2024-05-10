@@ -3,6 +3,12 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
 // Preloder
 import MainPagePreloader from "@/components/MainPageComponents/MainPageLastInfoPreloader";
 
@@ -77,7 +83,6 @@ const AiLastInfo: React.FC = () => {
           Нейромережі
           <Image className="icon" src={iconObj.openLink} alt="Open link" />
         </a>
-        {/* <CopyButton text="Нейромережі" /> */}
         <div className="ai-list-container">
           {filteredAiList && filteredAiList.length > 0 ? (
             filteredAiList.map((ai, index) => (
@@ -116,6 +121,52 @@ const AiLastInfo: React.FC = () => {
             <p>No items to display.</p>
           )}
         </div>
+        <Swiper
+          slidesPerView={"auto"}
+          spaceBetween={0}
+          pagination={{
+            clickable: true
+          }}
+          // loop={true}
+          className="aiSwiper"
+        >
+          {filteredAiList && filteredAiList.length > 0 ? (
+            filteredAiList.map((ai, index) => (
+              <SwiperSlide key={index} className="ai-item">
+                <img className="prev-img" src={ai.ai_img_url} alt={ai.ai_name} />
+                <div className="content-box">
+                  <CartRate rate={ai.ai_rate} />
+                  <AiLinkBox url={ai.ai_url} />
+                  <div className="ai-title-box">
+                    <p className="ai-name">{ai.ai_name}</p>
+                    {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "🇺🇦") && (
+                      <div>
+                        <span role="img" aria-label="Ukraine flag">
+                          🇺🇦
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <AccordionAiItems description={ai.ai_description} />
+                  <div className="property-box">
+                    {[
+                      ...ai.ai_uses.map((type: MultiSelectOption) => type.name),
+                      ...ai.ai_sector.map((type: MultiSelectOption) => type.name),
+                      ...ai.ai_cost.map((type: MultiSelectOption) => type.name),
+                      ...ai.ai_api.map((type: MultiSelectOption) => type.name)
+                    ].map((name: string, index: number) => (
+                      <p className="property" key={index}>
+                        {name}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))
+          ) : (
+            <p>No items to display.</p>
+          )}
+        </Swiper>
       </div>
     </>
   );

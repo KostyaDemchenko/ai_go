@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
 // Preloder
 import MainPagePreloader from "@/components/MainPageComponents/MainPageLastInfoPreloader";
 import NewsCart from "@/components/NewsListPageComponents/NewsCart";
@@ -88,6 +94,34 @@ const NewsLastInfo: React.FC = () => {
             ))
           )}
         </div>
+        <Swiper
+          slidesPerView={"auto"}
+          spaceBetween={0}
+          pagination={{
+            clickable: true
+          }}
+          // loop={true}
+          className="newsSwiper"
+        >
+          {newsList.length === 0 ? (
+            <p>No items to display.</p>
+          ) : (
+            newsList.map((news: newsListStructured, index: number) => (
+              <SwiperSlide key={index} className="swiper-slide-news">
+                <NewsCart
+                  news_img_url={news.news_img_url}
+                  news_name={news.news_name}
+                  news_text_full={news.news_text_full}
+                  news_time_to_read={news.news_time_to_read}
+                  news_date_post={news.news_date_post}
+                  news_type={news.news_type}
+                  news_source_url={news.news_source_url}
+                  news_video_url={news.news_video_url}
+                />
+              </SwiperSlide>
+            ))
+          )}
+        </Swiper>
       </div>
     </>
   );
