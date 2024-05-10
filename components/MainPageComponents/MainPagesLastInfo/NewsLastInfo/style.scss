@@ -17,10 +17,11 @@
 
   @include max-w-media(500px) {
     display: flex;
-  }
 
-  .swiper-slide {
-    margin: 0 15px;
+    .news-item {
+      margin: 0 15px;
+      max-width: 290px;
+    }
   }
 }
 
