@@ -8,4 +8,8 @@
   width: 100%;
 
   min-height: calc(70dvh - 71px);
+
+  @include max-w-media(500px) {
+    @include flex(center, flex-start);
+  }
 }

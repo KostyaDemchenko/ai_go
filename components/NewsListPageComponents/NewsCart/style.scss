@@ -18,6 +18,11 @@
 
   border-radius: 15px;
 
+  @include max-w-media(500px) {
+    max-width: 450px;
+    width: 100%;
+  }
+
   .top-box {
     position: relative;
 
