@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Head from "next/head";
 import Header from "@/components/BasicСomponents/Header";
@@ -37,6 +38,7 @@ export default function Home() {
         <MainPagesLastInfo />
         <Footer />
       </MainPreloader>
+      <SpeedInsights />
     </>
   );
 }
