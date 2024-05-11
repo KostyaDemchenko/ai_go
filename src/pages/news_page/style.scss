@@ -8,6 +8,7 @@ main {
     padding-top: 25px;
     padding-bottom: 25px;
   }
+
   .container {
     @include flex(center, center);
     @include f-direction(column);
