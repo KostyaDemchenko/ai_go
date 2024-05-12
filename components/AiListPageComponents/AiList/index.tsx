@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
+// Components
 import Filter from "@/components/BasicСomponents/Filter";
 import CartRate from "@/components/AiListPageComponents/AiListCartRating";
 import AiListPreloader from "@/components/AiListPageComponents/AiListPreloader";
@@ -12,8 +13,10 @@ import SearchBox from "@/components/AiListPageComponents/AiListSearchBox";
 import Pagination from "@/components/BasicСomponents/Pagination";
 import SortOptions from "@/components/BasicСomponents/ListSort";
 
+// Icons
 import iconObj from "@/public/icons/utils";
 
+// Styles
 import "./style.scss";
 
 const AiList: React.FC = () => {
