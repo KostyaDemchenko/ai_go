@@ -10,6 +10,10 @@
   background-color: var(--dark-grey);
   overflow: hidden;
 
+  @include max-w-media(500px) {
+    display: none;
+  }
+
   .sort-options-title {
     @include flex(space-between, center);
     @include f-direction(row);
@@ -67,6 +71,96 @@
   &.open {
     .sort-options-list {
       max-height: 200px; // set your desired max height here
+    }
+  }
+}
+
+.sorting-modal-triger {
+  display: none;
+
+  @include max-w-media(500px) {
+    display: flex;
+  }
+}
+
+.sort-modal {
+  @include max-w-media(500px) {
+    .rodal-mask {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .rodal-close {
+      position: absolute;
+      cursor: pointer;
+      top: 15px;
+      right: 15px;
+      width: 20px;
+      height: 20px;
+
+      &::before,
+      &::after {
+        background: var(--white);
+      }
+    }
+
+    .rodal-dialog {
+      @include flex(flex-start, flex-start);
+      @include f-direction(column);
+      gap: 25px;
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: calc(-100dvh + 270px);
+      margin: auto;
+      z-index: 500;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+      background-color: var(--black);
+
+      width: 100%;
+      box-sizing: border-box;
+
+      .sort-options-title {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: left;
+        color: var(--white);
+      }
+
+      .content {
+        @include flex(flex-start, flex-start);
+        @include f-direction(column);
+        gap: 25px;
+
+        width: 100%;
+
+        .sort-options-list {
+          @include flex(flex-start, flex-start);
+          @include f-direction(column);
+          gap: 15px;
+
+          button {
+            @include flex(flex-start, center);
+            @include f-direction(row);
+            gap: 5px;
+            color: var(--white);
+            font-weight: 300;
+            text-wrap: nowrap;
+            font-size: 14px;
+            cursor: pointer;
+          }
+        }
+
+        .btn-active {
+          @include flex(center, center);
+          width: 100%;
+          font-weight: 400;
+          font-size: 14px;
+        }
+      }
     }
   }
 }

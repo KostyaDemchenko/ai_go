@@ -72,10 +72,6 @@
     .ai-sort-container {
       @include flex(space-between, flex-start);
       @include f-direction(row);
-
-      @include max-w-media(500px) {
-        display: none;
-      }
     }
   }
 }
