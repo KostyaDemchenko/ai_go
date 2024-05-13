@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Rodal from "rodal";
 
 // Components
 import Filter from "@/components/BasicСomponents/Filter";
@@ -17,6 +18,7 @@ import SortOptions from "@/components/BasicСomponents/ListSort";
 import iconObj from "@/public/icons/utils";
 
 // Styles
+import "rodal/lib/rodal.css";
 import "./style.scss";
 
 const AiList: React.FC = () => {
@@ -27,6 +29,12 @@ const AiList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage] = useState<number>(12);
   const [sortType, setSortType] = useState<string>("");
+  const [isFiltersVisible, setIsFiltersVisible] = useState(false);
+
+  // Show modal filers on mobile
+  const toggleFilters = () => {
+    setIsFiltersVisible(!isFiltersVisible);
+  };
 
   useEffect(() => {
     fetchData();
@@ -213,9 +221,84 @@ const AiList: React.FC = () => {
                   selectedCategories={selectedCategories}
                 />
               </div>
-              <div className="ai-sort-container">
-                <SortOptions handleSort={handleSort} />
+
+              <div className="filters-modile-trigger-sort-container">
+                <div className="ai-filters-modal-trigger" onClick={toggleFilters}>
+                  <Image src={iconObj.filter} alt="Filter" width={20} height={20} />
+                  <p>Фільтри</p>
+                </div>
+                <div className="ai-sort-container">
+                  <SortOptions handleSort={handleSort} />
+                </div>
               </div>
+
+              <Rodal
+                visible={isFiltersVisible}
+                onClose={toggleFilters}
+                width={0}
+                height={0}
+                customStyles={{ height: "100%", width: "100%" }}
+                className="filters-modal"
+                animation="slideUp"
+              >
+                <div className="modal-top-section">
+                  <div className="filters-title">
+                    <p>Фільтри</p>
+                  </div>
+                  <div className="filters-container-modal">
+                    <Filter
+                      inActive={false}
+                      filterName="Ціна"
+                      categories={getUniqueCategories(aiList.map((ai) => ai.ai_cost))}
+                      onSelectCategory={(selectedCategories) => {
+                        handleCategoryFilter(selectedCategories);
+                      }}
+                      selectedCategories={selectedCategories}
+                    />
+                    <Filter
+                      inActive={false}
+                      filterName="Технологія ШІ"
+                      categories={getUniqueCategories(aiList.map((ai) => ai.ai_uses))}
+                      onSelectCategory={(selectedCategories) => {
+                        handleCategoryFilter(selectedCategories);
+                      }}
+                      selectedCategories={selectedCategories}
+                    />
+                    <Filter
+                      inActive={false}
+                      filterName="Сектор використання"
+                      categories={getUniqueCategories(aiList.map((ai) => ai.ai_sector))}
+                      onSelectCategory={(selectedCategories) => {
+                        handleCategoryFilter(selectedCategories);
+                      }}
+                      selectedCategories={selectedCategories}
+                    />
+                    <Filter
+                      inActive={false}
+                      filterName="API"
+                      categories={getUniqueCategories(aiList.map((ai) => ai.ai_api))}
+                      onSelectCategory={(selectedCategories) => {
+                        handleCategoryFilter(selectedCategories);
+                      }}
+                      selectedCategories={selectedCategories}
+                    />
+                    <Filter
+                      inActive={false}
+                      filterName="🇺🇦"
+                      categories={getUniqueCategories(aiList.map((ai) => ai.ai_from_ukr))}
+                      onSelectCategory={(selectedCategories) => {
+                        handleCategoryFilter(selectedCategories);
+                      }}
+                      selectedCategories={selectedCategories}
+                    />
+                  </div>
+                </div>
+                <div className="modal-bottom-section">
+                  <button onClick={toggleFilters} className="btn btn-active">
+                    Застосувати
+                  </button>
+                </div>
+              </Rodal>
             </div>
           </div>
         </div>

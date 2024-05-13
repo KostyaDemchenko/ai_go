@@ -10,6 +10,7 @@ import openLink from "./open_link.svg";
 import download from "./download.svg";
 import playBtn from "./play_btn.svg";
 import search from "./search.svg";
+import filter from "./filter.svg";
 import close from "./close.svg";
 import check from "./check.svg";
 import time from "./time.svg";
@@ -38,6 +39,7 @@ const obj: { [key: string]: string } = {
   download: download,
   playBtn: playBtn,
   search: search,
+  filter: filter,
   close: close,
   check: check,
   like: like,

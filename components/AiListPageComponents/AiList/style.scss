@@ -37,6 +37,14 @@
 
         width: 100%;
 
+        @include max-w-media(500px) {
+          gap: 20px;
+
+          .top-section {
+            padding: 9px 15px;
+          }
+        }
+
         .left-side {
           @include flex(flex-start, flex-start);
           @include f-direction(row);
@@ -69,9 +77,31 @@
       }
     }
 
-    .ai-sort-container {
-      @include flex(space-between, flex-start);
-      @include f-direction(row);
+    .filters-modile-trigger-sort-container {
+      width: fit-content;
+
+      @include max-w-media(500px) {
+        @include flex(space-between, flex-start);
+        @include f-direction(row);
+
+        width: 100%;
+      }
+
+      .ai-filters-modal-trigger {
+        display: none;
+
+        @include max-w-media(500px) {
+          @include flex(flex-start, flex-start);
+          @include f-direction(row);
+
+          gap: 10px;
+        }
+      }
+
+      .ai-sort-container {
+        @include flex(space-between, flex-start);
+        @include f-direction(row);
+      }
     }
   }
 }
@@ -165,6 +195,115 @@
         }
         .property:nth-child(6) {
           border: 1px solid #f5de34;
+        }
+      }
+    }
+  }
+}
+
+.filters-modal {
+  @include max-w-media(500px) {
+    .rodal-mask {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .rodal-close {
+      position: absolute;
+      cursor: pointer;
+      top: 25px;
+      right: 25px;
+      width: 20px;
+      height: 20px;
+
+      &::before,
+      &::after {
+        background: var(--white);
+      }
+    }
+
+    .rodal-dialog {
+      @include flex(space-between, flex-start);
+      @include f-direction(column);
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      z-index: 500;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+      background-color: var(--black);
+
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+
+      .modal-top-section {
+        @include flex(flex-start, flex-start);
+        @include f-direction(column);
+
+        gap: 25px;
+        width: 100%;
+
+        .filters-title {
+          font-size: 24px;
+          font-weight: 600;
+          text-align: left;
+          color: var(--white);
+        }
+
+        .filters-container-modal {
+          @include flex(flex-start, flex-start);
+          @include f-direction(column);
+
+          width: 100%;
+          gap: 15px;
+
+          .ai-filter-container {
+            width: 100%;
+            background-color: var(--black);
+
+            .top-section {
+              background-color: var(--black);
+              padding: 9px 0;
+
+              border-radius: 0;
+              border-bottom: 1px solid var(--grey);
+
+              .title {
+                font-size: 18px;
+                font-weight: 600;
+              }
+
+              .icon {
+                width: 24px;
+                height: 24px;
+              }
+            }
+
+            .bottom-section {
+              background-color: var(--black);
+              gap: 0px;
+
+              label {
+                padding: 10px 0;
+              }
+            }
+          }
+        }
+      }
+
+      .modal-bottom-section {
+        @include flex(flex-start, flex-start);
+        @include f-direction(row);
+        width: 100%;
+
+        button {
+          @include flex(center, center);
+          width: 100%;
         }
       }
     }
