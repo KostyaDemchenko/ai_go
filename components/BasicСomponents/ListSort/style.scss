@@ -79,7 +79,15 @@
   display: none;
 
   @include max-w-media(500px) {
-    display: flex;
+    @include flex(flex-start, center);
+    @include f-direction(row);
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
   }
 }
 

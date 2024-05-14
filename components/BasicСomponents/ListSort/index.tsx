@@ -46,9 +46,10 @@ const SortOptions: React.FC<SortOptionsProps> = ({ handleSort }) => {
           </button>
         </div>
       </div>
-      <p className="sorting-modal-triger" onClick={toggleSort}>
-        Сортування
-      </p>
+      <div className="sorting-modal-triger" onClick={toggleSort}>
+        <Image className="icon" src={iconObj.sort} width={16} height={16} alt="Arrow" />
+        <p>Сортування</p>
+      </div>
       <Rodal
         visible={isSortVisible}
         onClose={toggleSort}
