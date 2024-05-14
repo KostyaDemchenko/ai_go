@@ -226,6 +226,9 @@ const AiList: React.FC = () => {
                 <div className="ai-filters-modal-trigger" onClick={toggleFilters}>
                   <Image src={iconObj.filter} alt="Filter" width={20} height={20} />
                   <p>Фільтри</p>
+                  {/* <div className="counter">
+                    <p></p>
+                  </div> */}
                 </div>
                 <div className="ai-sort-container">
                   <SortOptions handleSort={handleSort} />

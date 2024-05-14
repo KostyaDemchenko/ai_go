@@ -202,6 +202,12 @@
 }
 
 .filters-modal {
+  display: none;
+
+  @include max-w-media(500px) {
+    display: block;
+  }
+
   @include max-w-media(500px) {
     .rodal-mask {
       position: absolute;

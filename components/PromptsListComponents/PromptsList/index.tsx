@@ -2,7 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import Image from "next/image";
+import Rodal from "rodal";
 
+// Components
 import Filter from "@/components/BasicСomponents/Filter";
 import CartRate from "@/components/PromptsListComponents/CartRating";
 import DownloadBtn from "@/components/BasicСomponents/DownloadBtn";
@@ -11,8 +14,13 @@ import Pagination from "@/components/BasicСomponents/Pagination";
 import SortOptions from "@/components/BasicСomponents/ListSort";
 import YoutubeModal from "@/components/BasicСomponents/YoutubeModal";
 
+// Icons
+import iconObj from "@/public/icons/utils";
+
 import PromptListPreloader from "@/components/PromptsListComponents/PromptListPreloader";
 
+// Styles
+import "rodal/lib/rodal.css";
 import "./style.scss";
 
 const PromptsList: React.FC = () => {
@@ -24,6 +32,12 @@ const PromptsList: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage] = useState<number>(12);
   const [sortType, setSortType] = useState<string>("");
+  const [isFiltersVisible, setIsFiltersVisible] = useState(false);
+
+  // Show modal filers on mobile
+  const toggleFilters = () => {
+    setIsFiltersVisible(!isFiltersVisible);
+  };
 
   useEffect(() => {
     fetchData();
@@ -149,9 +163,72 @@ const PromptsList: React.FC = () => {
               selectedCategories={selectedCategories}
             />
           </div>
-          <div className="prompts-sort-container">
-            <SortOptions handleSort={handleSort} />
+          <div className="filters-modile-trigger-sort-container">
+            <div className="ai-filters-modal-trigger" onClick={toggleFilters}>
+              <Image src={iconObj.filter} alt="Filter" width={20} height={20} />
+              <p>Фільтри</p>
+              {/* <div className="counter">
+                    <p></p>
+                  </div> */}
+            </div>
+            <div className="ai-sort-container">
+              <SortOptions handleSort={handleSort} />
+            </div>
           </div>
+
+          <Rodal
+            visible={isFiltersVisible}
+            onClose={toggleFilters}
+            width={0}
+            height={0}
+            customStyles={{ height: "100%", width: "100%" }}
+            className="filters-modal"
+            animation="slideUp"
+          >
+            <div className="modal-top-section">
+              <div className="filters-title">
+                <p>Фільтри</p>
+              </div>
+              <div className="filters-container-modal">
+                <Filter
+                  inActive={false}
+                  filterName="Тип"
+                  categories={getUniqueCategories(promptsList.map((prompt) => prompt.prompt_type))}
+                  onSelectCategory={(selectedCategories) => {
+                    handleCategoryFilter(selectedCategories);
+                  }}
+                  selectedCategories={selectedCategories}
+                />
+                <Filter
+                  inActive={false}
+                  filterName="Спеціалізація"
+                  categories={getUniqueCategories(
+                    promptsList.map((prompt) => prompt.prompt_speciality)
+                  )}
+                  onSelectCategory={(selectedCategories) => {
+                    handleCategoryFilter(selectedCategories);
+                  }}
+                  selectedCategories={selectedCategories}
+                />
+                <Filter
+                  inActive={false}
+                  filterName="Нейромережа"
+                  categories={getUniqueCategories(
+                    promptsList.map((prompt) => prompt.prompt_ai_title)
+                  )}
+                  onSelectCategory={(selectedCategories) => {
+                    handleCategoryFilter(selectedCategories);
+                  }}
+                  selectedCategories={selectedCategories}
+                />
+              </div>
+            </div>
+            <div className="modal-bottom-section">
+              <button onClick={toggleFilters} className="btn btn-active">
+                Застосувати
+              </button>
+            </div>
+          </Rodal>
         </div>
       </div>
       <div className="prompts-list-container">
