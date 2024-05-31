@@ -69,12 +69,9 @@ const PromtsLastInfo: React.FC = () => {
         default:
           break;
       }
+      setPromptsList(sortedList);
     }
-  }, [promptsList, sortType, itemsPerPage]);
-
-  if (promptsList === null) {
-    return <MainPagePreloader />;
-  }
+  }, [promptsList, sortType]);
 
   const handleOpenModal = (videoUrl: string) => {
     setModalVideoUrl(videoUrl);
@@ -87,6 +84,10 @@ const PromtsLastInfo: React.FC = () => {
     document.body.style.overflow = "auto"; // Enable scrolling when modal is closed
   };
 
+  if (promptsList === null) {
+    return <MainPagePreloader />;
+  }
+
   return (
     <>
       <div className="page-last-info-box">
@@ -98,59 +99,61 @@ const PromtsLastInfo: React.FC = () => {
           {promptsList.length === 0 ? (
             <p>No items to display.</p>
           ) : (
-            promptsList.map((prompt: promtsListStructured, index: number) => (
-              <div key={index} className="prompt-item">
-                <div className="top-box">
-                  <CartRate rate={prompt.prompt_rate} />
-                  {prompt.promt_result_type.find((type) => type.name === "video") ? (
-                    // If type is video, show modal trigger
-                    <div
-                      className="prev-box"
-                      onClick={() => handleOpenModal(prompt.prompt_result_video_url)}
-                    >
+            promptsList
+              .slice(0, itemsPerPage)
+              .map((prompt: promtsListStructured, index: number) => (
+                <div key={index} className="prompt-item">
+                  <div className="top-box">
+                    <CartRate rate={prompt.prompt_rate} />
+                    {prompt.promt_result_type.find((type) => type.name === "video") ? (
+                      // If type is video, show modal trigger
+                      <div
+                        className="prev-box"
+                        onClick={() => handleOpenModal(prompt.prompt_result_video_url)}
+                      >
+                        <img
+                          className="prev-img"
+                          src={
+                            "https://i.ytimg.com/vi/" +
+                            prompt.prompt_result_video_url +
+                            "/maxresdefault.jpg"
+                          }
+                          alt="Watch Video"
+                        />
+                        <Image src={iconObj.playBtn} alt="Open modal" className="icon" />
+                      </div>
+                    ) : (
+                      // If type is image, show image
                       <img
                         className="prev-img"
-                        src={
-                          "https://i.ytimg.com/vi/" +
-                          prompt.prompt_result_video_url +
-                          "/maxresdefault.jpg"
-                        }
-                        alt="Watch Video"
+                        src={prompt.prompt_result_img_url}
+                        alt={prompt.prompt_name}
                       />
-                      <Image src={iconObj.playBtn} alt="Open modal" className="icon" />
+                    )}
+                    <DownloadBtn downloadLink={prompt.prompt_result_img_url} />
+                  </div>
+                  <div className="content-box">
+                    <div className="prompt-title-box">
+                      <a className="prompt-ai-title" target="_blank" href={prompt.prompt_ai_url}>
+                        {prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)}
+                      </a>
+                      <p className="prompt-name">{prompt.prompt_name}</p>
                     </div>
-                  ) : (
-                    // If type is image, show image
-                    <img
-                      className="prev-img"
-                      src={prompt.prompt_result_img_url}
-                      alt={prompt.prompt_name}
-                    />
-                  )}
-                  <DownloadBtn downloadLink={prompt.prompt_result_img_url} />
-                </div>
-                <div className="content-box">
-                  <div className="prompt-title-box">
-                    <a className="prompt-ai-title" target="_blank" href={prompt.prompt_ai_url}>
-                      {prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)}
-                    </a>
-                    <p className="prompt-name">{prompt.prompt_name}</p>
-                  </div>
-                  <AccordionPromptsItems promptsContent={prompt.prompt_pattern} />
-                  <div className="property-box">
-                    {[
-                      ...prompt.prompt_type.map((type: MultiSelectOption) => type.name),
-                      ...prompt.prompt_speciality.map((type: MultiSelectOption) => type.name),
-                      ...prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)
-                    ].map((name: string, index: number) => (
-                      <p className="property" key={index}>
-                        {name}
-                      </p>
-                    ))}
+                    <AccordionPromptsItems promptsContent={prompt.prompt_pattern} />
+                    <div className="property-box">
+                      {[
+                        ...prompt.prompt_type.map((type: MultiSelectOption) => type.name),
+                        ...prompt.prompt_speciality.map((type: MultiSelectOption) => type.name),
+                        ...prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)
+                      ].map((name: string, index: number) => (
+                        <p className="property" key={index}>
+                          {name}
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
+              ))
           )}
         </div>
         <Swiper
@@ -159,15 +162,13 @@ const PromtsLastInfo: React.FC = () => {
           pagination={{
             clickable: true
           }}
-          // loop={true}
           className="promptsSwiper"
         >
-          {promptsList.map((prompt: promtsListStructured, index: number) => (
+          {promptsList.slice(0, itemsPerPage).map((prompt: promtsListStructured, index: number) => (
             <SwiperSlide key={index} className="prompt-item">
               <div className="top-box">
                 <CartRate rate={prompt.prompt_rate} />
                 {prompt.promt_result_type.find((type) => type.name === "video") ? (
-                  // If type is video, show modal trigger
                   <div
                     className="prev-box"
                     onClick={() => handleOpenModal(prompt.prompt_result_video_url)}
@@ -184,7 +185,6 @@ const PromtsLastInfo: React.FC = () => {
                     <Image src={iconObj.playBtn} alt="Open modal" className="icon" />
                   </div>
                 ) : (
-                  // If type is image, show image
                   <img
                     className="prev-img"
                     src={prompt.prompt_result_img_url}

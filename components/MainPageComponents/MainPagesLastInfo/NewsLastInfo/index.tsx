@@ -68,8 +68,9 @@ const NewsLastInfo: React.FC = () => {
         default:
           break;
       }
+      setNewsList(sortedList);
     }
-  }, [newsList, sortType, itemsPerPage]);
+  }, [newsList, sortType]);
 
   const handleOpenModal = (news: newsListStructured) => {
     setSelectedNews(news);
@@ -99,19 +100,21 @@ const NewsLastInfo: React.FC = () => {
           {newsList.length === 0 ? (
             <p>No items to display.</p>
           ) : (
-            newsList.map((news: newsListStructured, index: number) => (
-              <NewsCart
-                key={index}
-                news_img_url={news.news_img_url}
-                news_name={news.news_name}
-                news_text_full={news.news_text_full}
-                news_time_to_read={news.news_time_to_read}
-                news_date_post={news.news_date_post}
-                news_type={news.news_type}
-                news_source_url={news.news_source_url}
-                news_video_url={news.news_video_url}
-              />
-            ))
+            newsList
+              .slice(0, itemsPerPage)
+              .map((news: newsListStructured, index: number) => (
+                <NewsCart
+                  key={index}
+                  news_img_url={news.news_img_url}
+                  news_name={news.news_name}
+                  news_text_full={news.news_text_full}
+                  news_time_to_read={news.news_time_to_read}
+                  news_date_post={news.news_date_post}
+                  news_type={news.news_type}
+                  news_source_url={news.news_source_url}
+                  news_video_url={news.news_video_url}
+                />
+              ))
           )}
         </div>
         <Swiper
@@ -126,7 +129,7 @@ const NewsLastInfo: React.FC = () => {
           {newsList.length === 0 ? (
             <p>No items to display.</p>
           ) : (
-            newsList.map((news: newsListStructured, index: number) => (
+            newsList.slice(0, itemsPerPage).map((news: newsListStructured, index: number) => (
               <SwiperSlide key={index} className="swiper-slide-news">
                 <div className="news-item" onClick={() => handleOpenModal(news)}>
                   <div className="top-box">
