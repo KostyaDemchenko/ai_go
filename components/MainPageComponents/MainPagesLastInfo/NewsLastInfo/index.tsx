@@ -10,7 +10,7 @@ import "rodal/lib/rodal.css";
 import "swiper/css";
 import "swiper/css/pagination";
 
-// Preloder
+// Preloader
 import MainPagePreloader from "@/components/MainPageComponents/MainPageLastInfoPreloader";
 import NewsCart from "@/components/NewsListPageComponents/NewsCart";
 
@@ -53,24 +53,30 @@ const NewsLastInfo: React.FC = () => {
 
   useEffect(() => {
     if (newsList) {
-      const sortedList = [...newsList];
-      switch (sortType) {
-        case "newest":
-          sortedList.sort(
-            (a, b) => (new Date(b.news_date_post) as any) - (new Date(a.news_date_post) as any)
-          );
-          break;
-        case "oldest":
-          sortedList.sort(
-            (a, b) => (new Date(a.news_date_post) as any) - (new Date(b.news_date_post) as any)
-          );
-          break;
-        default:
-          break;
-      }
-      setNewsList(sortedList);
+      sortNewsList();
     }
-  }, [newsList, sortType]);
+  }, [sortType]);
+
+  const sortNewsList = () => {
+    if (!newsList) return;
+
+    const sortedList = [...newsList];
+    switch (sortType) {
+      case "newest":
+        sortedList.sort(
+          (a, b) => (new Date(b.news_date_post) as any) - (new Date(a.news_date_post) as any)
+        );
+        break;
+      case "oldest":
+        sortedList.sort(
+          (a, b) => (new Date(a.news_date_post) as any) - (new Date(b.news_date_post) as any)
+        );
+        break;
+      default:
+        break;
+    }
+    setNewsList(sortedList);
+  };
 
   const handleOpenModal = (news: newsListStructured) => {
     setSelectedNews(news);
@@ -123,7 +129,6 @@ const NewsLastInfo: React.FC = () => {
           pagination={{
             clickable: true
           }}
-          // loop={true}
           className="newsSwiper"
         >
           {newsList.length === 0 ? (

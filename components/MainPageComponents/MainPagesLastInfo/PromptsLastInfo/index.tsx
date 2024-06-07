@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { ToastContainer } from "react-toastify";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -34,8 +34,8 @@ const PromtsLastInfo: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const newsListData = await fetchFromNotion();
-      setPromptsList(newsListData);
+      const promptsListData = await fetchFromNotion();
+      setPromptsList(promptsListData);
     } catch (error) {
       console.error(error);
     }
@@ -52,25 +52,24 @@ const PromtsLastInfo: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    if (promptsList) {
-      const sortedList = [...promptsList];
-      switch (sortType) {
-        case "newest":
-          sortedList.sort(
-            (a, b) => (new Date(b.prompt_date_post) as any) - (new Date(a.prompt_date_post) as any)
-          );
-          break;
-        case "oldest":
-          sortedList.sort(
-            (a, b) => (new Date(a.prompt_date_post) as any) - (new Date(b.prompt_date_post) as any)
-          );
-          break;
-        default:
-          break;
-      }
-      setPromptsList(sortedList);
+  const sortedPromptsList = useMemo(() => {
+    if (!promptsList) return null;
+    const sortedList = [...promptsList];
+    switch (sortType) {
+      case "newest":
+        sortedList.sort(
+          (a, b) => (new Date(b.prompt_date_post) as any) - (new Date(a.prompt_date_post) as any)
+        );
+        break;
+      case "oldest":
+        sortedList.sort(
+          (a, b) => (new Date(a.prompt_date_post) as any) - (new Date(b.prompt_date_post) as any)
+        );
+        break;
+      default:
+        break;
     }
+    return sortedList;
   }, [promptsList, sortType]);
 
   const handleOpenModal = (videoUrl: string) => {
@@ -84,7 +83,7 @@ const PromtsLastInfo: React.FC = () => {
     document.body.style.overflow = "auto"; // Enable scrolling when modal is closed
   };
 
-  if (promptsList === null) {
+  if (sortedPromptsList === null) {
     return <MainPagePreloader />;
   }
 
@@ -96,17 +95,16 @@ const PromtsLastInfo: React.FC = () => {
           <Image className="icon" src={iconObj.openLink} alt="Open link" />
         </a>
         <div className="prompts-list-container">
-          {promptsList.length === 0 ? (
+          {sortedPromptsList.length === 0 ? (
             <p>No items to display.</p>
           ) : (
-            promptsList
+            sortedPromptsList
               .slice(0, itemsPerPage)
               .map((prompt: promtsListStructured, index: number) => (
                 <div key={index} className="prompt-item">
                   <div className="top-box">
                     <CartRate rate={prompt.prompt_rate} />
                     {prompt.promt_result_type.find((type) => type.name === "video") ? (
-                      // If type is video, show modal trigger
                       <div
                         className="prev-box"
                         onClick={() => handleOpenModal(prompt.prompt_result_video_url)}
@@ -123,7 +121,6 @@ const PromtsLastInfo: React.FC = () => {
                         <Image src={iconObj.playBtn} alt="Open modal" className="icon" />
                       </div>
                     ) : (
-                      // If type is image, show image
                       <img
                         className="prev-img"
                         src={prompt.prompt_result_img_url}
@@ -164,57 +161,59 @@ const PromtsLastInfo: React.FC = () => {
           }}
           className="promptsSwiper"
         >
-          {promptsList.slice(0, itemsPerPage).map((prompt: promtsListStructured, index: number) => (
-            <SwiperSlide key={index} className="prompt-item">
-              <div className="top-box">
-                <CartRate rate={prompt.prompt_rate} />
-                {prompt.promt_result_type.find((type) => type.name === "video") ? (
-                  <div
-                    className="prev-box"
-                    onClick={() => handleOpenModal(prompt.prompt_result_video_url)}
-                  >
+          {sortedPromptsList
+            .slice(0, itemsPerPage)
+            .map((prompt: promtsListStructured, index: number) => (
+              <SwiperSlide key={index} className="prompt-item">
+                <div className="top-box">
+                  <CartRate rate={prompt.prompt_rate} />
+                  {prompt.promt_result_type.find((type) => type.name === "video") ? (
+                    <div
+                      className="prev-box"
+                      onClick={() => handleOpenModal(prompt.prompt_result_video_url)}
+                    >
+                      <img
+                        className="prev-img"
+                        src={
+                          "https://i.ytimg.com/vi/" +
+                          prompt.prompt_result_video_url +
+                          "/maxresdefault.jpg"
+                        }
+                        alt="Watch Video"
+                      />
+                      <Image src={iconObj.playBtn} alt="Open modal" className="icon" />
+                    </div>
+                  ) : (
                     <img
                       className="prev-img"
-                      src={
-                        "https://i.ytimg.com/vi/" +
-                        prompt.prompt_result_video_url +
-                        "/maxresdefault.jpg"
-                      }
-                      alt="Watch Video"
+                      src={prompt.prompt_result_img_url}
+                      alt={prompt.prompt_name}
                     />
-                    <Image src={iconObj.playBtn} alt="Open modal" className="icon" />
+                  )}
+                  <DownloadBtn downloadLink={prompt.prompt_result_img_url} />
+                </div>
+                <div className="content-box">
+                  <div className="prompt-title-box">
+                    <a className="prompt-ai-title" target="_blank" href={prompt.prompt_ai_url}>
+                      {prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)}
+                    </a>
+                    <p className="prompt-name">{prompt.prompt_name}</p>
                   </div>
-                ) : (
-                  <img
-                    className="prev-img"
-                    src={prompt.prompt_result_img_url}
-                    alt={prompt.prompt_name}
-                  />
-                )}
-                <DownloadBtn downloadLink={prompt.prompt_result_img_url} />
-              </div>
-              <div className="content-box">
-                <div className="prompt-title-box">
-                  <a className="prompt-ai-title" target="_blank" href={prompt.prompt_ai_url}>
-                    {prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)}
-                  </a>
-                  <p className="prompt-name">{prompt.prompt_name}</p>
+                  <AccordionPromptsItems promptsContent={prompt.prompt_pattern} />
+                  <div className="property-box">
+                    {[
+                      ...prompt.prompt_type.map((type: MultiSelectOption) => type.name),
+                      ...prompt.prompt_speciality.map((type: MultiSelectOption) => type.name),
+                      ...prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)
+                    ].map((name: string, index: number) => (
+                      <p className="property" key={index}>
+                        {name}
+                      </p>
+                    ))}
+                  </div>
                 </div>
-                <AccordionPromptsItems promptsContent={prompt.prompt_pattern} />
-                <div className="property-box">
-                  {[
-                    ...prompt.prompt_type.map((type: MultiSelectOption) => type.name),
-                    ...prompt.prompt_speciality.map((type: MultiSelectOption) => type.name),
-                    ...prompt.prompt_ai_title.map((type: MultiSelectOption) => type.name)
-                  ].map((name: string, index: number) => (
-                    <p className="property" key={index}>
-                      {name}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
       <Rodal
