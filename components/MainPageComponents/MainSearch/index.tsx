@@ -8,28 +8,44 @@ import { TuringType } from "@/utils/TuringType"; // Импортируем Turin
 import iconObj from "@/public/icons/utils";
 import "./style.scss";
 
-const networkNames = [
-  "ChatGPT",
-  "Dalle2",
-  "Sora",
-  "Stable Diffusion",
-  "OpenAI",
-  "Nightcafe",
-  "Vicuna"
-]; // Массив названий нейросетей
-
 const MainSearch: React.FC = () => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState<string>(localStorage.getItem("searchQuery") || "");
+  const [networkNames, setNetworkNames] = useState<string[]>([]); // Состояние для названий нейросетей
   const placeholderRef = useRef<HTMLInputElement>(null); // Референс для поля ввода
   const turingRef = useRef<TuringType>(); // Референс для экземпляра класса TuringType
+
+  useEffect(() => {
+    const fetchNetworkNames = async () => {
+      try {
+        const deployedApiUrl = "/api/notion_ai_list";
+        const res = await fetch(deployedApiUrl);
+        const data = await res.json();
+        const aiNames = data.aiListStructured.map((ai: { ai_name: string }) => ai.ai_name); // Извлекаем имена AI
+        setNetworkNames(aiNames); // Обновляем состояние с полученными именами
+      } catch (error) {
+        console.error("Error fetching network names:", error);
+        setNetworkNames([
+          "ChatGPT",
+          "Dalle2",
+          "Sora",
+          "Stable Diffusion",
+          "OpenAI",
+          "Nightcafe",
+          "Vicuna"
+        ]); // Используем статичный массив в случае ошибки
+      }
+    };
+
+    fetchNetworkNames();
+  }, []);
 
   useEffect(() => {
     // Функция для обновления placeholder
     const updatePlaceholder = () => {
       let i = 0;
       const changePlaceholder = () => {
-        if (placeholderRef.current) {
+        if (placeholderRef.current && networkNames.length > 0) {
           turingRef.current = new TuringType(placeholderRef.current, networkNames[i], {
             callback: () => {
               setTimeout(() => {
@@ -43,8 +59,9 @@ const MainSearch: React.FC = () => {
       };
       changePlaceholder();
     };
+
     updatePlaceholder(); // Запуск обновления placeholder при монтировании компонента
-  }, []);
+  }, [networkNames]); // Обновление при изменении networkNames
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
