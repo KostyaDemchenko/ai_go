@@ -8,6 +8,11 @@
   }
 
   .swiper-slide {
+    width: fit-content;
     margin: 0 15px;
+  }
+
+  .ai-item {
+    max-width: 290px;
   }
 }

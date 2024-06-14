@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 // Import Swiper React components
-import { Swiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -98,7 +98,11 @@ const AiLastInfo: React.FC = () => {
           className="aiSwiper"
         >
           {filteredAiList && filteredAiList.length > 0 ? (
-            filteredAiList.map((ai, index) => <AiCart key={index} ai={ai} />)
+            filteredAiList.map((ai, index) => (
+              <SwiperSlide key={index}>
+                <AiCart ai={ai} />
+              </SwiperSlide>
+            ))
           ) : (
             <p>No items to display.</p>
           )}
