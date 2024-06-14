@@ -6,10 +6,8 @@ import Rodal from "rodal";
 
 // Components
 import Filter from "@/components/BasicСomponents/Filter";
-import CartRate from "@/components/AiListPageComponents/AiListCartRating";
+import AiCart from "@/components/AiListPageComponents/AiCart";
 import AiListPreloader from "@/components/AiListPageComponents/AiListPreloader";
-import AccordionAiItems from "@/components/AiListPageComponents/AiListCardAccordion";
-import AiLinkBox from "@/components/AiListPageComponents/AiListLinkBox";
 import SearchBox from "@/components/AiListPageComponents/AiListSearchBox";
 import Pagination from "@/components/BasicСomponents/Pagination";
 import SortOptions from "@/components/BasicСomponents/ListSort";
@@ -305,38 +303,7 @@ const AiList: React.FC = () => {
       </div>
       <div className="ai-list-container">
         {currentItems && currentItems.length > 0 ? (
-          currentItems.map((ai, index) => (
-            <div key={index} className="ai-item">
-              <img className="prev-img" src={ai.ai_img_url} alt={ai.ai_name} />
-              <div className="content-box">
-                <CartRate rate={ai.ai_rate} />
-                <AiLinkBox url={ai.ai_url} />
-                <div className="ai-title-box">
-                  <p className="ai-name">{ai.ai_name}</p>
-                  {ai.ai_from_ukr.some((type: MultiSelectOption) => type.name === "🇺🇦") && (
-                    <div>
-                      <span role="img" aria-label="Ukraine flag">
-                        🇺🇦
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <AccordionAiItems description={ai.ai_description} />
-                <div className="property-box">
-                  {[
-                    ...ai.ai_uses.map((type: MultiSelectOption) => type.name),
-                    ...ai.ai_sector.map((type: MultiSelectOption) => type.name),
-                    ...ai.ai_cost.map((type: MultiSelectOption) => type.name),
-                    ...ai.ai_api.map((type: MultiSelectOption) => type.name)
-                  ].map((name: string, index: number) => (
-                    <p className="property" key={index}>
-                      {name}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))
+          currentItems.map((ai, index) => <AiCart key={index} ai={ai} />)
         ) : (
           <p>No items match the selected categories.</p>
         )}
