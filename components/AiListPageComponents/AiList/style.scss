@@ -24,6 +24,10 @@
       .ai-search-container {
         width: 85%;
 
+        @include max-w-media(1100px) {
+          width: 100%;
+        }
+
         @include max-w-media(500px) {
           width: 100%;
         }
@@ -36,6 +40,11 @@
         gap: 35px;
 
         width: 100%;
+
+        @include max-w-media(1100px) {
+          @include flex(flex-start, flex-start);
+          @include f-direction(column);
+        }
 
         @include max-w-media(500px) {
           gap: 20px;
@@ -69,6 +78,10 @@
           @include f-direction(row);
 
           gap: 15px;
+
+          @include max-w-media(1100px) {
+            flex-wrap: wrap;
+          }
 
           @include max-w-media(500px) {
             display: none;
@@ -114,6 +127,11 @@
   width: 100%;
 
   min-height: calc(70dvh - 71px);
+
+  @include max-w-media(1100px) {
+    @include flex(center, flex-start);
+    gap: 25px 10%;
+  }
 
   @include max-w-media(500px) {
     @include flex(center, flex-start);
